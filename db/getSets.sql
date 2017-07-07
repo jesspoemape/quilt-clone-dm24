@@ -1,0 +1,1 @@
+insert into test (id, title, creator) values ($1, $2, $3);
