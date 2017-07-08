@@ -9,7 +9,7 @@ const app = module.exports = express();
 app.use(bodyParser.json());
 
 const connectionString = config.connectionString;
-massive(connectionString).then(dbInstance => app.set('db', dbInstance));
+massive(connectionString).then(dbInstance => app.set('db', dbInstance)).catch(console.error);
 
 // =========== ENDPOINTS ===========
 app.get('/api/sets/:id', sc.getSets);
