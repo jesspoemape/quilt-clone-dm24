@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import store from './ducks/store';
-import './index.css';
+import './css/index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
