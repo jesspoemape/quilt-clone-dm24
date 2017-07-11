@@ -81,8 +81,14 @@ html {
 .header-icon {
 	fill: white;
 	height: 1.3rem;
-	margin-left: 25px;
+	margin-left: 24px;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 }
+.header-icon:hover {
+	fill: #9da9db;
+}
+
 #list {
 	height: 1rem;
 }
