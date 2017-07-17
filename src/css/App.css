@@ -128,7 +128,8 @@ html {
 	letter-spacing: .7px;
 }
 .create-svg {
-	height: 50px;
+	height: 1.5rem;
+	fill: white;
 }
 .create-title-input-container {
 	padding-top: 4rem;
@@ -141,12 +142,15 @@ html {
 	letter-spacing: .1rem;
 	font-size: .8rem;
 }
-/*.options-container {
-	border: 20px solid #3ccfcf;
+.options-container {
+	background-color: #3ccfcf;
 	border-radius: 50%;
-	width: 2rem;
-	height: 2rem;
-}*/
+	height: 2.3rem;
+	width: 2.3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center; 
+}
 
 .create-terms-container {
 	background-color: #f0f0f0;
