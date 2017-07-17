@@ -88,7 +88,6 @@ html {
 .header-icon:hover {
 	fill: #9da9db;
 }
-
 #list {
 	height: 1rem;
 }
@@ -98,4 +97,42 @@ html {
   font-size: 1.8rem;
   color: white;
 }
-
+.create-set-header {
+	margin: 1rem;
+	background-color: white;
+}
+.create-input {
+	width: 100%;
+	border: none;
+	border-bottom: 2px solid #455358;
+	font-family: "Catamaran", sans-serif;
+	font-weight: 200;
+	font-size: 1.3rem;
+}
+.create-input::placeholder {
+	color: #c9ceeb;
+	letter-spacing: .7px;
+}
+.create-title-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-family: "Catamaran", sans-serif;
+	font-weight: 700;
+	font-size: 1.4rem;
+	color: #455358;
+	letter-spacing: .7px;
+}
+.create-svg {
+	fill: green;
+	height: 50px;
+}
+.create-title-input-container {
+	padding-top: 4rem;
+}
+/*.options-container {
+	border: 20px solid #3ccfcf;
+	border-radius: 50%;
+	width: 2rem;
+	height: 2rem;
+}*/

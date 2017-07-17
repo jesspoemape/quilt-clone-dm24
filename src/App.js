@@ -1,21 +1,28 @@
-import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import Header from './components/Header';
-import './css/reset.css';
-import './css/App.css';
+/*import React, { Component } from 'react';
+import router from './router';
 
 class App extends Component {
   render() {
     return (
-    <Header/>
+      <div>
+        {router}
+      </div>
+    
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    state
-  }
+export default App;*/
+import React from 'react';
+import router from './router';
+
+
+export function App() {
+  return (
+    <div>
+      {router}
+    </div>
+  );
 }
 
-export default connect(mapStateToProps)(App);
+export default App;
