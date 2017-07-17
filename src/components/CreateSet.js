@@ -7,6 +7,7 @@ class CreateSet extends Component {
         this.state = {
             title: '',
             setid: null,
+            description: '',
             cards: [
                 {
                     id: null,
@@ -43,11 +44,23 @@ class CreateSet extends Component {
         this.handleCreateClick = this.handleCreateClick.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleAddCardClick = this.handleAddCardClick.bind(this);
+        this.openOverlay = this.openOverlay.bind(this);
+        this.closeOverlay = this.closeOverlay.bind(this);
+        this.handleDescChange = this.handleDescChange.bind(this);
     }
 
 handleCreateClick() {
-    let uniq = new Date().getTime() + (Math.floor(Math.random() * (9223372000000000 - 0)) + 0);
-    this.setState({setid: uniq});
+    const uniq = new Date().getTime() + (Math.floor(Math.random() * (9223372000000000 - 0)) + 0);
+
+    const {title, cards} = this.state;
+    const newSet = {
+        id: uniq,
+        title,
+        creatorname: 'jae',
+        creatorid: 123456,
+        numofterms: cards.length,
+        description: ''
+    } 
 }
 
 handleTitleChange(e) {
@@ -87,6 +100,18 @@ handleAddCardClick() {
     this.setState({
         cards
     });
+}
+
+openOverlay() {
+    document.getElementById('optionsOverlay').style.width = '100%';
+}
+
+closeOverlay() {
+    this.setState({description: this.state.description});
+    document.getElementById('optionsOverlay').style.width = '0%';
+}
+handleDescChange(e) {
+    this.setState({description: e});
 }
 
     render() {
@@ -133,12 +158,30 @@ const blankCards = this.state.cards.map( (card, i) => {
 
         return (
             <div>
+                <div id='optionsOverlay' className='overlay'>
+                    <div className='header-container'>
+                        <h1 className='header'>Options</h1>
+                        <span onClick={() => this.closeOverlay()} className='close-btn'>&times;</span>
+                    </div>
+                    <div className='overlay-content'>
+                        <input 
+                            type="text" 
+                            className='create-input' 
+                            placeholder='(Optional)'
+                            onChange={(e) => this.handleDescChange(e.target.value)}
+                            />
+                        <h4 className='create-title-label'>DESCRIPTION</h4>
+                        <button className='overlay-save-btn' onClick={() => this.closeOverlay()} >Save</button>
+                    </div>
+                </div>
                 <Header/>
                     <div className='create-title-container' >
                         <h2>Create a new study set</h2>
-                        <div className='options-container'><svg className='create-svg' version="1.1" x="0px" y="0px" viewBox="0 0 100 100"><g transform="translate(0,-952.36218)">
-                            <path d="m 89.00002,1026.3622 c 0,1.1046 -0.89543,2 -2,2 l -28.31254,0 c -0.8727,2.8728 -3.5439,5 -6.6875,5 -3.1435,0 -5.8147,-2.1272 -6.6875,-5 l -32.3125,0 c -1.1046,0 -2,-0.8954 -2,-2 0,-1.1046 0.8954,-2 2,-2 l 32.3125,0 c 0.8728,-2.8729 3.544,-5 6.6875,-5 3.1436,0 5.8148,2.1271 6.6875,5 l 28.31254,0 c 1.10457,0 2,0.8954 2,2 z m 0,-24 c 0,1.1046 -0.89543,2 -2,2 l -48.31254,0 c -0.8727,2.8728 -3.544,5 -6.6875,5 -3.1435,0 -5.8147,-2.1272 -6.6875,-5 l -12.3125,0 c -1.1046,0 -2,-0.8954 -2,-2 0,-1.1046 0.8954,-2 2,-2 l 12.3125,0 c 0.8728,-2.87288 3.544,-5.00002 6.6875,-5.00002 3.1435,0 5.8148,2.12714 6.6875,5.00002 l 48.31254,0 c 1.10457,0 2,0.8954 2,2 z m 0,-24.00002 c 0,1.1046 -0.89543,2 -2,2 l -8.3125,0 c -0.87275,2.87286 -3.54399,5 -6.6875,5 -3.14354,0 -5.81474,-2.12714 -6.68754,-5 l -52.3125,0 c -1.1046,0 -2,-0.8954 -2,-2 0,-1.1046 0.8954,-2 2,-2 l 52.3125,0 c 0.8728,-2.87286 3.544,-5 6.68754,-5 3.14351,0 5.81475,2.12714 6.6875,5 l 8.3125,0 c 1.10457,0 2,0.8954 2,2 z m -14,0 c 0,-1.68054 -1.31946,-3 -3,-3 -1.68054,0 -3.00004,1.31946 -3.00004,3 0,1.68054 1.3195,3 3.00004,3 1.68054,0 3,-1.31946 3,-3 z m -20.00004,48.00002 c 0,-1.6806 -1.3194,-3 -3,-3 -1.6805,0 -3,1.3194 -3,3 0,1.6805 1.3195,3 3,3 1.6806,0 3,-1.3195 3,-3 z m -20,-24 c 0,-1.6806 -1.3194,-3.00002 -3,-3.00002 -1.6805,0 -3,1.31942 -3,3.00002 0,1.6805 1.3195,3 3,3 1.6806,0 3,-1.3195 3,-3 z" stroke="none" visibility="visible" display="inline" overflow="visible"/></g>
-                        </svg></div>
+                        <div className='options-container' onClick={() => this.openOverlay()}>
+                            <svg className='create-svg' version="1.1" x="0px" y="0px" viewBox="0 0 100 100"><g transform="translate(0,-952.36218)">
+                                <path d="m 89.00002,1026.3622 c 0,1.1046 -0.89543,2 -2,2 l -28.31254,0 c -0.8727,2.8728 -3.5439,5 -6.6875,5 -3.1435,0 -5.8147,-2.1272 -6.6875,-5 l -32.3125,0 c -1.1046,0 -2,-0.8954 -2,-2 0,-1.1046 0.8954,-2 2,-2 l 32.3125,0 c 0.8728,-2.8729 3.544,-5 6.6875,-5 3.1436,0 5.8148,2.1271 6.6875,5 l 28.31254,0 c 1.10457,0 2,0.8954 2,2 z m 0,-24 c 0,1.1046 -0.89543,2 -2,2 l -48.31254,0 c -0.8727,2.8728 -3.544,5 -6.6875,5 -3.1435,0 -5.8147,-2.1272 -6.6875,-5 l -12.3125,0 c -1.1046,0 -2,-0.8954 -2,-2 0,-1.1046 0.8954,-2 2,-2 l 12.3125,0 c 0.8728,-2.87288 3.544,-5.00002 6.6875,-5.00002 3.1435,0 5.8148,2.12714 6.6875,5.00002 l 48.31254,0 c 1.10457,0 2,0.8954 2,2 z m 0,-24.00002 c 0,1.1046 -0.89543,2 -2,2 l -8.3125,0 c -0.87275,2.87286 -3.54399,5 -6.6875,5 -3.14354,0 -5.81474,-2.12714 -6.68754,-5 l -52.3125,0 c -1.1046,0 -2,-0.8954 -2,-2 0,-1.1046 0.8954,-2 2,-2 l 52.3125,0 c 0.8728,-2.87286 3.544,-5 6.68754,-5 3.14351,0 5.81475,2.12714 6.6875,5 l 8.3125,0 c 1.10457,0 2,0.8954 2,2 z m -14,0 c 0,-1.68054 -1.31946,-3 -3,-3 -1.68054,0 -3.00004,1.31946 -3.00004,3 0,1.68054 1.3195,3 3.00004,3 1.68054,0 3,-1.31946 3,-3 z m -20.00004,48.00002 c 0,-1.6806 -1.3194,-3 -3,-3 -1.6805,0 -3,1.3194 -3,3 0,1.6805 1.3195,3 3,3 1.6806,0 3,-1.3195 3,-3 z m -20,-24 c 0,-1.6806 -1.3194,-3.00002 -3,-3.00002 -1.6805,0 -3,1.31942 -3,3.00002 0,1.6805 1.3195,3 3,3 1.6806,0 3,-1.3195 3,-3 z" stroke="none" visibility="visible" display="inline" overflow="visible"/></g>
+                            </svg>
+                        </div>
                     </div>
                     <div className='create-title-input-container'>
                         <input 
