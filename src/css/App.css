@@ -126,13 +126,19 @@ html {
 	font-size: 1.4rem;
 	color: #455358;
 	letter-spacing: .7px;
+	position: sticky;
+	top: 0;
+	margin: 1rem;
+	background-color: white;
 }
 .create-svg {
 	height: 1.5rem;
 	fill: white;
 }
 .create-title-input-container {
-	padding-top: 4rem;
+	padding-top: 2rem;
+	margin: 1rem;
+	background-color: white;
 }
 
 .create-title-label {
@@ -239,7 +245,7 @@ h5:hover {
 	font-size: 1.3rem;
 	letter-spacing: .1rem;
 	border: none;
-	padding: 1.3rem;
+	padding: 1.1rem;
 	width: 45%;
 	margin-top: 2rem;
 	align-self: center;
