@@ -110,8 +110,12 @@ html {
 	font-size: 1.3rem;
 }
 .create-input::placeholder {
-	color: #c9ceeb;
+	color: #d2d6d8;
 	letter-spacing: .7px;
+}
+.create-input:focus {
+	outline: none;
+	border-bottom: 4px solid #efcb47;
 }
 .create-title-container {
 	display: flex;
@@ -124,11 +128,18 @@ html {
 	letter-spacing: .7px;
 }
 .create-svg {
-	fill: green;
 	height: 50px;
 }
 .create-title-input-container {
 	padding-top: 4rem;
+}
+
+.create-title-label {
+	font-family: "Catamaran", sans-serif;
+	color: #959da0;
+	margin-top: .7rem;
+	letter-spacing: .1rem;
+	font-size: .8rem;
 }
 /*.options-container {
 	border: 20px solid #3ccfcf;
@@ -136,3 +147,42 @@ html {
 	width: 2rem;
 	height: 2rem;
 }*/
+
+.create-terms-container {
+	background-color: #f0f0f0;
+	width: 100%;
+	padding: 1rem;
+}
+.blank-card {
+	background-color: white;
+	padding: 1rem;
+}
+.blank-card-input-container {
+	display: flex;
+	flex-direction: column;
+}
+.blank-card-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 2rem;
+}
+h3 {
+	font-family: "Catamaran", sans-serif;
+	font-weight: 700;
+	color: #959da0;
+	font-size: 1.5rem;
+}
+.blank-footer-icons-container {
+	display: flex;
+	width: 33%;
+	justify-content: space-between;
+	align-items: center;
+}
+.blank-card-svg {
+	fill: #455358;
+	width: 15px;
+}
+.blank-card-svg:hover {
+	fill: #efcb47;
+}

@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 import Header from './Header';
 
 class CreateSet extends Component {
+    constructor() {
+        super();
+        this.state = {
+            numOfTerms: 5
+        }
+    }
+
     render() {
+
         return (
             <div>
                 <Header/>
@@ -15,6 +23,37 @@ class CreateSet extends Component {
                     </div>
                     <div className='create-title-input-container'>
                         <input className='create-input' type='text' placeholder='Subject, chapter, unit'/>
+                        <h4 className='create-title-label'>TITLE</h4>
+                    </div>
+                </div>
+                <div className='create-terms-container'>
+                    <div className='blank-card'>
+                        <div className='blank-card-input-container'>
+                            <input className='create-input' type="text" placeholder='Enter term'/>
+                            <h4 className='create-title-label'>TERM</h4>
+                            <input className='create-input' type="text" placeholder='Enter definition'/>
+                            <h4 className='create-title-label'>DEFINITION</h4>
+                        </div>
+                        <div className='blank-card-footer'>
+                            <h3>1</h3>
+                            <div className='blank-footer-icons-container'>
+                                <svg className='blank-card-svg' id="more" viewBox="0 0 22 6" width="100%" height="100%">
+                                    <path 
+                                        d="M3.324.266a2.48 2.48 0 0 0-1.816.761 2.48 2.48 0 0 0-.762 1.817c0 .703.254 1.308.762 1.816a2.48 2.48 0 0 0 1.816.762 2.48 2.48 0 0 0 1.817-.762 2.48 2.48 0 0 0 .761-1.816 2.48 2.48 0 0 0-.761-1.817A2.48 2.48 0 0 0 3.324.266zm15.352 0c-.703 0-1.299.254-1.787.761a2.53 2.53 0 0 0-.733 1.817c0 .703.244 1.308.733 1.816a2.385 2.385 0 0 0 1.787.762 2.48 2.48 0 0 0 1.816-.762 2.48 2.48 0 0 0 .762-1.816 2.48 2.48 0 0 0-.762-1.817 2.48 2.48 0 0 0-1.816-.761zM11 .266a2.48 2.48 0 0 0-1.816.761 2.48 2.48 0 0 0-.762 1.817c0 .703.254 1.308.762 1.816A2.48 2.48 0 0 0 11 5.422a2.48 2.48 0 0 0 1.816-.762 2.48 2.48 0 0 0 .762-1.816 2.48 2.48 0 0 0-.762-1.817A2.48 2.48 0 0 0 11 .266z" fill-rule="evenodd">
+                                    </path>
+                                </svg>
+                                <svg className='blank-card-svg' id="list-add" viewBox="0 0 26 19" width="100%" height="100%">
+                                    <path 
+                                        d="M15.578 5.777H.08v2.52h15.498v-2.52zm0-5.01H.08v2.52h15.498V.767zm5.186 10.05v-5.04h-2.608v5.04H13v2.519h5.156v5.01h2.608v-5.01h5.156v-2.52h-5.156zM.08 13.335h10.342v-2.52H.08v2.52z" fill-rule="evenodd">
+                                    </path>
+                                </svg>
+                                <svg className='blank-card-svg' id="image" viewBox="0 0 22 21" width="100%" height="100%">
+                                    <path 
+                                        d="M21.254 18.46V2.524c0-.605-.22-1.137-.66-1.596a2.162 2.162 0 0 0-1.624-.69H3.03c-.605 0-1.137.225-1.596.674-.46.45-.689.986-.689 1.611v15.938c0 .644.225 1.186.674 1.626.45.44.986.66 1.611.66h15.94c.644 0 1.186-.22 1.626-.66.44-.44.659-.982.659-1.626zM7.016 12.192l2.87 3.457 3.985-5.156 5.098 6.856H3.03l3.985-5.157z" fill-rule="evenodd">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
