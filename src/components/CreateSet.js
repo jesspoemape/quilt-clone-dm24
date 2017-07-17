@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
+import {connect} from 'react-redux';
+import {addSet} from './../ducks/reducer';
 
 class CreateSet extends Component {
     constructor() {
@@ -203,4 +205,4 @@ const blankCards = this.state.cards.map( (card, i) => {
     }
 }
 
-export default CreateSet;
+export default connect(null, {addSet})(CreateSet);
