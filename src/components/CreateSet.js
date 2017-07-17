@@ -34,7 +34,7 @@ class CreateSet extends Component {
     }
 
 handleCreateClick() {
-    console.log("create button clicked");
+    console.log(this.state.cards);
 }
 
 handleTitleChange(e) {
@@ -45,9 +45,19 @@ handleTitleChange(e) {
 }
 
 handleTermChange(i, e) {
-    const card = this.state.cards[i];
-    card.term = e.target.value;
-    console.log(this.state.cards);
+    const cards = this.state.cards;
+    cards[i].term = e.target.value;
+    this.setState({
+        cards
+    });
+}
+
+handleDefChange(i, e) {
+    const cards = this.state.cards;
+    cards[i].definition = e.target.value;
+    this.setState({
+        cards
+    });
 }
 
     render() {
@@ -61,7 +71,12 @@ const blankCards = this.state.cards.map( (card, i) => {
                                 placeholder='Enter term'
                                 />
                             <h4 className='create-title-label'>TERM</h4>
-                            <input className='create-input' type="text" placeholder='Enter definition'/>
+                            <input 
+                                onChange={this.handleDefChange.bind(this, i)}
+                                className='create-input' 
+                                type="text" 
+                                placeholder='Enter definition'
+                                />
                             <h4 className='create-title-label'>DEFINITION</h4>
                         </div>
                         <div className='blank-card-footer'>
