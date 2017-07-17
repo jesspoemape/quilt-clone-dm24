@@ -6,35 +6,48 @@ class CreateSet extends Component {
         super();
         this.state = {
             title: '',
+            setid: 2,
             cards: [
                 {
+                    id: null,
                     term: '',
-                    definition: ''
+                    definition: '',
+                    imageurl: ''
                 },
                 {
+                    id: null,
                     term: '',
-                    definition: ''
+                    definition: '',
+                    imageurl: ''
                 },
                 {
+                    id: null,
                     term: '',
-                    definition: ''
+                    definition: '',
+                    imageurl: ''
                 },
                 {
+                    id: null,
                     term: '',
-                    definition: ''
+                    definition: '',
+                    imageurl: ''
                 },
                 {
+                    id: null,
                     term: '',
-                    definition: ''
+                    definition: '',
+                    imageurl: ''
                 }
             ]
         }
         this.handleCreateClick = this.handleCreateClick.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
+        this.handleAddCardClick = this.handleAddCardClick.bind(this);
     }
 
 handleCreateClick() {
-    console.log(this.state.cards);
+    let uniq = new Date().getTime() + (Math.floor(Math.random() * (9223372000000000 - 0)) + 0);
+    console.log(uniq);
 }
 
 handleTitleChange(e) {
@@ -58,6 +71,16 @@ handleDefChange(i, e) {
     this.setState({
         cards
     });
+}
+
+handleAddCardClick() {
+    const newCard = {
+        id: null,
+        setid: null,
+        term: '',
+        definition: '',
+        imageurl: ''
+    }
 }
 
     render() {
@@ -112,7 +135,11 @@ const blankCards = this.state.cards.map( (card, i) => {
                         </svg></div>
                     </div>
                     <div className='create-title-input-container'>
-                        <input onChange={(e) => this.handleTitleChange(e.target.value)} className='create-input' type='text' placeholder='Subject, chapter, unit'/>
+                        <input 
+                            onChange={(e) => this.handleTitleChange(e.target.value)} 
+                            className='create-input' type='text' 
+                            placeholder='Subject, chapter, unit'
+                            />
                         <h4 className='create-title-label'>TITLE</h4>
                     </div>
                 <div className='create-terms-container'>
@@ -123,7 +150,7 @@ const blankCards = this.state.cards.map( (card, i) => {
                         Flip terms and definitions
                     </div>
                     {blankCards}
-                    <div className='add-card'>
+                    <div className='add-card' onClick={() => this.handleAddCardClick()}>
                         <h5>+ ADD CARD</h5>
                     </div>
                     <button onClick={() => this.handleCreateClick()} className='create-set-button'>
