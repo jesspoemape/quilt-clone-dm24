@@ -92,6 +92,12 @@ const blankCards = this.state.cards.map( (card, i) => {
                         Flip terms and definitions
                     </div>
                     {blankCards}
+                    <div className='add-card'>
+                        <h5>+ ADD CARD</h5>
+                    </div>
+                    <button className='create-set-button'>
+                        Create
+                    </button>
                 </div>
             </div>
         );
