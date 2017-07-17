@@ -2,7 +2,12 @@ const initialState = {
     something: ''
 }
 export default function reducer(state = initialState, action) {
-    return state;
+    switch (action.type) {
+        case ADD_SET:
+            console.log("in reducer", action.payload);
+            break;
+        default: return state;
+    }
 }
 
 // ACTION CREATOR CONSTANTS

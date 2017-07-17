@@ -53,17 +53,28 @@ class CreateSet extends Component {
 
 // will send new set of cards to reducer to be sent to the database
 handleCreateClick() {
-    const uniq = new Date().getTime() + (Math.floor(Math.random() * (9223372000000000 - 0)) + 0);
+    const uniqSetId = new Date().getTime() + (Math.floor(Math.random() * (9223372000000000 - 0)) + 0);
+    const uniqueCardId = Math.floor(Math.random() * (9223372000000000 - 0)) + 0;
 
     const {title, cards} = this.state;
+
+    // map through all the cards and set the id to increment by 1
+    // try a for each looper
+    const tempCards = cards.map((card, i) => {
+        return card.id = uniqueCardId + i;
+    });
+
     const newSet = {
-        id: uniq,
+        id: uniqSetId,
         title,
         creatorname: 'jae',
         creatorid: 123456,
         numofterms: cards.length,
-        description: ''
+        description: '',
+        cards: []
     } 
+
+    this.props.addSet(newSet); 
 }
 
 // handle title change
@@ -71,7 +82,6 @@ handleTitleChange(e) {
     this.setState({
         title: e
     });
-    console.log("title:", this.state.title);
 }
 
 // handle the term change by individual card
