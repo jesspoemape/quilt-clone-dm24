@@ -6,7 +6,7 @@ class CreateSet extends Component {
         super();
         this.state = {
             title: '',
-            setid: 2,
+            setid: null,
             cards: [
                 {
                     id: null,
@@ -47,7 +47,7 @@ class CreateSet extends Component {
 
 handleCreateClick() {
     let uniq = new Date().getTime() + (Math.floor(Math.random() * (9223372000000000 - 0)) + 0);
-    console.log(uniq);
+    this.setState({setid: uniq});
 }
 
 handleTitleChange(e) {
@@ -76,11 +76,17 @@ handleDefChange(i, e) {
 handleAddCardClick() {
     const newCard = {
         id: null,
-        setid: null,
         term: '',
         definition: '',
         imageurl: ''
     }
+
+    let cards = this.state.cards;
+    cards.push(newCard);
+
+    this.setState({
+        cards
+    });
 }
 
     render() {
