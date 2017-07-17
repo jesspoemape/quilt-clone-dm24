@@ -27,6 +27,12 @@ class CreateSet extends Component {
                     </div>
                 </div>
                 <div className='create-terms-container'>
+                    <div className='flip-terms-button'>
+                        <svg className='flip-button-svg' xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 24 30" x="0px" y="0px">
+                            <path d="M22 7l-5 4.994v-3.994h-14v-2h14v-4zM7 16h14v2h-14v3.993l-5-4.993 5-4.994v4z"/>
+                        </svg>
+                        Flip terms and definitions
+                    </div>
                     <div className='blank-card'>
                         <div className='blank-card-input-container'>
                             <input className='create-input' type="text" placeholder='Enter term'/>

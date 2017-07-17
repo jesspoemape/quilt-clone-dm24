@@ -156,6 +156,7 @@ html {
 .blank-card {
 	background-color: white;
 	padding: 1rem;
+	margin-top: 1rem;
 }
 .blank-card-input-container {
 	display: flex;
@@ -185,4 +186,20 @@ h3 {
 }
 .blank-card-svg:hover {
 	fill: #efcb47;
+}
+.flip-terms-button {
+	background-color: white;
+	border: 2px solid #d2d6d8;
+	padding: 15px;
+	font-family: "Catamaran", sans-serif;
+	color: #d2d6d8;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 225px;
+	height: 50px;
+}
+.flip-button-svg {
+	fill: #d2d6d8;
+	height: 15px;
 }
