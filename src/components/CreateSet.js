@@ -8,33 +8,29 @@ class CreateSet extends Component {
             title: '',
             cards: [
                 {
-                    number: 1,
                     term: '',
                     definition: ''
                 },
                 {
-                    number: 2,
                     term: '',
                     definition: ''
                 },
                 {
-                    number: 3,
                     term: '',
                     definition: ''
                 },
                 {
-                    number: 4,
                     term: '',
                     definition: ''
                 },
                 {
-                    number: 5,
                     term: '',
                     definition: ''
                 }
             ]
         }
         this.handleCreateClick = this.handleCreateClick.bind(this);
+        this.handleTitleChange = this.handleTitleChange.bind(this);
     }
 
 handleCreateClick() {
@@ -48,18 +44,28 @@ handleTitleChange(e) {
     console.log("title:", this.state.title);
 }
 
+handleTermChange(i, e) {
+    const card = this.state.cards[i];
+    card.term = e.target.value;
+    console.log(this.state.cards);
+}
+
     render() {
 
 const blankCards = this.state.cards.map( (card, i) => {
     return <div className='blank-card' key={i}>
                         <div className='blank-card-input-container'>
-                            <input className='create-input' type="text" placeholder='Enter term'/>
+                            <input 
+                                onChange={this.handleTermChange.bind(this, i)} 
+                                className='create-input' type="text" 
+                                placeholder='Enter term'
+                                />
                             <h4 className='create-title-label'>TERM</h4>
                             <input className='create-input' type="text" placeholder='Enter definition'/>
                             <h4 className='create-title-label'>DEFINITION</h4>
                         </div>
                         <div className='blank-card-footer'>
-                            <h3>{card.number}</h3>
+                            <h3>{i + 1}</h3>
                             <div className='blank-footer-icons-container'>
                                 <svg className='blank-card-svg' id="more" viewBox="0 0 22 6" width="100%" height="100%">
                                     <path 
