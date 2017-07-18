@@ -60,7 +60,9 @@ html {
 * {
   font-size: 16px;
 }
-
+.link {
+	text-decoration: none;
+}
 /*======================================================*/
 
 @import url('https://fonts.googleapis.com/css?family=Catamaran:200,400,700,900');
@@ -324,3 +326,4 @@ h5:hover {
 	align-items: baseline;
 	padding-top: 1rem;
 }
+
