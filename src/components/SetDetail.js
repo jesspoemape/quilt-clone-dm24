@@ -32,6 +32,23 @@ const SetDetail = () => {
                     <svg id="more" className='set-circle-svg' viewBox="0 0 22 6" width="100%" height="100%"><path d="M3.324.266a2.48 2.48 0 0 0-1.816.761 2.48 2.48 0 0 0-.762 1.817c0 .703.254 1.308.762 1.816a2.48 2.48 0 0 0 1.816.762 2.48 2.48 0 0 0 1.817-.762 2.48 2.48 0 0 0 .761-1.816 2.48 2.48 0 0 0-.761-1.817A2.48 2.48 0 0 0 3.324.266zm15.352 0c-.703 0-1.299.254-1.787.761a2.53 2.53 0 0 0-.733 1.817c0 .703.244 1.308.733 1.816a2.385 2.385 0 0 0 1.787.762 2.48 2.48 0 0 0 1.816-.762 2.48 2.48 0 0 0 .762-1.816 2.48 2.48 0 0 0-.762-1.817 2.48 2.48 0 0 0-1.816-.761zM11 .266a2.48 2.48 0 0 0-1.816.761 2.48 2.48 0 0 0-.762 1.817c0 .703.254 1.308.762 1.816A2.48 2.48 0 0 0 11 5.422a2.48 2.48 0 0 0 1.816-.762 2.48 2.48 0 0 0 .762-1.816 2.48 2.48 0 0 0-.762-1.817A2.48 2.48 0 0 0 11 .266z" fillRule="evenodd"></path></svg>
                 </div>
             </div>
+            <div className='set-study-options-container'>
+                <div className='set-study-option'>
+                    <h4 className='study-option-label'>FLASHCARDS</h4>
+                </div>
+                <div className='set-study-option'>
+                    <h4 className='study-option-label'>LEARN</h4>
+                </div>
+                <div className='set-study-option'>
+                    <h4 className='study-option-label'>SPELL</h4>
+                </div>
+                <div className='set-study-option'>
+                    <h4 className='study-option-label'>TEST</h4>
+                </div>
+                <div className='set-study-option'>
+                    <h4 className='study-option-label'>MATCH</h4>
+                </div>
+            </div>
         </div>
     );
 };
