@@ -250,6 +250,9 @@ h5:hover {
 	margin-top: 2rem;
 	align-self: center;
 }
+.create-set-button:hover {
+	background-color: #efcb47;
+}
 
 .overlay {
 	height: 100vh;
@@ -267,8 +270,7 @@ h5:hover {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin-top: 40px;
-	padding: 1rem;
+	margin-top: 1rem;
 }
 
 .close-btn {
@@ -283,4 +285,23 @@ h5:hover {
 	font-size: 1.3rem;
 	padding: 1rem;
 	margin-top: 1rem;
+}
+
+
+.menu-fixed-item {
+	font-family: "Catamaran", sans-serif;
+	font-size: 1rem;
+	font-weight: 400;
+	color: #455358;
+	display: flex;
+	justify-content: left;
+	padding: .6rem 1.3rem .6rem 1.3rem;
+}
+.menu-fixed-item svg {
+	fill: #3ccfcf;
+	height: 1rem;
+	padding-right: 1rem;
+}
+.menu-fixed-item:hover {
+	background-color: #efcb47;
 }
