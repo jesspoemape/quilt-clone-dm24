@@ -387,6 +387,7 @@ h5:hover {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
 }
 .circle-icon:hover {
 	background-color:  #efcb47;
@@ -439,4 +440,51 @@ h5:hover {
 .card-def {
 	color: #455358;
 }
+.card-icon-header {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+.card-svg {
+	fill: #455358;
+	height: 1.2rem;
+	padding-left: 1rem;
+}
+.card-svg:hover {
+	fill: #efcb47;
+}
+.circle-icon-popup {
+	background-color: #4257B2;
+	position: absolute;
+	top: 3.3rem;
+	padding: .5rem;
+	color: white;
+	font-family: "Catamaran", sans-serif;
+	font-weight: 400;
+	font-size: 1rem;
+}
+.circle-icon-popup.top {
+	background-color: #4257B2;
+}
+.circle-icon-popup:after {
+	content: '';
+	position: absolute;
+	bottom: -15px;
+	left: 15px;
+	border-width: 15px 15px 0;
+	border-style: solid;
+	border-color: #000;
+	display: block;
+	width: 0;
+}
+.circle-icon-popup.top:after {
+	top: -15px;
+	right: 15px;
+	bottom: auto;
+	left: auto;
+	border-width: 0 15px 15px;
+	border-color: #4257B2;
+}
+
+
 
