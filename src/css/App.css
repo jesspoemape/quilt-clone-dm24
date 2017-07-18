@@ -295,13 +295,32 @@ h5:hover {
 	color: #455358;
 	display: flex;
 	justify-content: left;
-	padding: .6rem 1.3rem .6rem 1.3rem;
+	align-items: baseline;
+	padding: 1rem 1.3rem 1rem 1.3rem;
 }
-.menu-fixed-item svg {
+.menu-fixed-item svg, .menu-classes-container svg, .menu-folders-container svg {
 	fill: #3ccfcf;
 	height: 1rem;
 	padding-right: 1rem;
 }
 .menu-fixed-item:hover {
 	background-color: #efcb47;
+}
+.menu-fixed-container, .menu-classes-container, .menu-folders-container{
+	border-bottom: 1px solid #e8ebed;
+	padding: 1rem 0 2rem 0;
+}
+.menu-classes-container, .menu-folders-container {
+	padding: 1rem 1rem 2rem 1rem;
+}
+.menu-create-p {
+	color: #3ccfcf;
+	font-family: "Catamaran", sans-serif;
+	font-weight: 400;
+	font-size: 1rem;
+}
+.menu-create-p {
+	display: flex;
+	align-items: baseline;
+	padding-top: 1rem;
 }
