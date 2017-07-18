@@ -99,6 +99,13 @@ html {
   font-size: 1.8rem;
   color: white;
 }
+.dark-header {
+  font-family: "Catamaran", sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #455358;
+  padding-bottom: 1rem;
+}
 .create-set-header {
 	margin: 1rem;
 	background-color: white;
@@ -150,6 +157,13 @@ html {
 	letter-spacing: .1rem;
 	font-size: .8rem;
 }
+.dark-label {
+	font-family: "Catamaran", sans-serif;
+	color: #455358;
+	margin-top: .7rem;
+	letter-spacing: .1rem;
+	font-size: .8rem;
+}
 .options-container {
 	background-color: #3ccfcf;
 	border-radius: 50%;
@@ -160,7 +174,7 @@ html {
 	align-items: center; 
 }
 
-.create-terms-container {
+.create-terms-container, .activity-sets-container {
 	background-color: #f0f0f0;
 	width: 100%;
 	padding: 1rem;
@@ -325,5 +339,8 @@ h5:hover {
 	display: flex;
 	align-items: baseline;
 	padding-top: 1rem;
+}
+.activity-main-container {
+	padding: 2rem 1rem 1rem 1rem;
 }
 
