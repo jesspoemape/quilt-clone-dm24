@@ -404,18 +404,25 @@ h5:hover {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-around;
+	width: 7.35rem;
 	margin: .3rem;
-	padding: 1.5rem .8rem 1.5rem .75rem;
+	padding: 1.3rem .8rem 1.3rem .75rem;
 	border-bottom: 5px solid #3ccfcf;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	width: 7.3593rem;
-}
-.study-option-label {
+	box-shadow: 0 4px 8px 0 rgba(69,83,88, 0.2), 0 6px 20px 0 rgba(69,83,88, 0.19);
 	font-family: "Catamaran", sans-serif;
 	font-weight: 700;
-	font-size: .9rem;
+	font-size: .7rem;
 	color: #3ccfcf;
 	letter-spacing: .1rem;
+}
+.set-study-option:hover {
+	color: #efcb47;
+	border-bottom: 5px solid #efcb47;
+}
+.study-option-svg {
+	fill: #4257B2;
+	height: 2.3rem;
+	margin-bottom: 1rem;
 }
 
