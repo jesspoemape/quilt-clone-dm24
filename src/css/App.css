@@ -174,7 +174,7 @@ html {
 	align-items: center; 
 }
 
-.create-terms-container, .activity-sets-container {
+.create-terms-container, .activity-sets-container, .set-card-container {
 	background-color: #f0f0f0;
 	width: 100%;
 	padding: 1rem;
@@ -197,7 +197,7 @@ html {
 	justify-content: space-between;
 	margin-top: 2rem;
 }
-h3 {
+.blank-card-number {
 	font-family: "Catamaran", sans-serif;
 	font-weight: 700;
 	color: #959da0;
@@ -424,5 +424,19 @@ h5:hover {
 	fill: #4257B2;
 	height: 2.3rem;
 	margin-bottom: 1rem;
+}
+.set-card {
+	background-color: white;
+	padding: 1rem;
+}
+.card-term, .card-def {
+	font-family: "Catamaran", sans-serif;
+	font-size: 1.1rem;
+	font-weight: 400;
+	letter-spacing: .1rem;
+	padding: 1rem 0 1rem 0;
+}
+.card-def {
+	color: #455358;
 }
 
