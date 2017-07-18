@@ -59,10 +59,13 @@ handleCreateClick() {
     const {title, cards} = this.state;
 
     // map through all the cards and set the id to increment by 1
-    // try a for each looper
+    // try a for in looper
+
     const tempCards = cards.map((card, i) => {
-        return card.id = uniqueCardId + i;
+        return {...card, id: uniqueCardId + i};
     });
+
+
 
     const newSet = {
         id: uniqSetId,
@@ -71,7 +74,7 @@ handleCreateClick() {
         creatorid: 123456,
         numofterms: cards.length,
         description: '',
-        cards: []
+        cards: tempCards
     } 
 
     this.props.addSet(newSet); 
