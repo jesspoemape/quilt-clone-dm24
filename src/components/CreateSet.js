@@ -63,8 +63,7 @@ handleCreateClick() {
         return {...card, id: uniqueCardId + i};
     });
 
-
-
+    // create a new set of cards to be sent to reducer
     const newSet = {
         id: uniqSetId,
         title,
@@ -74,8 +73,47 @@ handleCreateClick() {
         description: '',
         cards: tempCards
     } 
-
+//send new set to reducer
     this.props.addSet(newSet); 
+
+// reset initial state and clear form 
+    this.setState({
+            title: '',
+            setid: null,
+            description: '',
+            cards: [
+                {
+                    id: null,
+                    term: '',
+                    definition: '',
+                    imageurl: ''
+                },
+                {
+                    id: null,
+                    term: '',
+                    definition: '',
+                    imageurl: ''
+                },
+                {
+                    id: null,
+                    term: '',
+                    definition: '',
+                    imageurl: ''
+                },
+                {
+                    id: null,
+                    term: '',
+                    definition: '',
+                    imageurl: ''
+                },
+                {
+                    id: null,
+                    term: '',
+                    definition: '',
+                    imageurl: ''
+                }
+            ]
+        })
 }
 
 // handle title change
