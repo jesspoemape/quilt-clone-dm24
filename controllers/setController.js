@@ -40,6 +40,7 @@ module.exports = {
         const terms = cards.map( card => {
             return {
                 id: card.id,
+                setid: id,
                 term: card.term,
                 definition: (card.definition) ? card.definition : '',
                 imageurl: (card.imageurl) ? card.imageurl : null

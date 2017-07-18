@@ -73,6 +73,7 @@ handleCreateClick() {
         description: '',
         cards: tempCards
     } 
+    console.log(newSet);
 //send new set to reducer
     this.props.addSet(newSet); 
 

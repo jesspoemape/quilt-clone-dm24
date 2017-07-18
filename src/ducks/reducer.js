@@ -25,7 +25,11 @@ const ADD_SET = 'ADD_SET';
 // action creators
 export function addSet(newSet) {
     const url = 'http://localhost:3001/api/add-set';
-    const response = axios.post(url, newSet).then(response => response.data).catch(console.error, 'Error');
+    const response = axios.post(url, newSet).then(response => {
+        
+        console.log("success", response.data)
+        return response.data})
+        .catch(console.error, 'Error');
     return {
         type: ADD_SET,
         payload: response
