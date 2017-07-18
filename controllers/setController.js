@@ -29,5 +29,10 @@ module.exports = {
     },
     getSets: (req, res) => {
         
+    },
+    addSet: (req, res) => {
+        const dbInstance = req.app.get('db');
+
+        
     }
 }

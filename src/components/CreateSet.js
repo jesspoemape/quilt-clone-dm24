@@ -59,8 +59,6 @@ handleCreateClick() {
     const {title, cards} = this.state;
 
     // map through all the cards and set the id to increment by 1
-    // try a for in looper
-
     const tempCards = cards.map((card, i) => {
         return {...card, id: uniqueCardId + i};
     });

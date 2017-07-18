@@ -15,4 +15,6 @@ massive(connectionString).then(dbInstance => app.set('db', dbInstance)).catch(co
 app.get('/api/sets/:id', sc.getSets);
 app.post('/api/sets', sc.addSets);
 
+app.post('/api/add-set', sc.addSet);
+
 app.listen(3000, () => console.log("Listening on port 3000"));
