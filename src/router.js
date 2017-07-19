@@ -5,6 +5,7 @@ import CreateSet from './components/CreateSet';
 import LandingPage from './components/LandingPage';
 import LatestActivity from './components/LatestActivity';
 import SetDetail from './components/SetDetail';
+import Settings from './components/Settings';
 
 export default (
     <Switch>
@@ -12,5 +13,6 @@ export default (
         <Route path='/create-set' component={CreateSet}/>
         <Route path='/activity' component={LatestActivity}/>
         <Route path='/set-detail' component={SetDetail}/>
+        <Route path='/settings' component={Settings}/>
     </Switch>
 );
