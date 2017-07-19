@@ -56,6 +56,9 @@ closeMenu() {
                                     <p className='menu-create-p'>Create a folder</p>
                                 </div>
                             </div>
+                            <div className='menu-footer-container'>
+                                <h6 className='menu-logout'>Log out</h6>
+                            </div>
                         </div>
                     </div>
                     {/********************* HEADER ************************/}

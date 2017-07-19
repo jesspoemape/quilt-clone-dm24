@@ -30,8 +30,10 @@ passport.use(new Auth0Strategy({
     callbackURL: config.auth0.callbackUrl
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
+        
         console.log(profile);
         // make database calls here to check for user
+        // profile.identities[0].user_id
         done(null, {id: 1, username: 'Jae', email: 'j@j.com'})
     }
 ));

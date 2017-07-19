@@ -347,6 +347,19 @@ h5:hover {
 	align-items: baseline;
 	padding-top: 1rem;
 }
+.menu-footer-container {
+	padding: 1rem;
+}
+.menu-logout {
+	font-family: "Catamaran", sans-serif;
+	font-weight: 400;
+	font-size: .8rem;
+	color: #FF8B79;
+}
+.menu-logout:hover {
+	color: #efcb47;
+}
+
 .activity-main-container {
 	padding: 2rem 1rem 1rem 1rem;
 }
