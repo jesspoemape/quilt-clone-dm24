@@ -61,5 +61,23 @@ module.exports = {
     .then( () => dbInstance.cards.insert(terms) )
     .then( () => res.status(200).send('set and cards added') ).catch(console.error, 'Error');
 
+},
+    getSet: (req, res) => {
+        const dbInstance = req.app.get('db');
+
+        // find a single set with a matching criteria object of req.params.id
+        // then find the cards with a matching setid 
+        // then return resopnse arrays
+
+    //    const setRes = dbInstance.sets.find({id: req.params.id}).then(setRes => setRes);
+       const setRes = dbInstance.sets.find({id: req.params.id}).then(response => response).catch(console.error, 'Error');
+       console.log(setRes);
+
+        dbInstance.cards.find({ setid: req.params.id }).then((response) => {
+            response = Object.assign({}, {
+                setInfo: setRes,
+                cards: response
+            });
+            res.status(200).send(response).catch(console.error, 'Error')});
     }
 }

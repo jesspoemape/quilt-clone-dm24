@@ -173,6 +173,12 @@ html {
 	justify-content: center;
 	align-items: center; 
 }
+.options-container:hover {
+	background-color: #efcb47;
+}
+.options-container:hover #create-options-svg {
+	fill: #455358;
+}
 
 .create-terms-container, .activity-sets-container, .set-card-container {
 	background-color: #f0f0f0;
@@ -398,6 +404,32 @@ h5:hover {
 .circle-icon:hover svg {
 	fill: #455358;
 }
+.circle-icon-popup {
+	visibility: hidden;
+	background-color: #4257B2;
+	position: absolute;
+	top: 3.2rem;
+	padding: .5rem;
+	color: white;
+	font-family: "Catamaran", sans-serif;
+	font-weight: 400;
+	font-size: .9rem;
+	margin-right: -7rem;
+}
+.circle-icon-popup:after {
+	content: '';
+	position: absolute;
+}
+.circle-icon-popup.top:after {
+	top: -20px;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid #4257B2;
+}
+.circle-icon:hover .circle-icon-popup {
+	visibility: visible;
+}
 .set-circle-svg {
 	fill: white;
 	width: 1rem;
@@ -460,37 +492,5 @@ h5:hover {
 	fill: #efcb47;
 }
 
-.circle-icon-popup {
-	visibility: hidden;
-	background-color: #4257B2;
-	position: absolute;
-	top: 3.2rem;
-	padding: .5rem;
-	color: white;
-	font-family: "Catamaran", sans-serif;
-	font-weight: 400;
-	font-size: .9rem;
-	margin-right: -7rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-.circle-icon-popup.top {
-	background-color: #4257B2;
-}
-.circle-icon-popup:after {
-	content: '';
-	position: absolute;
-}
-.circle-icon-popup.top:after {
-	top: -20px;
-	border-right: 10px solid transparent;
-	border-left: 10px solid transparent;
-	border-top: 10px solid transparent;
-	border-bottom: 10px solid #4257B2;
-}
-.circle-icon:hover .circle-icon-popup {
-	visibility: visible;
-}
 
 

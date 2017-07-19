@@ -14,9 +14,10 @@ const connectionString = config.connectionString;
 massive(connectionString).then(dbInstance => app.set('db', dbInstance)).catch(console.error);
 
 // =========== ENDPOINTS ===========
-app.get('/api/sets/:id', sc.getSets);
-app.post('/api/sets', sc.addSets);
+// app.get('/api/sets/:id', sc.getSets);
+// app.post('/api/sets', sc.addSets);
 
 app.post('/api/add-set', sc.addSet);
+app.get('/api/get-set/:id', sc.getSet);
 
-app.listen(3001, () => console.log("Listening on port 3000"));
+app.listen(3001, () => console.log("Listening on port 3001"));
