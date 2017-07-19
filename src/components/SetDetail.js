@@ -37,7 +37,7 @@ class SetDetail extends Component {
                 </div>
                 <div className='circle-icon'>
                     <svg id='plus' className='set-circle-svg' xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" ><rect x="5" y="42.5" width="90" height="15"/><rect x="42.5" y="5" width="15" height="90"/></svg>
-                    <div className='circle-icon-popup top'>Add set to class or folder</div>
+                    <div className='circle-icon-popup top long'>Add set to class or folder</div>
                 </div>
                 <div className='circle-icon'>
                     <svg id='info' className='set-circle-svg' xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 32 32"><g display="none"><g display="inline"><path stroke="#666666" strokeMiterlimit="10" d="M13.813,4.877V0.5h4.554v4.377H13.813z M13.813,31.5V9.043h4.554    V31.5H13.813z"/></g></g><g display="none"><g display="inline"><g><path d="M18.866,32h-5.554V8.543h5.554V32z M14.312,31h3.554V9.543h-3.554V31z M18.866,5.377h-5.554V0h5.554     V5.377z M14.312,4.377h3.554V1h-3.554V4.377z"/></g></g></g><g display="none"><g display="inline"><g><path d="M18.866,32h-5.554V8.543h5.554V32z M14.312,31h3.554V9.543h-3.554V31z M18.866,5.377h-5.554V0h5.554     V5.377z M14.312,4.377h3.554V1h-3.554V4.377z"/></g></g></g><g><rect x="13.634" width="4.733" height="4.518"/><rect x="13.634" y="8.818" width="4.733" height="23.182"/></g></svg>

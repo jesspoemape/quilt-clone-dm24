@@ -428,10 +428,19 @@ h5:hover {
 	font-weight: 400;
 	font-size: .9rem;
 	margin-right: -7rem;
+	/*margin-left: 3.5rem;*/
+}
+.long:after {
+	position:absolute;
+	right: 4.5rem;
 }
 .circle-icon-popup:after {
 	content: '';
 	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 .circle-icon-popup.top:after {
 	top: -20px;
@@ -506,7 +515,7 @@ h5:hover {
 }
 .settings-main-container {
 	background-color: #f0f0f0;
-	padding: 4rem 1rem;
+	padding: 4rem 1rem 1rem 1rem;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
