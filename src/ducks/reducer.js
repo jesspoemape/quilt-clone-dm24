@@ -37,7 +37,7 @@ const GET_SET = 'GET_SET';
 
 // action creators
 export function addSet(newSet) {
-    const url = 'http://localhost:3001/api/add-set';
+    const url = '/api/add-set';
     const response = axios.post(url, newSet).then(response => response.data).catch(console.error, 'Error');
 
     return {
@@ -47,10 +47,10 @@ export function addSet(newSet) {
 }
 
 export function getSet(setId) {
-    const setUrl = `http://localhost:3001/api/get-set-info/${setId}`;
+    const setUrl = `/api/get-set-info/${setId}`;
     const setRes = axios.get(setUrl).then(response => response.data).catch(console.error, 'Error');
 
-    // const cardsUrl = `http://localhost:3001/api/get-cards/${setId}`;
+    // const cardsUrl = `/api/get-cards/${setId}`;
     // const cardsRes = axios.get(cardsUrl).then(response => response.data).catch(console.error, 'Error');
 
     return {
