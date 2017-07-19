@@ -506,7 +506,7 @@ h5:hover {
 }
 .settings-main-container {
 	background-color: #f0f0f0;
-	padding: 1rem;
+	padding: 4rem 1rem;
 	display: flex;
 	align-items: center;
 	flex-direction: column;

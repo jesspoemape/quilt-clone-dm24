@@ -26,6 +26,15 @@ export default function reducer(state = initialState, action) {
         case GET_SET + '_REJECTED':
             console.log('get set rejected');
             break;
+        case LOGOUT + '_FULFILLED':
+            console.log('logged out');
+            break;
+        case LOGOUT + '_PENDING':
+            console.log('logout pending');
+            break;
+        case LOGOUT +'_REJECTED':
+            console.log('logout rejected');
+            break;
         default: return state;
     }
 }
@@ -33,6 +42,7 @@ export default function reducer(state = initialState, action) {
 // ACTION CREATOR CONSTANTS
 const ADD_SET = 'ADD_SET';
 const GET_SET = 'GET_SET';
+const LOGOUT = 'LOGOUT';
 
 
 // action creators
@@ -56,5 +66,15 @@ export function getSet(setId) {
     return {
         type: GET_SET,
         payload: {setRes}
+    }
+}
+
+export function logout() {
+    const url = '/auth/logout';
+    const response = axios.get(url).then(response => response).catch(console.error, 'Error');
+
+    return {
+        type: LOGOUT,
+        payload: response
     }
 }

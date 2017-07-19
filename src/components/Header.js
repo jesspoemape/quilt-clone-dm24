@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './../css/reset.css';
 import './../css/App.css';
 import {Link} from 'react-router-dom';
+import {logout} from './../ducks/reducer';
+import {connect} from 'react-redux';
 
 class Header extends Component {
     constructor() {
@@ -9,6 +11,7 @@ class Header extends Component {
 
         this.showMenu = this.showMenu.bind(this);
         this.closeMenu = this.closeMenu.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
 showMenu() {
@@ -16,6 +19,9 @@ showMenu() {
 }
 closeMenu() {
     document.getElementById('menuOverlay').style.width = '0%';
+}
+handleLogout() {
+    this.props.logout();
 }
 
     render() {
@@ -57,7 +63,7 @@ closeMenu() {
                                 </div>
                             </div>
                             <div className='menu-footer-container'>
-                                <h6 className='menu-logout'>Log out</h6>
+                                <h6 onClick={this.handleLogout} className='menu-logout'>Log out</h6>
                             </div>
                         </div>
                     </div>
@@ -79,4 +85,4 @@ closeMenu() {
     }
 }
 
-export default Header;
+export default connect(null, {logout})(Header);

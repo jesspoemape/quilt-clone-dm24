@@ -30,8 +30,6 @@ passport.use(new Auth0Strategy({
     callbackURL: config.auth0.callbackUrl
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
-        
-        console.log(profile);
         // make database calls here to check for user
         // profile.identities[0].user_id
         done(null, {id: 1, username: 'Jae', email: 'j@j.com'})
@@ -57,8 +55,9 @@ app.get('/auth/me', (req, res) => { // check if someone is logged in
     res.status(200).send(req.user);
 })
 app.get('/auth/logout', (req, res) => { // log the user out and destroy the session
+    console.log('in server');
     req.logout();
-    res.redirect('/');
+    res.redirect('http://localhost:3000/');
 });
 
 // for UI
