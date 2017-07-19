@@ -413,7 +413,7 @@ h5:hover {
 	align-items: center;
 	justify-content: space-around;
 	width: 7.35rem;
-	margin: .3rem;
+	margin: 1rem .3rem;
 	padding: 1.3rem .8rem 1.3rem .75rem;
 	border-bottom: 5px solid #3ccfcf;
 	box-shadow: 0 4px 8px 0 rgba(69,83,88, 0.2), 0 6px 20px 0 rgba(69,83,88, 0.19);
@@ -464,12 +464,12 @@ h5:hover {
 	visibility: hidden;
 	background-color: #4257B2;
 	position: absolute;
-	top: 3.3rem;
+	top: 3.2rem;
 	padding: .5rem;
 	color: white;
 	font-family: "Catamaran", sans-serif;
 	font-weight: 400;
-	font-size: 1rem;
+	font-size: .9rem;
 	margin-right: -7rem;
 	display: flex;
 	flex-direction: column;
