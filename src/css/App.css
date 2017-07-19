@@ -322,6 +322,9 @@ h5:hover {
 .menu-fixed-item:hover {
 	background-color: #efcb47;
 }
+.menu-fixed-item:hover svg {
+	fill: #455358;
+}
 .menu-fixed-container, .menu-classes-container, .menu-folders-container{
 	border-bottom: 1px solid #e8ebed;
 	padding: 1rem 0 2rem 0;
@@ -392,6 +395,9 @@ h5:hover {
 .circle-icon:hover {
 	background-color:  #efcb47;
 }
+.circle-icon:hover svg {
+	fill: #455358;
+}
 .set-circle-svg {
 	fill: white;
 	width: 1rem;
@@ -453,7 +459,9 @@ h5:hover {
 .card-svg:hover {
 	fill: #efcb47;
 }
+
 .circle-icon-popup {
+	visibility: hidden;
 	background-color: #4257B2;
 	position: absolute;
 	top: 3.3rem;
@@ -462,6 +470,10 @@ h5:hover {
 	font-family: "Catamaran", sans-serif;
 	font-weight: 400;
 	font-size: 1rem;
+	margin-right: -7rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 .circle-icon-popup.top {
 	background-color: #4257B2;
@@ -469,22 +481,16 @@ h5:hover {
 .circle-icon-popup:after {
 	content: '';
 	position: absolute;
-	bottom: -15px;
-	left: 15px;
-	border-width: 15px 15px 0;
-	border-style: solid;
-	border-color: #000;
-	display: block;
-	width: 0;
 }
 .circle-icon-popup.top:after {
-	top: -15px;
-	right: 15px;
-	bottom: auto;
-	left: auto;
-	border-width: 0 15px 15px;
-	border-color: #4257B2;
+	top: -20px;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid #4257B2;
 }
-
+.circle-icon:hover .circle-icon-popup {
+	visibility: visible;
+}
 
 
