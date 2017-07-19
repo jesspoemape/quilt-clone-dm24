@@ -18,6 +18,7 @@ massive(connectionString).then(dbInstance => app.set('db', dbInstance)).catch(co
 // app.post('/api/sets', sc.addSets);
 
 app.post('/api/add-set', sc.addSet);
-app.get('/api/get-set/:id', sc.getSet);
+app.get('/api/get-set-info/:id', sc.getSetInfo);
+app.get('/api/get-cards/:id', sc.getCards);
 
 app.listen(3001, () => console.log("Listening on port 3001"));

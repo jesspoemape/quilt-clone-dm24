@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Header from './Header';
 
-const SetDetail = () => {
-    return (
-        <div>
+class SetDetail extends Component {
+    render() {
+        return (
+            <div>
             <Header/>
             {/*********************** SET INFO ************************/}
             <div className='set-user-header'>
@@ -74,7 +75,8 @@ const SetDetail = () => {
                 </div>
             </div>
         </div>
-    );
-};
+        );
+    }
+}
 
 export default SetDetail;
