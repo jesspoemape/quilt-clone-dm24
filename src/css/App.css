@@ -529,4 +529,35 @@ h5:hover {
 	fill: #455358;
 	height: 1.5rem;
 }
+.landing-sign-button {
+	background-color: #3ccfcf;
+	color: white;
+	font-family: "Catamaran", sans-serif;
+	font-weight: 400;
+	font-size: .8rem;
+	letter-spacing: .1rem;
+	border: none;
+	padding: .7rem 1.2rem;
+	margin-left: 1.5rem;
+}
+.landing-sign-button:hover {
+	background-color: #efcb47;
+	color: #455358;
+}
+.landing-header-container {
+	display: flex;
+	align-items:center;
+}
+.login-link {
+	text-decoration: none;
+	font-family: "Catamaran", sans-serif;
+	font-weight: 400;
+	font-size: .9rem;
+	color: white;
+	margin-left: 1.5rem;
+	letter-spacing: .05rem;
+}
+.login-link:hover {
+	color: #9da9db;
+}
 
