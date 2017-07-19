@@ -16,9 +16,9 @@ export default function reducer(state = initialState, action) {
             console.log('set post rejected');
             break;
         case GET_SET + '_FULFILLED':
-            return Object.assign({}, state, {
-                setInfo: action.payload.setRes[0],
-                cards: action.payload.cardsRes
+            console.log('in reducer')
+            return Object.assign({}, {
+                setInfo: action.payload.setRes[0]
             });
         case GET_SET + '_PENDING':
             console.log('loading get set');
@@ -50,11 +50,11 @@ export function getSet(setId) {
     const setUrl = `http://localhost:3001/api/get-set-info/${setId}`;
     const setRes = axios.get(setUrl).then(response => response.data).catch(console.error, 'Error');
 
-    const cardsUrl = `http://localhost:3001/api/get-cards/${setId}`;
-    const cardsRes = axios.get(cardsUrl).then(response => response.data).catch(console.error, 'Error');
+    // const cardsUrl = `http://localhost:3001/api/get-cards/${setId}`;
+    // const cardsRes = axios.get(cardsUrl).then(response => response.data).catch(console.error, 'Error');
 
     return {
         type: GET_SET,
-        payload: {setRes, cardsRes}
+        payload: {setRes}
     }
 }
