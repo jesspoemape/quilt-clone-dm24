@@ -16,7 +16,6 @@ class SetDetail extends Component {
 
     render() {
         const {title, creatorname, numofterms, description} = this.props.setInfo;
-        console.log(this.props.setInfo[0])
         const cards = this.props.cards.map((card, i) => {
             return <div className='set-card' key={i}> 
                     <div className='card-icon-header'>

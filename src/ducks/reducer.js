@@ -1,34 +1,24 @@
 import axios from 'axios';
 
 const initialState = {
-    setInfo: [],
+    setInfo: {},
     cards: [],
-    studiedSets: []
+    studiedSets: [],
+    studiedSetsInfo: []
 }
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case ADD_SET + '_FULFILLED':
             console.log("set post fulfilled", action.payload);
             break;
-        case ADD_SET + '_PENDING':
-            console.log('loading set post');
-            break;
-        case ADD_SET + '_REJECTED':
-            console.log('set post rejected');
-            break;
         case GET_SET_INFO:
-            return Object.assign({}, state, {
-                setInfo: [...state.setInfo, action.payload]
-            });
+            return Object.assign({}, state, {setInfo: action.payload});
         case GET_CARDS:
-            return Object.assign({}, state, {
-                cards: action.payload
-            });
+            return Object.assign({}, state, {cards: action.payload});
         case GET_USER_SS:
-            return Object.assign({}, state, {
-                studiedSets: action.payload.studiedsets
-            });
-        
+            return Object.assign({}, state, {studiedSets: action.payload.studiedsets});
+        case GET_SS_INFO:
+            return Object.assign({}, state, {studiedSetsInfo: [...state.studiedSetsInfo, action.payload]});
         case LOGOUT + '_FULFILLED':
             console.log('logged out');
             break;
@@ -48,6 +38,7 @@ const GET_SET_INFO = 'GET_SET_INFO';
 const GET_CARDS = 'GET_CARDS';
 const LOGOUT = 'LOGOUT';
 const GET_USER_SS = 'GET_USER_SS';
+const GET_SS_INFO = 'GET_SS_INFO';
 
 
 // action creators
@@ -77,6 +68,13 @@ export function getUserSS(userInfo) {
     return {
         type: GET_USER_SS,
         payload: userInfo
+    }
+}
+export function getSSInfo(studiedSets) {
+    console.log('fired');
+    return {
+        type: GET_SS_INFO,
+        payload: studiedSets[0]
     }
 }
 

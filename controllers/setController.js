@@ -66,7 +66,7 @@ module.exports = {
         const dbInstance = req.app.get('db');
 
         // find a single set with a matching criteria object of req.params.id
-        dbInstance.sets.find({id: req.params.id}, {columns: ['title', 'creatorname', 'numofterms']}).then(response => res.status(200).send(response)).catch(console.error, 'Error');
+        dbInstance.sets.find({id: req.params.id}, {columns: ['title', 'creatorname', 'numofterms', 'description']}).then(response => res.status(200).send(response)).catch(console.error, 'Error');
     },
     getCards: (req, res) => {
         const dbInstance = req.app.get('db');
