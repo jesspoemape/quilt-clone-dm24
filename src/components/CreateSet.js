@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import {connect} from 'react-redux';
-import {addSet} from './../ducks/reducer';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 class CreateSet extends Component {
     constructor() {
@@ -75,10 +74,11 @@ handleCreateClick() {
         cards: tempCards
     } 
     console.log(newSet);
-//send new set to reducer
-    this.props.addSet(newSet); 
 
-// reset initial state and clear form 
+    //send new set to reducer
+    axios.post('http://localhost:3001/api/add-set', newSet)
+
+    // reset initial state and clear form 
     this.setState({
             title: '',
             setid: null,
@@ -265,4 +265,4 @@ const blankCards = this.state.cards.map( (card, i) => {
     }
 }
 
-export default connect(null, {addSet})(CreateSet);
+export default CreateSet;
