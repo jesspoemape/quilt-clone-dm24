@@ -25,6 +25,8 @@ componentWillMount() {
     //          studiedSetsInfo: ssInfo
     //      })
 
+    
+
 }
 
     handleSearch(e) {
@@ -45,9 +47,6 @@ componentWillMount() {
                         <h3 className='activity-recent-set-title'>{ set }</h3>
                     </div>
         })
-         console.log(this.props);
-
-
 
         return (
             <div>

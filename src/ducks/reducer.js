@@ -18,7 +18,7 @@ export default function reducer(state = initialState, action) {
             break;
         case GET_SET_INFO:
             return Object.assign({}, state, {
-                setInfo: action.payload
+                setInfo: [...state.setInfo, action.payload]
             });
         case GET_CARDS:
             return Object.assign({}, state, {
