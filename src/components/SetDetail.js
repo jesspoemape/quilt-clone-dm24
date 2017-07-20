@@ -24,6 +24,14 @@ class SetDetail extends Component {
                     </div>
                     <h3 className='card-term'>{ card.term }</h3>
                     <p className='card-def'>{ card.definition }</p>
+                    {
+                        (card.imageurl) ? 
+                             <div className='card-image-wrapper'>
+                                <img className='card-image' src={card.imageurl} alt=""/>
+                            </div>   
+                        :
+                        <div></div>
+                    }
                 </div>
         });
 

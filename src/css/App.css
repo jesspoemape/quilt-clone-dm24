@@ -543,6 +543,9 @@ h5:hover {
 .card-svg:hover {
 	fill: #efcb47;
 }
+.card-image {
+	max-height: 250px;
+}
 .settings-main-container {
 	background-color: #f0f0f0;
 	padding: 4rem 1rem 1rem 1rem;
