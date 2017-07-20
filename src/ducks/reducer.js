@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 const initialState = {
-    setInfo: {},
-    cards: []
+    setInfo: [],
+    cards: [],
+    studiedSets: []
 }
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -23,6 +24,11 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, {
                 cards: action.payload
             });
+        case GET_USER_SS:
+            return Object.assign({}, state, {
+                studiedSets: action.payload.studiedsets
+            });
+        
         case LOGOUT + '_FULFILLED':
             console.log('logged out');
             break;
@@ -41,6 +47,7 @@ const ADD_SET = 'ADD_SET';
 const GET_SET_INFO = 'GET_SET_INFO';
 const GET_CARDS = 'GET_CARDS';
 const LOGOUT = 'LOGOUT';
+const GET_USER_SS = 'GET_USER_SS';
 
 
 // action creators
@@ -64,6 +71,12 @@ export function getCards(cardRes) {
     return {
         type: GET_CARDS,
         payload: cardRes
+    }
+}
+export function getUserSS(userInfo) {
+    return {
+        type: GET_USER_SS,
+        payload: userInfo
     }
 }
 

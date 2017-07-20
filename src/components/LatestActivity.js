@@ -1,19 +1,54 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Header from './Header';
+import {getUserSS, getSetInfo} from './../ducks/reducer';
+import axios from 'axios';
 
 class LatestActivity extends Component {
     constructor() {
         super();
+        this.state={
+            studiedSetsInfo: []
+        }
 
         this.handleSearch = this.handleSearch.bind(this);
     }
+
+componentWillMount() {
+    axios.get('http://localhost:3001/api/user-info/123456789').then((response) => this.props.getUserSS(response.data[0])).catch(console.error, 'Error');
+    // const ssInfo = this.props.studiedSets.map((setId, i) => {
+    //         const setUrl = `http://localhost:3001/api/get-set-info/${setId}`;
+    //         return axios.get(setUrl).then(response => this.props.getSetInfo(response.data)).catch(console.error, 'Error');
+    //      });
+
+    //      this.setState({
+    //          studiedSetsInfo: ssInfo
+    //      })
+
+}
 
     handleSearch(e) {
         console.log(e);
     }
 
     render() {
+        // this will map through the users studied sets and make an api call for each of the set ids
+        // the set information will be sent to the store, which will collect an array of set information objects
+        // the array of set information objects will be mapped to render a set card
+         
+        const sets = this.props.studiedSets.map((set, i) => {
+            return <div className='activity-recent-set' key={i}>
+                        <div className='activity-user-header'>
+                            <h4 className='dark-label'>{ set } terms</h4>
+                            <p className='activity-set-user-p'>{ set}</p>
+                        </div>
+                        <h3 className='activity-recent-set-title'>{ set }</h3>
+                    </div>
+        })
+         console.log(this.props);
+
+
+
         return (
             <div>
                 <Header/>
@@ -29,13 +64,7 @@ class LatestActivity extends Component {
                 </div>
                 <div className='activity-sets-container'>
                     <h4 className='dark-label'>LAST WEEK</h4>
-                    <div className='activity-recent-set'>
-                        <div className='activity-user-header'>
-                            <h4 className='dark-label'>{ this.props.setInfo.numofterms } terms</h4>
-                            <p className='activity-set-user-p'>{ this.props.setInfo.creatorname }</p>
-                        </div>
-                        <h3 className='activity-recent-set-title'>{ this.props.setInfo.title }</h3>
-                    </div>
+                    {sets}
                 </div>
             </div>
         );
@@ -44,8 +73,9 @@ class LatestActivity extends Component {
 
 function mapStateToProps(state) {
     return {
-        setInfo: state.setInfo
+        setInfo: state.setInfo,
+        studiedSets: state.studiedSets
     }
 }
 
-export default connect(mapStateToProps)(LatestActivity);
+export default connect(mapStateToProps, {getUserSS, getSetInfo})(LatestActivity);
