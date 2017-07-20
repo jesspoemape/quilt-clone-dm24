@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {difference} from 'lodash/difference';
 
 const initialState = {
     setInfo: {},
@@ -6,6 +7,9 @@ const initialState = {
     studiedSets: [],
     studiedSetsInfo: []
 }
+
+
+
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case ADD_SET + '_FULFILLED':
@@ -18,7 +22,7 @@ export default function reducer(state = initialState, action) {
         case GET_USER_SS:
             return Object.assign({}, state, {studiedSets: action.payload.studiedsets});
         case GET_SS_INFO:
-            return Object.assign({}, state, {studiedSetsInfo: [...state.studiedSetsInfo, action.payload]});
+            return Object.assign({}, {studiedSetsInfo: [...state.studiedSetsInfo, action.payload]}, {cards: state.cards}, {setInfo: state.setInfo});  
         case LOGOUT + '_FULFILLED':
             console.log('logged out');
             break;

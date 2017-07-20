@@ -23,7 +23,6 @@ componentDidMount() {
             return axios.get(setUrl).then(response => this.props.getSSInfo(response.data)).catch(console.error, 'Error');
          } );
         }).catch(console.error, 'Error');
-
 }
 
     handleSearch(e) {
@@ -32,8 +31,15 @@ componentDidMount() {
 
     render() {
         
+    function removeDupes(arrayOfObjects) {
+        let newObj = new Set();
+        arrayOfObjects.forEach(e => newObj.add(JSON.stringify(e)))
+        let final = Array.from(newObj).map(e => JSON.parse(e))
+        return final
+    }
+    const test = removeDupes(this.props.studiedSetsInfo)
         // the array of set information objects will be mapped to render a set card
-        const sets = this.props.studiedSetsInfo.map((set, i) => {
+        const sets = test.map((set, i) => {
             return <Link className='link' to={`/set-detail/${set.id}`}  key={i}><div className='activity-recent-set'>
                         <div className='activity-user-header'>
                             <h4 className='dark-label'>{ set.numofterms } terms</h4>
