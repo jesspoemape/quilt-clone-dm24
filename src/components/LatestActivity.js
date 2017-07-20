@@ -32,7 +32,7 @@ class LatestActivity extends Component {
                     <div className='activity-recent-set'>
                         <div className='activity-user-header'>
                             <h4 className='dark-label'>{ this.props.setInfo.numofterms } terms</h4>
-                            <p className='set-user-p'>{ this.props.setInfo.creatorname }</p>
+                            <p className='activity-set-user-p'>{ this.props.setInfo.creatorname }</p>
                         </div>
                         <h3 className='activity-recent-set-title'>{ this.props.setInfo.title }</h3>
                     </div>

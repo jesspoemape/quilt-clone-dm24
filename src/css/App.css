@@ -365,7 +365,7 @@ h5:hover {
 }
 .activity-recent-set {
 	background-color: white;
-	padding: 0 1rem 1rem 1rem;
+	padding: 0 1rem .5rem 1rem;
 	margin-top: 1rem;
 }
 .activity-recent-set-title {
@@ -379,7 +379,15 @@ h5:hover {
 	justify-content: left;
 	align-items: baseline;
 }
-
+.activity-set-user-p {
+	margin: 0 1rem 1rem 1rem;
+	color: #3ccfcf;
+	font-family: "Catamaran", sans-serif;
+	font-weight: 400;
+	font-size: 1rem;
+	border-left: 2px solid #e8ebed;
+	padding-left: 1rem;
+}
 .set-user-header {
 	padding: 0 1rem 0 1rem;
 	display: flex;
