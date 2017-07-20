@@ -71,7 +71,6 @@ export function getUserSS(userInfo) {
     }
 }
 export function getSSInfo(studiedSets) {
-    console.log('fired');
     return {
         type: GET_SS_INFO,
         payload: studiedSets[0]
