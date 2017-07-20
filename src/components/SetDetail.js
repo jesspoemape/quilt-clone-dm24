@@ -7,8 +7,9 @@ import axios from 'axios';
 class SetDetail extends Component {
 
     componentWillMount() {
-        const setUrl = `http://localhost:3001/api/get-set-info/415`;
-        const cardUrl = `http://localhost:3001/api/get-cards/415`;
+        const setId = this.props.match.params.id;
+        const setUrl = `http://localhost:3001/api/get-set-info/${setId}`;
+        const cardUrl = `http://localhost:3001/api/get-cards/${setId}`;
          axios.get(setUrl).then(response => this.props.getSetInfo(response.data)).catch(console.error, 'Error');
          axios.get(cardUrl).then(response => this.props.getCards(response.data)).catch(console.error, 'Error');
     }

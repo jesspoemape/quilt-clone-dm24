@@ -64,5 +64,6 @@ app.get('/auth/logout', (req, res) => { // log the user out and destroy the sess
 app.post('/api/add-set', sc.addSet);
 app.get('/api/get-set-info/:id', sc.getSetInfo);
 app.get('/api/get-cards/:id', sc.getCards);
+app.get('/api/user-info/:id', sc.getUserInfo);
 
 app.listen(3001, () => console.log("Listening on port 3001"));

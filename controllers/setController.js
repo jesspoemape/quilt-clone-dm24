@@ -73,5 +73,11 @@ module.exports = {
 
         // then find the cards with a matching setid 
         dbInstance.cards.find({setid: req.params.id}).then(response => res.status(200).send(response)).catch(console.error, 'Error');
+    },
+    getUserInfo: (req, res) => {
+        const dbInstance = req.app.get('db');
+
+        // get user info 
+        dbInstance.users.find({id: req.params.id}).then(response => res.status(200).send(response)).catch(console.error, 'Error');
     }
 }

@@ -12,7 +12,7 @@ export default (
         <Route exact path='/' component={LandingPage}/>
         <Route path='/create-set' component={CreateSet}/>
         <Route path='/activity' component={LatestActivity}/>
-        <Route path='/set-detail' component={SetDetail}/>
+        <Route path='/set-detail/:id' component={SetDetail}/>
         <Route path='/settings' component={Settings}/>
     </Switch>
 );
