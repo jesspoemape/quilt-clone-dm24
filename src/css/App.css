@@ -187,7 +187,7 @@ html {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	align-items: flex-start;
+	align-items: center;
 }
 .blank-card {
 	background-color: white;
@@ -248,6 +248,7 @@ html {
 	align-items: center;
 	margin-top: 1rem;
 	height: 9rem;
+	width: 100%;
 }
 h5 {
 	font-family: "Catamaran", sans-serif;
@@ -270,9 +271,9 @@ h5:hover {
 	letter-spacing: .1rem;
 	border: none;
 	padding: 1.1rem;
-	width: 45%;
+	width: 100%;
 	margin-top: 2rem;
-	align-self: center;
+	/*align-self: center;*/
 }
 .create-set-button:hover {
 	background-color: #efcb47;
