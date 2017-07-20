@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import Header from './Header';
 
 class LatestActivity extends Component {
@@ -28,10 +29,23 @@ class LatestActivity extends Component {
                 </div>
                 <div className='activity-sets-container'>
                     <h4 className='dark-label'>LAST WEEK</h4>
+                    <div className='activity-recent-set'>
+                        <div className='activity-user-header'>
+                            <h4 className='dark-label'>{ this.props.setInfo.numofterms } terms</h4>
+                            <p className='set-user-p'>{ this.props.setInfo.creatorname }</p>
+                        </div>
+                        <h3 className='activity-recent-set-title'>{ this.props.setInfo.title }</h3>
+                    </div>
                 </div>
             </div>
         );
     }
 }
 
-export default LatestActivity;
+function mapStateToProps(state) {
+    return {
+        setInfo: state.setInfo
+    }
+}
+
+export default connect(mapStateToProps)(LatestActivity);

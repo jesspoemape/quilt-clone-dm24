@@ -363,6 +363,22 @@ h5:hover {
 .activity-main-container {
 	padding: 2rem 1rem 1rem 1rem;
 }
+.activity-recent-set {
+	background-color: white;
+	padding: 0 1rem 1rem 1rem;
+	margin-top: 1rem;
+}
+.activity-recent-set-title {
+	font-family: "Catamaran", sans-serif;
+	font-weight: 700;
+	font-size: 1.5rem;
+	color: #455358;
+}
+.activity-user-header {
+	display: flex;
+	justify-content: left;
+	align-items: baseline;
+}
 
 .set-user-header {
 	padding: 0 1rem 0 1rem;
@@ -489,6 +505,7 @@ h5:hover {
 .set-card {
 	background-color: white;
 	padding: 1rem;
+	margin-bottom: .7rem;
 }
 .card-term, .card-def {
 	font-family: "Catamaran", sans-serif;
