@@ -54,7 +54,7 @@ class CreateSet extends Component {
 
 // will send new set of cards to reducer to be sent to the database
 handleCreateClick() {
-    const uniqSetId = new Date().getTime() + (Math.floor(Math.random() * (922337200000 - 0)) + 0);
+    const uniqSetId = new Date().getTime() + (Math.floor(Math.random() * (9223372000000 - 0)) + 0);
     const uniqueCardId = new Date().getTime() + (Math.floor(Math.random() * (92233720000 - 0)) + 0);
 
     const {title, cards} = this.state;

@@ -694,7 +694,15 @@ h5:hover {
 	display: flex;
 
 }
-
+.flash-header-icon {
+	fill: white;
+	height: 2.5rem;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
+}
+.flash-header-icon:hover {
+	fill: #9da9db;
+}
 
 .tablet-option-container {
 	background-color: #3ccfcf;
