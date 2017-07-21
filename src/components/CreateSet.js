@@ -180,19 +180,24 @@ handleDescChange(e) {
 const blankCards = this.state.cards.map( (card, i) => {
     return <div className='blank-card' key={i}>
                 <div className='blank-card-input-container'>
-                    <input 
+                    <div className='create-term-and-label'>
+                        <input 
                         onChange={this.handleTermChange.bind(this, i)} 
                         className='create-input' type="text" 
                         placeholder='Enter term'
                         />
-                    <h4 className='create-title-label'>TERM</h4>
-                    <input 
+                        <h4 className='create-title-label'>TERM</h4>
+                    </div>
+                    <div className='create-term-and-label'>
+                        <input 
                         onChange={this.handleDefChange.bind(this, i)}
                         className='create-input' 
                         type="text" 
                         placeholder='Enter definition'
                         />
-                    <h4 className='create-title-label'>DEFINITION</h4>
+                        <h4 className='create-title-label'>DEFINITION</h4>
+                    </div>
+                    
                 </div>
                 <div className='blank-card-footer'>
                     <h3 className='blank-card-number'>{i + 1}</h3>

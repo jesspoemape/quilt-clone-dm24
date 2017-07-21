@@ -52,6 +52,7 @@ table {
 /* apply a natural box layout model to all elements, but allowing components to change */
 html {
   box-sizing: border-box;
+  background-color: #f0f0f0;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -137,7 +138,7 @@ html {
 	letter-spacing: .7px;
 	position: sticky;
 	top: 0;
-	margin: 1rem;
+	padding: 1rem;
 	background-color: white;
 }
 .create-svg {
@@ -145,8 +146,7 @@ html {
 	fill: white;
 }
 .create-title-input-container {
-	padding-top: 2rem;
-	margin: 1rem;
+	padding: 2rem 1rem 1rem 1rem;
 	background-color: white;
 }
 
@@ -365,12 +365,16 @@ h5:hover {
 
 .activity-main-container {
 	padding: 2rem 1rem 1rem 1rem;
+	background-color: white;
 }
 .activity-recent-set {
 	background-color: white;
 	padding: 0 1rem .5rem 1rem;
 	margin-top: 1rem;
 	width: 100%;
+}
+.activity-recent-set:hover {
+	border-bottom: 5px solid #efcb47;
 }
 .activity-recent-set-title {
 	font-family: "Catamaran", sans-serif;
@@ -616,3 +620,49 @@ h5:hover {
 	color: #9da9db;
 }
 
+/*******************************************
+
+MEDIA QUERIES
+
+********************************************/
+
+/* once we reach larger than 620px, apply these new styles*/
+@media(min-width: 620px) {
+	.activity-main-container {
+		padding: 2.7rem;
+	}
+	.dark-header {
+		font-size: 2.8rem;
+	}
+	.activity-sets-container {
+		padding: 2.7rem;
+	}
+	.activity-recent-set {
+		padding: 1rem;
+	}
+	.create-title-container {
+		padding: 2.7rem 2.7rem 1rem 2.7rem;
+		font-size: 2.3rem;
+	}
+	.create-title-input-container {
+		padding: 2rem 2.7rem 2.7rem 2.7rem;
+	}
+	.options-container {
+		width: 0;
+	}
+	.blank-card-input-container {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	.create-term-and-label {
+		padding-left: 1rem;
+		padding-right: 1rem;
+		width: 50%;
+	}
+	.create-terms-container {
+		padding: .5rem 2.7rem 2.7rem 2.7rem;
+	}
+	.flip-terms-button {
+		display: none;
+	}
+}

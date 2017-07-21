@@ -1,5 +1,4 @@
 import axios from 'axios';
-import {difference} from 'lodash/difference';
 
 const initialState = {
     setInfo: {},
