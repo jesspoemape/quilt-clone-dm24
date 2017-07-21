@@ -101,18 +101,6 @@ handleCreateClick() {
                     term: '',
                     definition: '',
                     imageurl: ''
-                },
-                {
-                    id: null,
-                    term: '',
-                    definition: '',
-                    imageurl: ''
-                },
-                {
-                    id: null,
-                    term: '',
-                    definition: '',
-                    imageurl: ''
                 }
             ]
         })
@@ -280,7 +268,6 @@ const blankCards = this.state.cards.map( (card, i) => {
                             </button>
                         </Link>
                     </div>
-                    
                 </div>
             </div>
         );

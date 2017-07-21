@@ -791,7 +791,7 @@ MEDIA QUERIES
 		border-left: 2px solid #f0f0f0;
 	}
 	.card-term {
-		width: 7.5rem;
+		width: 30%;
 	}
 	.card-icon-header {
 		align-items: flex-start;
@@ -873,5 +873,20 @@ MEDIA QUERIES
 		display: flex;
 		justify-content: flex-end;
 	}
-
+}
+/* once we reach larger than 720px, apply these new styles*/
+@media(min-width: 1025px) {
+	.activity-main-container {
+		display: flex;
+		justify-content: space-between;
+	}
+	.activity-main-container .dark-header {
+		padding: 0;
+		margin: 0;
+	}
+	.activity-input-and-label {
+		width: 100%;
+		margin-left: 5rem;
+		width: 50%;
+	}
 }
