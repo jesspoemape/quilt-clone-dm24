@@ -59,9 +59,10 @@ module.exports = {
         description
     })
     .then( () => dbInstance.cards.insert(terms) )
+    .then( () => dbInstance.run( 'update users set studiedsets = array_append(studiedsets, ${id}) where id = 123456789' ))
     .then( () => res.status(200).send('set and cards added') ).catch(console.error, 'Error');
 
-},
+    },
     getSetInfo: (req, res) => {
         const dbInstance = req.app.get('db');
 

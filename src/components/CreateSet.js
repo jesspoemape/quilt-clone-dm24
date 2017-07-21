@@ -74,9 +74,8 @@ handleCreateClick() {
         description: '',
         cards: tempCards
     } 
-    console.log(newSet);
 
-    //send new set to reducer
+    //send new set to database
     axios.post('http://localhost:3001/api/add-set', newSet)
 
     // reset initial state and clear form 
