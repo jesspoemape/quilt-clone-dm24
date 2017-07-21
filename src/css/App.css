@@ -649,6 +649,12 @@ h5:hover {
 .create-button-small {
 	display: none;
 }
+.header-create-set-container h6{
+	display: none;
+}
+.tablet-header-user-image {
+	display: none;
+}
 
 /*******************************************
 
@@ -797,12 +803,12 @@ MEDIA QUERIES
 }
 
 /* once we reach larger than 720px, apply these new styles*/
-@media(min-width: 720px) {
+@media(min-width: 770px) {
 	#menuOverlay {
 		width: 300px;
 		position: absolute;
 		top: 80px;
-		box-shadow: 0 4px 8px 0 rgba(69,83,88, 0.4), 0 6px 20px 0 rgba(69,83,88, 0.19);
+		box-shadow: 0 4px 8px 0 rgba(69,83,88, 0.4), 0 6px 35px 0 rgba(69,83,88, 0.19);
 	}
 	#menuOverlay .close-btn {
 		display: none;
@@ -813,6 +819,7 @@ MEDIA QUERIES
 	.header-container {
 		height: 80px;
 		letter-spacing: .15rem;
+		padding-right: 2.7rem;
 	}
 	.header {
 		padding: 2.7rem;
@@ -831,4 +838,39 @@ MEDIA QUERIES
 		display: flex;
 		flex-direction: row-reverse;
 	}
+	.dark-header {
+		margin-bottom: 1.2rem;
+	}
+	.header-create-set-container {
+		display: flex;
+		align-items: center;
+	}
+	.header-create-set-container h6{
+		font-family: "Catamaran", sans-serif;
+		font-size: 1rem;
+		font-weight: 400;
+		color: white;
+		padding-left: .7rem;
+		display: block;
+	}
+	#create-set {
+		border-left: 2px solid #455358;
+		padding-left: 2.5rem;
+		margin-left: 2.5rem;
+	}
+	.header-icon-container {
+		width: 100%;
+		justify-content: flex-end;
+	}
+	.user-image-medium {
+		height: 35px;
+		border-radius: 50%;
+	}
+	.tablet-header-user-image svg{
+		fill: white;
+	}
+	.tablet-header-user-image {
+		display: block;
+	}
+
 }
