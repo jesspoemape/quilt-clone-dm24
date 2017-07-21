@@ -620,6 +620,23 @@ h5:hover {
 	color: #9da9db;
 }
 
+
+.tablet-option-container {
+	background-color: #3ccfcf;
+	border-radius: 50%;
+	height: 2.3rem;
+	width: 2.3rem;
+	display: none;
+	justify-content: center;
+	align-items: center; 
+}
+.create-tablet-options-container {
+	display: none;
+}
+.create-button-small {
+	display: none;
+}
+
 /*******************************************
 
 MEDIA QUERIES
@@ -643,6 +660,7 @@ MEDIA QUERIES
 	.create-title-container {
 		padding: 2.7rem 2.7rem 1rem 2.7rem;
 		font-size: 2.3rem;
+		z-index: 100;
 	}
 	.create-title-input-container {
 		padding: 2rem 2.7rem 2.7rem 2.7rem;
@@ -654,15 +672,62 @@ MEDIA QUERIES
 		flex-direction: row;
 		justify-content: space-between;
 	}
+	#more-tablet {
+		width: 0;
+	}
 	.create-term-and-label {
 		padding-left: 1rem;
 		padding-right: 1rem;
 		width: 50%;
+		position: relative;
 	}
 	.create-terms-container {
 		padding: .5rem 2.7rem 2.7rem 2.7rem;
 	}
 	.flip-terms-button {
 		display: none;
+	}
+	.create-button-small {
+		background-color: #3ccfcf;
+		display: block;
+		color: white;
+		font-family: "Catamaran", sans-serif;
+		font-weight: 400;
+		font-size: 1rem;
+		letter-spacing: .1rem;
+		border: none;
+		padding: .7rem 1.7rem .7rem 1.7rem;
+	}
+	.create-button-small:hover {
+		background-color: #efcb47;
+		color: #455358;
+	}
+	.blank-footer-icons-container {
+		display: none;
+	}
+	.blank-card-footer {
+		padding-left: 1rem;
+	}
+	#more-tablet {
+		width: 20px;
+	}
+	#more-tablet:hover {
+		fill: #efcb47;
+	}
+	.create-tablet-options-container {
+		display: flex;
+		margin-top: 1rem;
+		width: 100%;
+		justify-content: flex-end;
+	}
+	.tablet-option-container {
+		display: flex;
+		margin-left: 1.1rem;
+	}
+	.tablet-option-container:hover .set-circle-svg {
+		fill: #455358;
+	}
+	.tablet-option-container:hover {
+		background-color: #efcb47;
 	}
 }
