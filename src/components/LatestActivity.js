@@ -9,8 +9,6 @@ class LatestActivity extends Component {
     constructor() {
         super();
 
-        this.showMenu = this.showMenu.bind(this);
-        this.closeMenu = this.closeMenu.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
     }
 
@@ -27,12 +25,7 @@ componentDidMount() {
         }).catch(console.error, 'Error');
 }
 
-showMenu() {
-    document.getElementById('menuOverlay').style.width = '100%';
-}
-closeMenu() {
-    document.getElementById('menuOverlay').style.width = '0%';
-}
+
 handleSearch(e) {
         console.log(e);
     }
@@ -62,10 +55,6 @@ handleSearch(e) {
                 <Header/>
                 {/*****************MENU SIDEBAR******************/}
                 <div id='menuOverlayLA' className='overlay'>
-                        <div className='header-container'>
-                            <h1 className='header'>Quizlet</h1>
-                            <span onClick={() => this.closeMenu()} className='close-btn'>&times;</span>
-                        </div>
                         <div className='overlay-content'>
                             <div className='menu-fixed-container'>
                                 <Link className='link' to='/activity'><div className='menu-fixed-item'>

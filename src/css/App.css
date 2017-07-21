@@ -273,7 +273,6 @@ h5:hover {
 	padding: 1.1rem;
 	width: 100%;
 	margin-top: 2rem;
-	/*align-self: center;*/
 }
 .create-set-button:hover {
 	background-color: #efcb47;
@@ -810,12 +809,7 @@ MEDIA QUERIES
 		top: 80px;
 		box-shadow: 0 4px 8px 0 rgba(69,83,88, 0.4), 0 6px 35px 0 rgba(69,83,88, 0.19);
 	}
-	#menuOverlayLA .close-btn {
-		display: none;
-	}
-	#menuOverlayLA .header-container {
-		height: 0;
-	}
+
 	.header-container {
 		height: 80px;
 		letter-spacing: .15rem;
@@ -871,6 +865,13 @@ MEDIA QUERIES
 	}
 	.tablet-header-user-image {
 		display: block;
+	}
+	.create-set-button {
+		width: 250px;
+	}
+	.create-set-button-container {
+		display: flex;
+		justify-content: flex-end;
 	}
 
 }

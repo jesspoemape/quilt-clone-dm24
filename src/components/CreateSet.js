@@ -273,11 +273,14 @@ const blankCards = this.state.cards.map( (card, i) => {
                         <h5>+ ADD CARD</h5>
                     </div>
                     {/********************** CREATE SET BUTTON ***********************/}
-                    <Link to='/activity'>
-                        <button onClick={() => this.handleCreateClick()} className='create-set-button'>
-                        Create
-                        </button>
-                    </Link>
+                    <div className='create-set-button-container'>
+                        <Link to='/activity'>
+                            <button onClick={() => this.handleCreateClick()} className='create-set-button'>
+                            Create
+                            </button>
+                        </Link>
+                    </div>
+                    
                 </div>
             </div>
         );
