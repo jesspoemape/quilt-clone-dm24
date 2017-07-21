@@ -804,16 +804,16 @@ MEDIA QUERIES
 
 /* once we reach larger than 720px, apply these new styles*/
 @media(min-width: 770px) {
-	#menuOverlay {
+	#menuOverlayLA {
 		width: 300px;
 		position: absolute;
 		top: 80px;
 		box-shadow: 0 4px 8px 0 rgba(69,83,88, 0.4), 0 6px 35px 0 rgba(69,83,88, 0.19);
 	}
-	#menuOverlay .close-btn {
+	#menuOverlayLA .close-btn {
 		display: none;
 	}
-	#menuOverlay .header-container {
+	#menuOverlayLA .header-container {
 		height: 0;
 	}
 	.header-container {
