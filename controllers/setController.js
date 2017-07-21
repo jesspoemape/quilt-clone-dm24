@@ -35,6 +35,7 @@ module.exports = {
 
 // destructure req body
         const {id, title, creatorname, creatorid, numofterms, description, cards} = req.body;
+        const stringId = id.toString();
 
 // map through cards on req body and format them for database
         const terms = cards.map( card => {
@@ -59,7 +60,7 @@ module.exports = {
         description
     })
     .then( () => dbInstance.cards.insert(terms) )
-    .then( () => dbInstance.run( 'update users set studiedsets = array_append(studiedsets, ${id}) where id = 123456789' ))
+    .then( () => dbInstance.run( `update users set studiedsets = array_append(studiedsets, ${stringId}) where id = 123456789` ))
     .then( () => res.status(200).send('set and cards added') ).catch(console.error, 'Error');
 
     },
