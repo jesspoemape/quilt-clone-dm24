@@ -72,7 +72,7 @@ html {
   background-color: #4257b2;
   height: 4rem;
   width: 100%;
-	padding: 0 15px;
+	padding: 0 1rem;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -797,4 +797,38 @@ MEDIA QUERIES
 }
 
 /* once we reach larger than 720px, apply these new styles*/
-@media(min-width: 720px) {}
+@media(min-width: 720px) {
+	#menuOverlay {
+		width: 300px;
+		position: absolute;
+		top: 80px;
+		box-shadow: 0 4px 8px 0 rgba(69,83,88, 0.4), 0 6px 20px 0 rgba(69,83,88, 0.19);
+	}
+	#menuOverlay .close-btn {
+		display: none;
+	}
+	#menuOverlay .header-container {
+		height: 0;
+	}
+	.header-container {
+		height: 80px;
+		letter-spacing: .15rem;
+	}
+	.header {
+		padding: 2.7rem;
+	}
+	.menu-fixed-container {
+		padding-top: 0;
+	}
+	.activity-main-container,  .activity-sets-container{
+		padding-left: 343.2px;
+	}
+	#list {
+		height: 0;
+		width: 0;
+	}
+	.header-icon-container {
+		display: flex;
+		flex-direction: row-reverse;
+	}
+}

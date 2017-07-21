@@ -34,7 +34,6 @@ class SetDetail extends Component {
                             <div></div>
                         }
                     </div>
-                    
                 </div>
         });
 
