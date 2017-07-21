@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
+import Footer from './Footer';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
@@ -269,6 +270,7 @@ const blankCards = this.state.cards.map( (card, i) => {
                         </Link>
                     </div>
                 </div>
+                <Footer/>
             </div>
         );
     }

@@ -631,6 +631,68 @@ h5:hover {
 .login-link:hover {
 	color: #9da9db;
 }
+.footer-container {
+	background-color: #4257b2;
+	padding: 2rem 1rem;
+}
+.footer-header, .footer-content-header, .footer-li {
+	font-family: "Catamaran", sans-serif;
+	color: white;
+}
+.footer-content {
+	margin-bottom: 0;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 600px;
+}
+.footer-header {
+	font-size: 1.7rem;
+	font-weight: 700;
+	letter-spacing: .1rem;
+	margin-bottom: 2.2rem;
+}
+.footer-content-header {
+	margin-right: 0;
+	font-size: 1.2rem;
+	font-weight: 400;
+	margin-bottom: 1.8rem;
+	letter-spacing: .1rem;
+}
+.footer-li {
+	margin-right: 0;
+	font-size: .8rem;
+	font-weight: 200;
+	letter-spacing: .07rem;
+	margin-bottom: 1.8rem;
+}
+.footer-li:hover {
+	color: #9da9db;
+}
+.footer-content-section {
+	margin-bottom: 2.5rem;
+}
+.footer-social-container {
+	border: 3px solid #3B4C9B;
+	border-radius: 50%;
+	height: 35px;
+	width: 35px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 1.7rem;
+}
+.footer-icon {
+	fill: white;
+	height: 20px;
+}
+.footer-social-container:hover {
+	border: 3px solid #9da9db;
+}
+.footer-social-icons-container {
+	display: flex;
+
+}
 
 
 .tablet-option-container {

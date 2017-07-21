@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {getSetInfo, getCards} from './../ducks/reducer';
 import Header from './Header';
+import Footer from './Footer';
 import axios from 'axios';
 
 class SetDetail extends Component {
@@ -101,6 +102,7 @@ class SetDetail extends Component {
             <div className='set-card-container'>
                 { cards }
             </div>
+            <Footer/>
         </div>
         );
     }
