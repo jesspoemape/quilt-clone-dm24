@@ -644,7 +644,8 @@ h5:hover {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	height: 600px;
+	max-height: 600px;
+	width: 100%;
 }
 .footer-header {
 	font-size: 1.7rem;
@@ -860,6 +861,15 @@ MEDIA QUERIES
 	}
 	.card-svg {
 		height: 1.5rem;
+	}
+	.footer-content-section {
+		width: 25%;
+	}
+	.footer-content-section {
+	margin-bottom: 2rem;
+	}
+	.footer-container {
+		padding: 3rem 2.7rem 1rem 2.7rem;
 	}
 }
 
