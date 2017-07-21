@@ -256,7 +256,7 @@ const blankCards = this.state.cards.map( (card, i) => {
                             <div className='tablet-option-container'>
                                 <svg className='set-circle-svg' xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 16 16" ><path d="M14,3H3C2.448,3,2,3.448,2,4v7c0,0.552,0.448,1,1,1h11c0.552,0,1-0.448,1-1V4C15,3.448,14.552,3,14,3z M8,5h1v1H8V5z M8,7h1  v1H8V7z M6,5h1v1H6V5z M6,7h1v1H6V7z M5,8H4V7h1V8z M5,6H4V5h1V6z M11,10H6V9h5V10z M11,8h-1V7h1V8z M11,6h-1V5h1V6z M13,8h-1V7h1V8  z M13,6h-1V5h1V6z"/></svg>
                             </div>
-                            <div className='tablet-option-container'>
+                            <div className='tablet-option-container' onClick={() => this.openOverlay()}>
                                 <svg id='info' className='set-circle-svg' xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 32 32"><g display="none"><g display="inline"><path stroke="#666666" strokeMiterlimit="10" d="M13.813,4.877V0.5h4.554v4.377H13.813z M13.813,31.5V9.043h4.554    V31.5H13.813z"/></g></g><g display="none"><g display="inline"><g><path d="M18.866,32h-5.554V8.543h5.554V32z M14.312,31h3.554V9.543h-3.554V31z M18.866,5.377h-5.554V0h5.554     V5.377z M14.312,4.377h3.554V1h-3.554V4.377z"/></g></g></g><g display="none"><g display="inline"><g><path d="M18.866,32h-5.554V8.543h5.554V32z M14.312,31h3.554V9.543h-3.554V31z M18.866,5.377h-5.554V0h5.554     V5.377z M14.312,4.377h3.554V1h-3.554V4.377z"/></g></g></g><g><rect x="13.634" width="4.733" height="4.518"/><rect x="13.634" y="8.818" width="4.733" height="23.182"/></g></svg>
                             </div>
                         </div>

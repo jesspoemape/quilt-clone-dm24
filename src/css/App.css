@@ -283,7 +283,7 @@ h5:hover {
 	height: 100vh;
 	width: 0;
 	position: fixed;
-	z-index: 1;
+	z-index: 101;
 	left: 0;
 	top: 0;
 	background-color: white;
@@ -401,6 +401,7 @@ h5:hover {
 	display: flex;
 	justify-content: left;
 	align-items: baseline;
+	background-color: white;
 }
 .set-user-p {
 	color: #3ccfcf;
@@ -420,6 +421,7 @@ h5:hover {
 	color: #455358;
 	font-size: 2.7rem;
 	padding: 0 1rem 1rem 1rem;
+	background-color: white;
 }
 .set-description-header {
 	font-family: "Catamaran", sans-serif;
@@ -427,10 +429,12 @@ h5:hover {
 	font-size: 1.2rem;
 	color: #455358;
 	padding: 0 1rem 0 1rem;
+	background-color: white;
 }
 .circle-icons-container {
 	display: flex;
 	padding: 1rem;
+	background-color: white;
 }
 .circle-icon {
 	background-color: #3ccfcf;
@@ -492,6 +496,7 @@ h5:hover {
 	display: flex;
 	flex-wrap: wrap;
 	padding: 1rem;
+	background-color: white;
 }
 .set-study-option {
 	display: flex;
@@ -583,6 +588,14 @@ h5:hover {
 .settings-section-header {
 	display: flex;
 	align-items:center;
+	font-family: "Catamaran", sans-serif;
+	font-weight: 400;
+	font-size: 1.2rem;
+	color: #455358;
+	padding: 0 1rem 0 1rem;
+}
+.settings-header {
+	padding-left: 1rem;
 }
 .settings-header-svg {
 	fill: #455358;
@@ -624,8 +637,8 @@ h5:hover {
 .tablet-option-container {
 	background-color: #3ccfcf;
 	border-radius: 50%;
-	height: 2.3rem;
-	width: 2.3rem;
+	height: 2.5rem;
+	width: 2.5rem;
 	display: none;
 	justify-content: center;
 	align-items: center; 
@@ -730,4 +743,58 @@ MEDIA QUERIES
 	.tablet-option-container:hover {
 		background-color: #efcb47;
 	}
+	.set-title-header {
+		font-size: 4.3rem;
+		padding: 0 2.7rem 1rem 2.7rem; 
+	}
+	.set-study-option {
+		width: 9rem;
+		font-size: 1rem;
+	}	
+	.study-option-svg {
+		margin-top: 1rem;
+		margin-bottom: 1.5rem;
+		height: 3rem;
+	}
+	.set-user-header {
+		padding-left: 2.7rem;
+	}
+	.set-description-header {
+		padding: 0 2.7rem 0 2.7rem;
+	}
+	.circle-icons-container {
+		padding: 1rem 2.7rem 1rem 2.7rem;
+	}
+	.set-study-options-container {
+		padding: 1rem 2.7rem 1rem 2.7rem;
+	}
+	.set-card-container {
+		padding: 2.7rem;
+	}
+	.set-card {
+		display: flex;
+		flex-direction: row-reverse;
+		padding: 1.2rem;
+	}
+	.set-card-term-and-def {
+		display: flex;
+		width: 100%;
+		padding-left: 1rem;
+	}
+	.card-def {
+		padding: 1rem 2rem 1rem 2rem;
+		border-left: 2px solid #f0f0f0;
+	}
+	.card-term {
+		width: 7.5rem;
+	}
+	.card-icon-header {
+		align-items: flex-start;
+	}
+	.card-svg {
+		height: 1.5rem;
+	}
 }
+
+/* once we reach larger than 720px, apply these new styles*/
+@media(min-width: 720px) {}
