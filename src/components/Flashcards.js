@@ -25,32 +25,19 @@ handleFlip() {
 }
 handleNext() {
     let count = this.state.count;
-
     if (count < this.props.cards.length) {
-        this.setState({count: count+1})
+        this.setState({count: count + 1})
     }
-    else {
-        count = count;
-    }
-    
-    console.log('next', this.state.count);
-
 }
 handlePrevious() {
     let count = this.state.count;
-
     if (count > 0) {
-        this.setState({count: count -1});
-    }
-    else {
-        count = count;
-    }
-    console.log('prev', this.state.count);
-    
+        this.setState({count: count - 1});
+    } 
 }
 
     render() {
-        let count = 0;
+        const {count} = this.state;
         return (
             <div>
                 <div className='header-container'>
@@ -61,10 +48,10 @@ handlePrevious() {
                 <div  id='flip-container' className='flip-container' onClick={() => this.handleFlip()}>
                     <div className='flipper'>
                         <div className='flash-card-term'>
-                            <p className='flash-term'>{(this.props.cards[0]) ? this.props.cards[0].term : 'Term'}</p>
+                            <p className='flash-term'>{(this.props.cards[count]) ? this.props.cards[count].term : 'Term'}</p>
                         </div>
                         <div className='flash-card-def'>
-                            <p className='flash-def'>{(this.props.cards[0]) ? this.props.cards[0].definition : 'Definition'}</p>
+                            <p className='flash-def'>{(this.props.cards[count]) ? this.props.cards[count].definition : 'Definition'}</p>
                         </div>
                     </div>
                 </div>
