@@ -7,10 +7,12 @@ class Flashcards extends Component {
     constructor() {
         super();
         this.state = {
-            cards: []
+            count: 0
         }
 
     this.handleFlip = this.handleFlip.bind(this);
+    this.handleNext = this.handleNext.bind(this);
+    this.handlePrevious = this.handlePrevious.bind(this);
     }
 
 componentDidMount() {
@@ -20,6 +22,31 @@ componentDidMount() {
 }
 handleFlip() {
     document.getElementById('flip-container').classList.toggle("flip");
+}
+handleNext() {
+    let count = this.state.count;
+
+    if (count < this.props.cards.length) {
+        this.setState({count: count+1})
+    }
+    else {
+        count = count;
+    }
+    
+    console.log('next', this.state.count);
+
+}
+handlePrevious() {
+    let count = this.state.count;
+
+    if (count > 0) {
+        this.setState({count: count -1});
+    }
+    else {
+        count = count;
+    }
+    console.log('prev', this.state.count);
+    
 }
 
     render() {
@@ -43,10 +70,10 @@ handleFlip() {
                 </div>
                 
                 <div className='flash-footer'>
-                    <div className='flash-circle-icon'>
+                    <div className='flash-circle-icon' onClick={() => this.handlePrevious()}>
                         <svg className='set-circle-svg' xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 100 100"><g transform="translate(0,-952.36218)"><path  d="M 72 8 L 28 50 L 72 92 L 72 8 z " transform="translate(0,952.36218)"/></g></svg>
                     </div>
-                    <div className='flash-circle-icon'>
+                    <div className='flash-circle-icon' onClick={() => this.handleNext()}>
                         <svg className='set-circle-svg' xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 100 100"><g transform="translate(0,-952.36218)"><path  d="M 28 8 L 28 92 L 72 50 L 28 8 z " transform="translate(0,952.36218)"/></g></svg>
                     </div>
                 </div>
