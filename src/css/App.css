@@ -739,6 +739,20 @@ h5:hover {
 .flash-progress-container {
 	height: 3rem;
 	background-color: white;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem;
+}
+.flash-progress-wrap {
+	background-color: #C6CCE8;
+	height: 1rem;
+	width: 75%;
+}
+.flash-progress-bar {
+	background-color: #4257B2;
+	height: 100%;
+	min-width: 1%;
 }
 .flash-term, .flash-def {
 	font-family: "Catamaran", sans-serif;
@@ -747,7 +761,6 @@ h5:hover {
 	font-size: 3rem;
 	letter-spacing: .1rem;
 }
-
 .flip-container {
 	perspective: 1000px;
 	padding: 1rem;
@@ -769,6 +782,13 @@ h5:hover {
 .flip-container.flip .flipper {
 	transform: rotateX(-180deg);
 }
+.flash-progress-label {
+	font-family: "Catamaran", sans-serif;
+	font-weight: 400;
+	color: #455358;
+	margin: 0 1rem 0 1rem;
+}
+
 
 .tablet-option-container {
 	background-color: #3ccfcf;
