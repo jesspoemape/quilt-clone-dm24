@@ -4,6 +4,7 @@ import {getSetInfo, getCards} from './../ducks/reducer';
 import Header from './Header';
 import Footer from './Footer';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 class SetDetail extends Component {
 
@@ -77,10 +78,10 @@ class SetDetail extends Component {
             </div>
             {/*********************** STUDY OPTIONS ************************/}
             <div className='set-study-options-container'>
-                <div className='set-study-option'>
+                <Link className='link' to={`/flashcards/${this.props.match.params.id}`}><div className='set-study-option'>
                     <svg className='study-option-svg' xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 100 100"><g transform="translate(0,-952.36218)"><path d="M 35 17 C 31.710562 17 29 19.71056 29 23 C 25.710594 23 23 25.71059 23 29 C 19.710595 29 17 31.71059 17 35 L 17 77 C 17 80.2894 19.710595 83 23 83 L 65 83 C 68.289405 83 71 80.2894 71 77 C 74.289406 77 77 74.2894 77 71 C 80.289438 71 83 68.2894 83 65 L 83 23 C 83 19.71056 80.289438 17 77 17 L 35 17 z M 35 21 L 77 21 C 78.142627 21 79 21.85737 79 23 L 79 65 C 79 66.1426 78.142627 67 77 67 L 35 67 C 33.857373 67 33 66.1426 33 65 L 33 23 C 33 21.85737 33.857373 21 35 21 z M 29 27 L 29 65 C 29 68.2894 31.710562 71 35 71 L 73 71 C 73 72.1426 72.142592 73 71 73 L 29 73 C 27.857408 73 27 72.1426 27 71 L 27 29 C 27 27.85741 27.857408 27 29 27 z M 23 33 L 23 71 C 23 74.2894 25.710594 77 29 77 L 67 77 C 67 78.1426 66.142593 79 65 79 L 23 79 C 21.857407 79 21 78.1426 21 77 L 21 35 C 21 33.85741 21.857407 33 23 33 z M 43.8125 42 A 2.0021961 2.0021961 0 1 0 44 46 L 68 46 A 2.0002 2.0002 0 1 0 68 42 L 44 42 A 2.0002 2.0002 0 0 0 43.8125 42 z " transform="translate(0,952.36218)"/></g></svg>
                     <h4 className='study-option-label'>FLASHCARDS</h4>
-                </div>
+                </div></Link>
                 <div className='set-study-option'>
                     <svg className='study-option-svg' xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 100 100"><g transform="translate(0,-952.36218)"><path d="M 77.84375 17 A 2.0002 2.0002 0 0 0 76.25 18 L 48.25 67 A 2.0002 2.0002 0 0 0 48 68.125 L 49 81.125 A 2.0002 2.0002 0 0 0 51.71875 82.84375 L 64.71875 77.84375 A 2.0002 2.0002 0 0 0 65.75 76.96875 L 93.75 27.96875 A 2.0002 2.0002 0 0 0 93 25.25 L 79 17.25 A 2.0002 2.0002 0 0 0 77.84375 17 z M 78.75 21.71875 L 89.25 27.71875 L 85.03125 35.125 L 74.53125 29.125 L 78.75 21.71875 z M 72.53125 32.59375 L 83.03125 38.59375 L 62.59375 74.375 L 52.78125 78.15625 L 52.03125 68.4375 L 72.53125 32.59375 z M 7.8125 79 A 2.0021961 2.0021961 0 1 0 8 83 L 31 83 A 2.0002 2.0002 0 1 0 31 79 L 8 79 A 2.0002 2.0002 0 0 0 7.8125 79 z M 38 79 C 36.895431 79 36 79.895431 36 81 C 36 82.104569 36.895431 83 38 83 C 39.104569 83 40 82.104569 40 81 C 40 79.895431 39.104569 79 38 79 z " transform="translate(0,952.36218)"/></g></svg>
                     <h4 className='study-option-label'>LEARN</h4>
