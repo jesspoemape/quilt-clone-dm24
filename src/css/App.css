@@ -752,6 +752,7 @@ h5:hover {
 .flash-progress-bar {
 	background-color: #4257B2;
 	height: 100%;
+	width: 1%;
 	min-width: 1%;
 }
 .flash-term, .flash-def {
