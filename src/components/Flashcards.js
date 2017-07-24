@@ -19,7 +19,7 @@ class Flashcards extends Component {
 
 componentDidMount() {
     const setId = this.props.match.params.id;
-    const cardUrl = `http://localhost:3001/api/get-cards/${setId}`;
+    const cardUrl = `/api/get-cards/${setId}`;
     axios.get(cardUrl).then(response => this.props.getCards(response.data)).catch(console.error, 'Error');
 }
 handleFlip() {
