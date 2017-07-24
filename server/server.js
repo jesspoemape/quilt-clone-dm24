@@ -31,8 +31,17 @@ passport.use(new Auth0Strategy({
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
         // make database calls here to check for user
-        // profile.identities[0].user_id
-        done(null, {id: 1, username: 'Jae', email: 'j@j.com'})
+        const dbInstance = app.get('db');
+        let user = dbInstance.users.findOne({id: profile._json.clientID}, {columns: ['username', 'profileimage']}).then(userInfo => userInfo).catch(console.error, 'Error');
+        console.log('here', user);
+        if (user) {
+            console.log('user found', user);
+        }
+        else {
+            console.log('here');
+            dbInstance.users.insert({id: profile._json.clientID, username: `${profile._json.given_name} ${profile._json.family_name}`, profileimage: profile._json.picture}).then(res => res).catch(console.error, 'Error');
+        }
+        done(null, user);
     }
 ));
 

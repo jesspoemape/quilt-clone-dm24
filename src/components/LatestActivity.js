@@ -15,11 +15,11 @@ class LatestActivity extends Component {
 
 componentDidMount() {
     
-    axios.get('http://localhost:3001/api/user-info/123456789')
+    axios.get('/api/user-info/123456789')
         .then((response) => {
             // map through the array of studied sets which is the response of getting user info
             response.data[0].studiedsets.map( (setId) => {
-            const setUrl = `http://localhost:3001/api/get-set-info/${setId}`;
+            const setUrl = `/api/get-set-info/${setId}`;
             // get set info on each set and send that response to the store
             return axios.get(setUrl).then(response => this.props.getSSInfo(response.data)).catch(console.error, 'Error');
          } );
