@@ -77,6 +77,7 @@ module.exports = {
     },
     getUserInfo: (req, res) => {
         const dbInstance = req.app.get('db');
+        console.log(req.session)
  
         // get user info 
         dbInstance.users.find({id: req.params.id}, {columns: ['studiedsets', 'profileimage']}).then(response => res.status(200).send(response)).catch(console.error, 'Error');

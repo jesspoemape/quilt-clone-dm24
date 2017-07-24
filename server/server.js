@@ -35,6 +35,7 @@ passport.use(new Auth0Strategy({
         const dbInstance = app.get('db');
         const user = dbInstance.users.findOne({id: profile.identities[0].user_id}, {columns: ['username', 'profileimage']}).then(userInfo => {
             if (userInfo) {
+                session.username = userInfo.username;
                 console.log(`welcome, ${userInfo.username}`);
             }
             else {
