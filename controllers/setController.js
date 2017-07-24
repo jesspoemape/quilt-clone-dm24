@@ -59,7 +59,7 @@ module.exports = {
         description
     })
     .then( () => dbInstance.cards.insert(terms) )
-    .then( () => dbInstance.run( `update users set studiedsets = array_append(studiedsets, ${stringId}::varchar) where id = 123456789` ))
+    .then( () => dbInstance.run( `update users set studiedsets = array_append(studiedsets, ${stringId}::varchar) where username = ${session.username}` ))
     .then( () => res.status(200).send('set and cards added') ).catch(console.error, 'Error');
 
     },
@@ -77,9 +77,26 @@ module.exports = {
     },
     getUserInfo: (req, res) => {
         const dbInstance = req.app.get('db');
-        console.log(req.session)
+        console.log(req.user)
  
         // get user info 
         dbInstance.users.find({id: req.params.id}, {columns: ['studiedsets', 'profileimage']}).then(response => res.status(200).send(response)).catch(console.error, 'Error');
-    }
+    },
+    // loginSession: (req, res, next) => {
+    //     const dbInstance = app.get('db');
+
+    //     dbInstance.users.findOne({id: profile.identities[0].user_id}, {columns: ['username', 'id', 'profileimage']}).then(userInfo => {
+    //         console.log(userInfo);
+    //         if (userInfo) {
+    //             app.get('/api/login-session', (req, res) => {
+    //                 req.session.username = userInfo.username;
+    //                 req.session.user_id = userInfo.id;
+    //                 res.status(200).send({username: req.session.username, user_id: req.session.user_id});
+    //             });
+    //             console.log(`welcome, ${userInfo.username}`);
+    //         }
+    //         else {
+    //             dbInstance.users.insert({id: profile.identities[0].user_id, username: profile._json.screen_name || `${profile._json.given_name} ${profile._json.family_name}`, profileimage: profile._json.picture}).then(res => res).catch(console.error, 'Error');
+    //     }}).catch(console.error, 'Error');
+    // }
 }

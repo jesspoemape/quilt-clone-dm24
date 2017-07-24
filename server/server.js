@@ -11,7 +11,6 @@ const express = require('express'),
 const app = module.exports = express();
 app.use(cors({origin: 'http://localhost:3000'}));
 
-massive(config.connectionString).then(dbInstance => app.set('db', dbInstance)).catch(console.error);
 
 app.use(bodyParser.json());
 app.use(session({
@@ -23,28 +22,44 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+massive(config.connectionString).then(dbInstance => {
+    app.set('db', dbInstance)
 
-passport.use(new Auth0Strategy({
-    domain: config.auth0.domain,
-    clientID: config.auth0.clientID,
-    clientSecret: config.auth0.clientSecret,
-    callbackURL: config.auth0.callbackUrl
+    passport.use(new Auth0Strategy({
+        domain: config.auth0.domain,
+        clientID: config.auth0.clientID,
+        clientSecret: config.auth0.clientSecret,
+        callbackURL: config.auth0.callbackUrl
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
         // make database calls here to check for user
-        const dbInstance = app.get('db');
-        const user = dbInstance.users.findOne({id: profile.identities[0].user_id}, {columns: ['username', 'profileimage']}).then(userInfo => {
-            if (userInfo) {
-                session.username = userInfo.username;
-                console.log(`welcome, ${userInfo.username}`);
-            }
-            else {
-                dbInstance.users.insert({id: profile.identities[0].user_id, username: profile._json.screen_name || `${profile._json.given_name} ${profile._json.family_name}`, profileimage: profile._json.picture}).then(res => res).catch(console.error, 'Error');
-        }}).catch(console.error, 'Error');
-        
-        done(null, user);
+        dbInstance.get_users().then( (users) => {
+            users.forEach(user => {
+                if (profile.identities[0].user_id == user.id) {
+                    console.log('this');
+                    done(null, user);
+                } else {
+                    dbInstance.create_user([profile.identities[0].user_id, profile._json.screen_name, profile._json.picture]).then( user => {
+                        done(null, user).catch(console.error, 'Error');
+                    });
+                }
+            }, this);
+        })
+
+
+        // const user = dbInstance.users.findOne({id: profile.identities[0].user_id}, {columns: ['username', 'id', 'profileimage']}).then(userInfo => {
+        //     if (userInfo) {
+        //         console.log(`welcome, ${userInfo.username}`);
+        //     }
+        //     else {
+        //         dbInstance.users.insert({id: profile.identities[0].user_id, username: profile._json.screen_name || `${profile._json.given_name} ${profile._json.family_name}`, profileimage: profile._json.picture}).then(res => res).catch(console.error, 'Error');
+        // }}).catch(console.error, 'Error');
+
+        // done(null, user);
     }
-));
+    ));
+});
+
 
 passport.serializeUser((user, done) => {
     done(null, user);
@@ -63,6 +78,7 @@ app.get('/auth/callback', passport.authenticate('auth0', {successRedirect: 'http
 app.get('/auth/me', (req, res) => { // check if someone is logged in 
     if (!req.user) return res.status(200).send('no user');
     res.status(200).send(req.user);
+    console.log('this one', req.user);
 })
 app.get('/auth/logout', (req, res) => { // log the user out and destroy the session
     console.log('in server');
