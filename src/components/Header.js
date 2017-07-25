@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './../css/reset.css';
 import './../css/App.css';
 import {Link} from 'react-router-dom';
-import {logout} from './../ducks/reducer';
+import {logout, getSearchResults} from './../ducks/reducer';
 import {connect} from 'react-redux';
 import axios from 'axios';
 
@@ -38,7 +38,7 @@ showSearch() {
 handleSearch(e) {
     document.getElementById('search-input').onkeydown = (ev) => {
         if (ev.keyCode == 13) {
-            axios.get(`/api/full-search/${e}`).then(res => res).catch(console.error, 'Error');
+            axios.get(`/api/full-search/${e}`).then(res => this.props.getSearchResults(res.data)).catch(console.error, 'Error');
         }
     }
 }
@@ -120,4 +120,4 @@ handleSearch(e) {
     }
 }
 
-export default connect(null, {logout})(Header);
+export default connect(null, {logout, getSearchResults})(Header);

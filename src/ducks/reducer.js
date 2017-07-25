@@ -4,7 +4,8 @@ const initialState = {
     setInfo: {},
     cards: [],
     studiedSets: [],
-    studiedSetsInfo: []
+    studiedSetsInfo: [],
+    searchRes: []
 }
 
 
@@ -22,6 +23,10 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, {studiedSets: action.payload.studiedsets});
         case GET_SS_INFO:
             return Object.assign({}, {studiedSetsInfo: [...state.studiedSetsInfo, action.payload]}, {cards: state.cards}, {setInfo: state.setInfo});  
+        case GET_SEARCH_RES:
+        console.log(action.payload);
+            return Object.assign({}, {searchRes: action.payload});
+        
         case LOGOUT + '_FULFILLED':
             console.log('logged out');
             break;
@@ -42,6 +47,7 @@ const GET_CARDS = 'GET_CARDS';
 const LOGOUT = 'LOGOUT';
 const GET_USER_SS = 'GET_USER_SS';
 const GET_SS_INFO = 'GET_SS_INFO';
+const GET_SEARCH_RES = 'GET_SEARCH_RES';
 
 
 // action creators
@@ -87,5 +93,11 @@ export function logout() {
     return {
         type: LOGOUT,
         payload: response
+    }
+}
+export function getSearchResults(sets) {
+    return {
+        type: GET_SEARCH_RES,
+        payload: sets
     }
 }
