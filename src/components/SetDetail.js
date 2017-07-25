@@ -11,6 +11,7 @@ class SetDetail extends Component {
         super();
 
         this.handleMoreClick = this.handleMoreClick.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
 componentWillMount() {
@@ -24,6 +25,17 @@ componentWillMount() {
 handleMoreClick() {
     document.getElementById('more-popup').classList.toggle("show");
     document.getElementById('more-menu').classList.toggle("show");
+}
+handleDelete() {
+    axios.get('/auth/me').then(res => {
+        if (res.data.id = this.props.setInfo.creatorid) {
+            axios.delete(`/api/delete-own-set/${this.props.setInfo.id}`).then(res => res ).catch(console.error, 'Error');
+        }
+        else {
+            axios.get('auth/me')
+            .then(res => {axios.post(`/api/remove-set/${this.props.setInfo.id}/${res.data.id}`)}).catch(console.error, 'Error');
+        }
+    })
 }
 
     render() {
@@ -91,7 +103,7 @@ handleMoreClick() {
                         <div className='more-menu-item'>
                             <h6>Scores</h6>
                         </div>
-                        <div className='more-menu-item'>
+                        <div className='more-menu-item' onClick={() => this.handleDelete()}>
                             <h6>Delete</h6>
                         </div>
                     </div>

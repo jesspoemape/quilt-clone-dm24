@@ -67,7 +67,7 @@ module.exports = {
         const dbInstance = req.app.get('db');
 
         // find a single set with a matching criteria object of req.params.id
-        dbInstance.sets.find({id: req.params.id}, {columns: ['title', 'creatorname', 'numofterms', 'description', 'id']}).then(response => res.status(200).send(response)).catch(console.error, 'Error');
+        dbInstance.sets.find({id: req.params.id}, {columns: ['title', 'creatorname', 'creatorid', 'numofterms', 'description', 'id']}).then(response => res.status(200).send(response)).catch(console.error, 'Error');
     },
     getCards: (req, res) => {
         const dbInstance = req.app.get('db');
@@ -82,21 +82,20 @@ module.exports = {
         // get user info 
         dbInstance.users.find({id: req.params.id}, {columns: ['studiedsets', 'profileimage']}).then(response => res.status(200).send(response)).catch(console.error, 'Error');
     },
-    // loginSession: (req, res, next) => {
-    //     const dbInstance = app.get('db');
+    deleteOwnSet: (req, res) => {
+        const dbInstance = req.app.get('db');
 
-    //     dbInstance.users.findOne({id: profile.identities[0].user_id}, {columns: ['username', 'id', 'profileimage']}).then(userInfo => {
-    //         console.log(userInfo);
-    //         if (userInfo) {
-    //             app.get('/api/login-session', (req, res) => {
-    //                 req.session.username = userInfo.username;
-    //                 req.session.user_id = userInfo.id;
-    //                 res.status(200).send({username: req.session.username, user_id: req.session.user_id});
-    //             });
-    //             console.log(`welcome, ${userInfo.username}`);
-    //         }
-    //         else {
-    //             dbInstance.users.insert({id: profile.identities[0].user_id, username: profile._json.screen_name || `${profile._json.given_name} ${profile._json.family_name}`, profileimage: profile._json.picture}).then(res => res).catch(console.error, 'Error');
-    //     }}).catch(console.error, 'Error');
-    // }
+        //delete cards then delete set
+        dbInstance.cards.destroy({ setid: req.params.setid })
+            .then(() => axios.sets.destroy({ id: req.params.setid }))
+            .then(() => res.status(200).send('set and cards deleted'));
+    },
+    removeSet: (req, res) => {
+         const dbInstance = req.app.get('db');
+
+         // remove setid from users sets studied array
+         dbInstance.run(`update users set studiedsets = array_remove(studiedsets, ${req.params.setid}::varchar) where id = ${req.params.userid}`)
+            .then(() => res.status(200).send('set removed from users sets array'))
+            .catch(console.error, 'Error');
+    }
 }
