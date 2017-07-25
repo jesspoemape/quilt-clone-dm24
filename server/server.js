@@ -34,14 +34,14 @@ massive(config.connectionString).then(dbInstance => {
     function(accessToken, refreshToken, extraParams, profile, done) {
         // make database calls here to check for user
         dbInstance.users.findOne({id: profile.identities[0].user_id}, {columns: ['username', 'id', 'profileimage']}).then(user => {
-                if (user) {
-                    console.log('THIS');
-                    done(null, user);
-                } else {
-                    dbInstance.create_user([profile.identities[0].user_id, profile._json.screen_name, profile._json.picture]).then( user => {
-                        done(null, user).catch(console.error, 'Error');
-                    });
-                };
+            if (user) {
+                console.log('THIS');
+                done(null, user);
+            } else {
+                dbInstance.create_user([profile.identities[0].user_id, (profile._json.screen_name || profile._json.given_name), profile._json.picture]).then( user => {
+                    done(null, user).catch(console.error, 'Error');
+                });
+            };
         });
 
 

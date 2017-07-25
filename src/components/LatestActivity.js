@@ -14,15 +14,13 @@ class LatestActivity extends Component {
     }
 
 componentDidMount() {
-    axios.get(`/api/user-info/${123456789}`) // ********** change this for user session. this endpoint asks for req.params for the db request 
-        .then((response) => {
-            // map through the array of studied sets which is the response of getting user info
-            response.data[0].studiedsets.map( (setId) => {
-            const setUrl = `/api/get-set-info/${setId}`;
-            // get set info on each set and send that response to the store
-            return axios.get(setUrl).then(response => this.props.getSSInfo(response.data)).catch(console.error, 'Error');
-         } );
-        }).catch(console.error, 'Error');
+    // map through the array of studied sets which is the response of getting user info
+    // get set info on each set and send that response to the store
+    axios.get('/auth/me')
+        .then(res => axios.get(`/api/user-info/${res.data.id}`)
+        .then(res => {res.data[0].studiedsets.map((setId) => {return axios.get(`/api/get-set-info/${setId}`).then(res => this.props.getSSInfo(res.data))} )
+    })).catch(console.error, 'Error');
+
 }
 
 
