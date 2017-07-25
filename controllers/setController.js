@@ -87,14 +87,16 @@ module.exports = {
 
         //delete cards then delete set
         dbInstance.cards.destroy({ setid: req.params.setid })
-            .then(() => axios.sets.destroy({ id: req.params.setid }))
-            .then(() => res.status(200).send('set and cards deleted'));
+            .then(() => dbInstance.sets.destroy({ id: req.params.setid }))
+            .then(() => dbInstance.run(`update users set studiedsets = array_remove(studiedsets, ${req.params.setid}::varchar) where id = ${req.params.userid}::varchar`))
+            .then(() => res.status(200).send('set and cards deleted; setid removed from users array of sets'))
+            .catch(console.error, 'Error');
     },
     removeSet: (req, res) => {
          const dbInstance = req.app.get('db');
 
          // remove setid from users sets studied array
-         dbInstance.run(`update users set studiedsets = array_remove(studiedsets, ${req.params.setid}::varchar) where id = ${req.params.userid}`)
+         dbInstance.run(`update users set studiedsets = array_remove(studiedsets, ${req.params.setid}::varchar) where id = ${req.params.userid}::varchar`)
             .then(() => res.status(200).send('set removed from users sets array'))
             .catch(console.error, 'Error');
     }

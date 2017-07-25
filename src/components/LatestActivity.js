@@ -19,7 +19,9 @@ componentDidMount() {
     // get set info on each set and send that response to the store
     axios.get('/auth/me')
         .then(res => axios.get(`/api/user-info/${res.data.id}`)
-        .then(res => {res.data[0].studiedsets.map((setId) => {return axios.get(`/api/get-set-info/${setId}`).then(res => this.props.getSSInfo(res.data))} )
+        .then(res => {
+            console.log(res.data[0].studiedsets) 
+            return res.data[0].studiedsets.map((setId) => {return axios.get(`/api/get-set-info/${setId}`).then(res => this.props.getSSInfo(res.data))} )
     })).catch(console.error, 'Error');
 
 }
@@ -29,17 +31,16 @@ handleSearch(e) {
         console.log(e);
     }
 
-    render() {
-        
+    render() {      
     function removeDupes(arrayOfObjects) {
         let newObj = new Set();
         arrayOfObjects.forEach(e => newObj.add(JSON.stringify(e)))
         let final = Array.from(newObj).map(e => JSON.parse(e))
         return final
     }
-    const test = removeDupes(this.props.studiedSetsInfo)
+    const cleaned = removeDupes(this.props.studiedSetsInfo)
         // the array of set information objects will be mapped to render a set card
-        const sets = test.map((set, i) => {
+        const sets = cleaned.map((set, i) => {
             return <Link className='link' to={`/set-detail/${set.id}`}  key={i}><div className='activity-recent-set'>
                         <div className='activity-user-header'>
                             <h4 className='dark-label'>{ set.numofterms } terms</h4>

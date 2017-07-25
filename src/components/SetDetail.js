@@ -28,12 +28,11 @@ handleMoreClick() {
 }
 handleDelete() {
     axios.get('/auth/me').then(res => {
-        if (res.data.id = this.props.setInfo.creatorid) {
-            axios.delete(`/api/delete-own-set/${this.props.setInfo.id}`).then(res => res ).catch(console.error, 'Error');
+        if (res.data.id == this.props.setInfo.creatorid) {
+            axios.delete(`/api/delete-own-set/${this.props.setInfo.id}/${res.data.id}`).then(res => res ).catch(console.error, 'Error');
         }
         else {
-            axios.get('auth/me')
-            .then(res => {axios.post(`/api/remove-set/${this.props.setInfo.id}/${res.data.id}`)}).catch(console.error, 'Error');
+            axios.post(`/api/remove-set/${this.props.setInfo.id}/${res.data.id}`).then(res => res).catch(console.error, 'Error')
         }
     })
 }
