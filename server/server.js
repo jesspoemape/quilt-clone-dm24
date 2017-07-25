@@ -89,5 +89,6 @@ app.get('/api/get-cards/:id', sc.getCards);
 app.get('/api/user-info/:id', sc.getUserInfo);
 app.delete('/api/delete-own-set/:setid/:userid', sc.deleteOwnSet);
 app.post('/api/remove-set/:setid/:userid', sc.removeSet);
+app.get('/api/full-search/:search', sc.fullSearch);
 
 app.listen(3001, () => console.log("Listening on port 3001"));

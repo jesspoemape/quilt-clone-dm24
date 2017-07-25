@@ -99,5 +99,13 @@ module.exports = {
          dbInstance.run(`update users set studiedsets = array_remove(studiedsets, ${req.params.setid}::varchar) where id = ${req.params.userid}::varchar`)
             .then(() => res.status(200).send('set removed from users sets array'))
             .catch(console.error, 'Error');
+    },
+    fullSearch: (req, res) => {
+        const dbInstance = req.app.get('db');
+        //search for sets in database
+        dbInstance.run(`select * from sets where title like '%${req.params.search}%'`).then(results => {
+            console.log(results);
+            res.status(200).send(results);
+    }).catch(console.error, 'Error');
     }
 }
