@@ -59,7 +59,7 @@ module.exports = {
         description
     })
     .then( () => dbInstance.cards.insert(terms) )
-    .then( () => dbInstance.run( `update users set studiedsets = array_append(studiedsets, ${stringId}::varchar) where username = ${session.username}` ))
+    .then( () => dbInstance.run( `update users set studiedsets = array_append(studiedsets, ${stringId}::varchar) where id = ${req.params.userid}::varchar` ))
     .then( () => res.status(200).send('set and cards added') ).catch(console.error, 'Error');
 
     },

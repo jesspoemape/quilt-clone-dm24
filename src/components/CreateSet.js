@@ -29,18 +29,6 @@ class CreateSet extends Component {
                     term: '',
                     definition: '',
                     imageurl: ''
-                },
-                {
-                    id: null,
-                    term: '',
-                    definition: '',
-                    imageurl: ''
-                },
-                {
-                    id: null,
-                    term: '',
-                    definition: '',
-                    imageurl: ''
                 }
             ]
         }
@@ -64,19 +52,16 @@ handleCreateClick() {
         return {...card, id: uniqueCardId + i};
     });
 
-    // create a new set of cards to be sent to reducer
-    const newSet = {
+    // get user info, create a new set of cards to be sent to reducer 
+    axios.get('/auth/me').then(res => axios.post(`http://localhost:3001/api/add-set/${res.data.id}`, {
         id: uniqSetId,
         title,
-        creatorname: 'jae',
-        creatorid: 123456,
+        creatorname: res.data.username,
+        creatorid: res.data.id,
         numofterms: cards.length,
-        description: '',
+        description: this.state.description,
         cards: tempCards
-    } 
-
-    //send new set to database
-    axios.post('http://localhost:3001/api/add-set', newSet);
+    })).catch(console.error, 'Error');
 
     // reset initial state and clear form 
     this.setState({

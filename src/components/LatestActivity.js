@@ -14,6 +14,7 @@ class LatestActivity extends Component {
     }
 
 componentDidMount() {
+    // get logged in user info
     // map through the array of studied sets which is the response of getting user info
     // get set info on each set and send that response to the store
     axios.get('/auth/me')

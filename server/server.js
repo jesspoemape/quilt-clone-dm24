@@ -35,7 +35,6 @@ massive(config.connectionString).then(dbInstance => {
         // make database calls here to check for user
         dbInstance.users.findOne({id: profile.identities[0].user_id}, {columns: ['username', 'id', 'profileimage']}).then(user => {
             if (user) {
-                console.log('THIS');
                 done(null, user);
             } else {
                 dbInstance.create_user([profile.identities[0].user_id, (profile._json.screen_name || profile._json.given_name), profile._json.picture]).then( user => {
@@ -84,7 +83,7 @@ app.get('/auth/logout', (req, res) => { // log the user out and destroy the sess
 });
 
 // for UI
-app.post('/api/add-set', sc.addSet);
+app.post('/api/add-set/:userid', sc.addSet);
 app.get('/api/get-set-info/:id', sc.getSetInfo);
 app.get('/api/get-cards/:id', sc.getCards);
 app.get('/api/user-info/:id', sc.getUserInfo);
