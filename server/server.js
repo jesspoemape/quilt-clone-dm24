@@ -33,18 +33,16 @@ massive(config.connectionString).then(dbInstance => {
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
         // make database calls here to check for user
-        dbInstance.get_users().then( (users) => {
-            users.forEach(user => {
-                if (profile.identities[0].user_id == user.id) {
-                    console.log('this');
+        dbInstance.users.findOne({id: profile.identities[0].user_id}, {columns: ['username', 'id', 'profileimage']}).then(user => {
+                if (user) {
+                    console.log('THIS');
                     done(null, user);
                 } else {
                     dbInstance.create_user([profile.identities[0].user_id, profile._json.screen_name, profile._json.picture]).then( user => {
                         done(null, user).catch(console.error, 'Error');
                     });
-                }
-            }, this);
-        })
+                };
+        });
 
 
         // const user = dbInstance.users.findOne({id: profile.identities[0].user_id}, {columns: ['username', 'id', 'profileimage']}).then(userInfo => {
@@ -78,7 +76,6 @@ app.get('/auth/callback', passport.authenticate('auth0', {successRedirect: 'http
 app.get('/auth/me', (req, res) => { // check if someone is logged in 
     if (!req.user) return res.status(200).send('no user');
     res.status(200).send(req.user);
-    console.log('this one', req.user);
 })
 app.get('/auth/logout', (req, res) => { // log the user out and destroy the session
     console.log('in server');
