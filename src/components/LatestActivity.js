@@ -19,9 +19,7 @@ componentDidMount() {
     // get set info on each set and send that response to the store
     axios.get('/auth/me')
         .then(res => axios.get(`/api/user-info/${res.data.id}`)
-        .then(res => {
-            console.log(res.data[0].studiedsets) 
-            return res.data[0].studiedsets.map((setId) => {return axios.get(`/api/get-set-info/${setId}`).then(res => this.props.getSSInfo(res.data))} )
+        .then(res => { res.data[0].studiedsets.map((setId) => {return axios.get(`/api/get-set-info/${setId}`).then(res => this.props.getSSInfo(res.data))} )
     })).catch(console.error, 'Error');
 
 }
