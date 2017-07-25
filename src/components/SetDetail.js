@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {getSetInfo, getCards} from './../ducks/reducer';
+import {getSetInfo, getCards, getSSInfo} from './../ducks/reducer';
 import Header from './Header';
 import Footer from './Footer';
 import axios from 'axios';
@@ -34,7 +34,7 @@ handleDelete() {
         else {
             axios.post(`/api/remove-set/${this.props.setInfo.id}/${res.data.id}`).then(res => res).catch(console.error, 'Error')
         }
-    })
+    }).catch(console.error, 'Error');
 }
 
     render() {
@@ -148,4 +148,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {getSetInfo, getCards})(SetDetail);
+export default connect(mapStateToProps, {getSetInfo, getCards, getSSInfo})(SetDetail);
