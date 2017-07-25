@@ -371,6 +371,7 @@ h5:hover {
 	padding: 0 1rem .5rem 1rem;
 	margin-top: 1rem;
 	width: 100%;
+	border-bottom: 5px solid white;
 }
 .activity-recent-set:hover {
 	border-bottom: 5px solid #efcb47;
@@ -464,6 +465,9 @@ h5:hover {
 	font-size: .9rem;
 	margin-right: -7rem;
 	/*margin-left: 3.5rem;*/
+}
+#more-popup.show {
+	visibility: hidden;
 }
 .long:after {
 	position:absolute;
@@ -805,6 +809,20 @@ h5:hover {
 	font-weight: 400;
 	margin-top: 1rem;
 	font-size: 1.3rem;
+}
+.more-menu-container {
+	background-color: white;
+	width: 10rem;
+	padding: .7rem;
+	position: absolute;
+	z-index: 5;
+	top: 3.5rem;
+	left: 0;
+	display: none;
+	box-shadow: 0 4px 8px 0 rgba(69,83,88, 0.2), 0 6px 20px 0 rgba(69,83,88, 0.19);
+}
+.more-menu-container.show {
+	display: block;
 }
 
 

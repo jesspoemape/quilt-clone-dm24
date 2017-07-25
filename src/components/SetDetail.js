@@ -7,14 +7,24 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 
 class SetDetail extends Component {
+    constructor() {
+        super();
 
-    componentWillMount() {
-        const setId = this.props.match.params.id;
-        const setUrl = `/api/get-set-info/${setId}`;
-        const cardUrl = `/api/get-cards/${setId}`;
-         axios.get(setUrl).then(response => this.props.getSetInfo(response.data)).catch(console.error, 'Error');
-         axios.get(cardUrl).then(response => this.props.getCards(response.data)).catch(console.error, 'Error');
+        this.handleMoreClick = this.handleMoreClick.bind(this);
     }
+
+componentWillMount() {
+    const setId = this.props.match.params.id;
+    const setUrl = `/api/get-set-info/${setId}`;
+    const cardUrl = `/api/get-cards/${setId}`;
+        axios.get(setUrl).then(response => this.props.getSetInfo(response.data)).catch(console.error, 'Error');
+        axios.get(cardUrl).then(response => this.props.getCards(response.data)).catch(console.error, 'Error');
+}
+
+handleMoreClick() {
+    document.getElementById('more-popup').classList.toggle("show");
+    document.getElementById('more-menu').classList.toggle("show");
+}
 
     render() {
         const {title, creatorname, numofterms, description} = this.props.setInfo;
@@ -71,9 +81,20 @@ class SetDetail extends Component {
                     <svg id='info' className='set-circle-svg' xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 32 32"><g display="none"><g display="inline"><path stroke="#666666" strokeMiterlimit="10" d="M13.813,4.877V0.5h4.554v4.377H13.813z M13.813,31.5V9.043h4.554    V31.5H13.813z"/></g></g><g display="none"><g display="inline"><g><path d="M18.866,32h-5.554V8.543h5.554V32z M14.312,31h3.554V9.543h-3.554V31z M18.866,5.377h-5.554V0h5.554     V5.377z M14.312,4.377h3.554V1h-3.554V4.377z"/></g></g></g><g display="none"><g display="inline"><g><path d="M18.866,32h-5.554V8.543h5.554V32z M14.312,31h3.554V9.543h-3.554V31z M18.866,5.377h-5.554V0h5.554     V5.377z M14.312,4.377h3.554V1h-3.554V4.377z"/></g></g></g><g><rect x="13.634" width="4.733" height="4.518"/><rect x="13.634" y="8.818" width="4.733" height="23.182"/></g></svg>
                     <div className='circle-icon-popup top'>Info</div>
                 </div>
-                <div className='circle-icon'>
+                <div className='circle-icon' onClick={() => this.handleMoreClick()}>
                     <svg id="more" className='set-circle-svg' viewBox="0 0 22 6" width="100%" height="100%"><path d="M3.324.266a2.48 2.48 0 0 0-1.816.761 2.48 2.48 0 0 0-.762 1.817c0 .703.254 1.308.762 1.816a2.48 2.48 0 0 0 1.816.762 2.48 2.48 0 0 0 1.817-.762 2.48 2.48 0 0 0 .761-1.816 2.48 2.48 0 0 0-.761-1.817A2.48 2.48 0 0 0 3.324.266zm15.352 0c-.703 0-1.299.254-1.787.761a2.53 2.53 0 0 0-.733 1.817c0 .703.244 1.308.733 1.816a2.385 2.385 0 0 0 1.787.762 2.48 2.48 0 0 0 1.816-.762 2.48 2.48 0 0 0 .762-1.816 2.48 2.48 0 0 0-.762-1.817 2.48 2.48 0 0 0-1.816-.761zM11 .266a2.48 2.48 0 0 0-1.816.761 2.48 2.48 0 0 0-.762 1.817c0 .703.254 1.308.762 1.816A2.48 2.48 0 0 0 11 5.422a2.48 2.48 0 0 0 1.816-.762 2.48 2.48 0 0 0 .762-1.816 2.48 2.48 0 0 0-.762-1.817A2.48 2.48 0 0 0 11 .266z" fillRule="evenodd"></path></svg>
-                    <div className='circle-icon-popup top'>More</div>
+                    <div id='more-popup' className='circle-icon-popup top'>More</div>
+                    <div id='more-menu' className='more-menu-container'>
+                        <div className='more-menu-item'>
+                            <h6>Embed</h6>
+                        </div>
+                        <div className='more-menu-item'>
+                            <h6>Scores</h6>
+                        </div>
+                        <div className='more-menu-item'>
+                            <h6>Delete</h6>
+                        </div>
+                    </div>
                 </div>
             </div>
             {/*********************** STUDY OPTIONS ************************/}
