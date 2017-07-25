@@ -28,7 +28,7 @@ handleMoreClick() {
 }
 handleDelete() {
     axios.get('/auth/me').then(res => {
-        if (res.data.id == this.props.setInfo.creatorid) {
+        if (res.data.id + '' === this.props.setInfo.creatorid + '') {
             axios.delete(`/api/delete-own-set/${this.props.setInfo.id}/${res.data.id}`).then(res => res ).catch(console.error, 'Error');
         }
         else {

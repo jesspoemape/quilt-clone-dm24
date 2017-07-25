@@ -17,6 +17,6 @@ export default (
         <Route path='/set-detail/:id' component={SetDetail}/>
         <Route path='/settings' component={Settings}/>
         <Route path='/flashcards/:id' component={Flashcards}/>
-        <Route path='/search-results' component={SearchResults}/>
+        <Route path='/search-results/:searchterm' component={SearchResults}/>
     </Switch>
 );

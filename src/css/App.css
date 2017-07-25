@@ -859,7 +859,16 @@ h5:hover {
 	color: white;
 	margin: 0 1rem 0 1rem;
 }
-
+.search-title {
+	padding: 2rem 1rem 1rem 1rem;
+	font-family: "Catamaran", sans-serif;
+	font-weight: 700;
+	font-size: 1.3rem;
+	color: #455358;
+}
+.search-sets-container {
+	padding: 1rem;
+}
 
 
 .tablet-option-container {

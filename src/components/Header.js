@@ -10,7 +10,8 @@ class Header extends Component {
     constructor() {
         super();
         this.state={
-            redirectToNewPage: false
+            redirectToNewPage: false,
+            search: ''
         }
 
         this.showMenu = this.showMenu.bind(this);
@@ -39,9 +40,10 @@ showSearch() {
     document.getElementById('search-overlay').style.display = 'flex';
 }
 handleSearch(e) {
+    this.setState({search: e})
     document.getElementById('search-input').onkeydown = (ev) => {
-        if (ev.keyCode == 13) {
-            axios.get(`/api/full-search/${e}`).then(res => {
+        if (ev.keyCode === 13) {
+            axios.get(`/api/full-search/${this.state.search}`).then(res => {
                 ev.preventDefault();
                 this.props.getSearchResults(res.data);
                 this.setState({redirectToNewPage: true});
@@ -51,7 +53,7 @@ handleSearch(e) {
 }
 
     render() {
-        if (this.state.redirectToNewPage) {return <Redirect to='/search-results' push/>}
+        if (this.state.redirectToNewPage) {return <Redirect to={`/search-results/${this.state.search}`} push/>}
         return (
             <div>
                 {/********************* MENU OVERLAY ************************/}
