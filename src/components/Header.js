@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './../css/reset.css';
 import './../css/App.css';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {logout, getSearchResults} from './../ducks/reducer';
 import {connect} from 'react-redux';
 import axios from 'axios';
@@ -9,6 +9,9 @@ import axios from 'axios';
 class Header extends Component {
     constructor() {
         super();
+        this.state={
+            redirectToNewPage: false
+        }
 
         this.showMenu = this.showMenu.bind(this);
         this.closeMenu = this.closeMenu.bind(this);
@@ -38,12 +41,17 @@ showSearch() {
 handleSearch(e) {
     document.getElementById('search-input').onkeydown = (ev) => {
         if (ev.keyCode == 13) {
-            axios.get(`/api/full-search/${e}`).then(res => this.props.getSearchResults(res.data)).catch(console.error, 'Error');
+            axios.get(`/api/full-search/${e}`).then(res => {
+                ev.preventDefault();
+                this.props.getSearchResults(res.data);
+                this.setState({redirectToNewPage: true});
+            }).catch(console.error, 'Error');
         }
     }
 }
 
     render() {
+        if (this.state.redirectToNewPage) {return <Redirect to='/search-results' push/>}
         return (
             <div>
                 {/********************* MENU OVERLAY ************************/}

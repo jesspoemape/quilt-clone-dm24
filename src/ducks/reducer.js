@@ -24,7 +24,6 @@ export default function reducer(state = initialState, action) {
         case GET_SS_INFO:
             return Object.assign({}, {studiedSetsInfo: [...state.studiedSetsInfo, action.payload]}, {cards: state.cards}, {setInfo: state.setInfo});  
         case GET_SEARCH_RES:
-        console.log(action.payload);
             return Object.assign({}, {searchRes: action.payload});
         
         case LOGOUT + '_FULFILLED':
