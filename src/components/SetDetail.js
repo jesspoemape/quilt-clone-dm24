@@ -64,9 +64,9 @@ handleCopyClick() {
 }
 
     render() {
-    if (this.state.redirectToNewPage) {return <Redirect to='/activity' push/>}
-    
-        const {title, creatorname, numofterms, description} = this.props.setInfo;
+    if (this.state.redirectToNewPage) {
+        this.setState({redirectToNewPage: false});
+    return <Redirect to='/activity' push/>}
 
         const cards = this.props.cards.map((card, i) => {
             return <div className='set-card' key={i}> 
@@ -94,14 +94,14 @@ handleCopyClick() {
             <Header/>
             {/*********************** SET INFO ************************/}
             <div className='set-user-header'>
-                <h4 className='dark-label'>{ numofterms } terms</h4>
-                <p className='set-user-p'>{ creatorname }</p>
+                <h4 className='dark-label'>{ this.props.setInfo ? this.props.setInfo.numofterms : 'X' } terms</h4>
+                <p className='set-user-p'>{ this.props.setInfo ? this.props.setInfo.creatorname : '...' }</p>
             </div>
             <div className='set-title-header'>
-                <h1>{(title) ? title : 'Title'}</h1>
+                <h1>{this.props.setInfo ? this.props.setInfo.title : 'Title'}</h1>
             </div>
             <div className='set-description-header'>
-                <h4>{(description) ? ((description === '') ? title : description) : 'Description'}</h4>
+                <h4>{this.props.setInfo ? this.props.setInfo.description : 'Description'}</h4>
             </div>
             {/*********************** CIRCLE ICONS ************************/}
             <div className='circle-icons-container'>
@@ -173,7 +173,7 @@ handleCopyClick() {
 function mapStateToProps(state) {
     return {
         setInfo: state.setInfo ,
-        cards: state.cards
+        cards: state.cards || []
     }
 }
 
