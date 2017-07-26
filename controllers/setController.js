@@ -108,5 +108,8 @@ module.exports = {
         const dbInstance = req.app.get('db');
 
         // add set id to users list of studied sets if it is not already there
+        // if the user is the creator, then it won't even run here
+        dbInstance.run(`update users set studiedsets = array_append(studiedsets, ${req.params.setid}::varchar) where id = ${req.params.userid}::varchar`)
+        .then(() => res.status(200).send('set id added')).catch(console.log, 'Error');
     }
 }

@@ -15,6 +15,7 @@ class SetDetail extends Component {
 
         this.handleMoreClick = this.handleMoreClick.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+        this.handleCopyClick = this.handleCopyClick.bind(this);
     }
 
 componentWillMount() {
@@ -48,6 +49,18 @@ handleDelete() {
         }
     })
     .catch(console.error, 'Error');
+}
+handleCopyClick() {
+    axios.get('/auth/me').then(res => {
+        if (res.data.id + '' !== this.props.setInfo.creatorid + '') {
+            axios.post(`/api/add-to-users-sets/${this.props.setInfo.id}/${res.data.id}`, this.props.setInfo.id+'')
+            .then(() => alert('Set added!'))
+            .catch(console.error, 'Error');
+        }
+        else {
+            alert('Oops! That set is already in your list of sets!');
+        }
+    }).catch(console.error, 'Error');
 }
 
     render() {
@@ -92,7 +105,7 @@ handleDelete() {
             </div>
             {/*********************** CIRCLE ICONS ************************/}
             <div className='circle-icons-container'>
-                <div className='circle-icon'>
+                <div onClick={() => this.handleCopyClick()} className='circle-icon'>
                     <svg id='copy' className='set-circle-svg' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" version="1.1" x="0px" y="0px"><title>7.4</title><desc>Created with Sketch.</desc><g stroke="none" strokeWidth="1" fillRule="evenodd"><g fillRule="nonzero"><g><path d="M20,36 L20,40 L24.9991283,40 L2.00174332,40 C0.89621101,40 0,39.1084602 0,38.0027084 L0,1.99729162 C0,0.894217919 0.889261723,0 2.00174332,0 L29.9982567,0 C31.103789,0 32,0.891539827 32,1.99729162 L32,26.0013542 L32,14 L28,14 L28,4 L4,4 L4,36 L10,36 L10,40 L16,40 L16,36 L20,36 Z M28,4 L28,10 L32,10 L32,4 L28,4 Z M16,12.0028592 C16,10.8967106 16.8892617,10 18.0017433,10 L45.9982567,10 C47.103789,10 48,10.9018508 48,12.0028592 L48,45.9971408 C48,47.1032894 47.1107383,48 45.9982567,48 L18.0017433,48 C16.896211,48 16,47.0981492 16,45.9971408 L16,12.0028592 Z M20,44 L44,44 L44,14 L20,14 L20,44 Z M8,38 C8,36.8954305 8.89826062,36 9.99791312,36 L12.0020869,36 C13.1055038,36 14,36.8877296 14,38 C14,39.1045695 13.1017394,40 12.0020869,40 L9.99791312,40 C8.89449617,40 8,39.1122704 8,38 Z M30,2 C31.1045695,2 32,2.89826062 32,3.99791312 L32,6.00208688 C32,7.10550383 31.1122704,8 30,8 C28.8954305,8 28,7.10173938 28,6.00208688 L28,3.99791312 C28,2.89449617 28.8877296,2 30,2 Z"/></g></g></g></svg>
                     <div className='circle-icon-popup top'>Copy</div>
                 </div>
