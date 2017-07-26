@@ -90,5 +90,6 @@ app.get('/api/user-info/:id', sc.getUserInfo);
 app.delete('/api/delete-own-set/:setid/:userid', sc.deleteOwnSet);
 app.post('/api/remove-set/:setid/:userid', sc.removeSet);
 app.get('/api/full-search/:search', sc.fullSearch);
+app.post('/api/add-to-users-sets/:setid/:userid', sc.addNotOwnSet);
 
 app.listen(3001, () => console.log("Listening on port 3001"));

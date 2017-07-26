@@ -103,5 +103,10 @@ module.exports = {
         //search for sets in database
         dbInstance.run(`select * from sets where title ilike '${req.params.search}%'`)
         .then(results => res.status(200).send(results)).catch(console.error, 'Error');
+    },
+    addNotOwnSet: (req, res) => {
+        const dbInstance = req.app.get('db');
+
+        // add set id to users list of studied sets if it is not already there
     }
 }
