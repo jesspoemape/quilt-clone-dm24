@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Header from './Header';
+import Footer from './Footer';
 import {Link} from 'react-router-dom';
 
 class SearchResults extends Component {
@@ -21,6 +22,7 @@ class SearchResults extends Component {
                 <div className='search-sets-container'>
                     {(sets !== []) ? sets : 'No Results'}
                 </div>
+                <Footer />
             </div>
         );
     }

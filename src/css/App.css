@@ -739,6 +739,7 @@ h5:hover {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 }
 .flash-progress-container {
 	height: 3rem;
@@ -765,6 +766,8 @@ h5:hover {
 	color: #455358;
 	font-size: 3rem;
 	letter-spacing: .1rem;
+	text-align: center;
+	padding: 0 1rem 0 1rem;
 }
 .flip-container {
 	perspective: 1000px;
@@ -810,6 +813,32 @@ h5:hover {
 	margin-top: 1rem;
 	font-size: 1.3rem;
 }
+.flash-sidebar-menu {
+	width: 275px;
+	display: none;
+	height: 100vh;
+	background-color: white;
+	box-shadow: 0 4px 12px 0 rgba(69,83,88, 0.5), 0 6px 20px 0 rgba(69,83,88, 0.5);
+}
+.flash-content-main {
+	display: flex;
+}
+.flash-side-progress-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin: 1rem;
+}
+.flash-side-progress-container .flash-progress-wrap {
+	width: 100%;
+}
+.flash-side-progress-label-container {
+	display: flex;
+	width: 100%;
+	padding-top: 1rem;
+	justify-content: space-between;
+}
+
 .more-menu-container {
 	background-color: white;
 	width: 10rem;
@@ -1046,6 +1075,24 @@ MEDIA QUERIES
 	.footer-container {
 		padding: 3rem 2.7rem 1rem 2.7rem;
 	}
+	.search-sets-container {
+		padding: 1rem 2.7rem 2.7rem 2.7rem;
+	}
+	.search-title {
+		padding: 2.7rem 2.7rem 1rem 2.7rem;
+		font-size: 1.7rem;
+	}
+	.flash-footer {
+		justify-content: center;
+	}
+	.flash-circle-icon {
+		margin: 1rem 2rem 1rem 2rem;
+		height: 3rem;
+		width: 3rem;
+	}
+	.flash-circle-icon .set-circle-svg {
+		width: 1.5rem;
+	}
 }
 
 /* once we reach larger than 720px, apply these new styles*/
@@ -1120,8 +1167,17 @@ MEDIA QUERIES
 		display: flex;
 		justify-content: flex-end;
 	}
+	.flash-progress-container {
+		display: none;
+	}
+	.flash-footer {
+		padding-left: 200px;
+	}
+	.flash-sidebar-menu {
+		display: flex;
+	}
 }
-/* once we reach larger than 720px, apply these new styles*/
+/* once we reach larger than 1025px, apply these new styles*/
 @media(min-width: 1025px) {
 	.activity-main-container {
 		display: flex;
@@ -1135,5 +1191,16 @@ MEDIA QUERIES
 		width: 100%;
 		margin-left: 5rem;
 		width: 50%;
+	}
+	.search-sets-container {
+		width: 100%;
+		padding: 1rem 4rem 2.7rem 4rem;
+	}
+	/*.search-sets-container .activity-recent-set {
+		width: 100%;
+	}*/
+	.search-title {
+		font-size: 2rem;
+		padding-left: 4rem;
 	}
 }

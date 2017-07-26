@@ -57,6 +57,7 @@ handleStartOver() {
 }
 
     render() {
+        const placeholderImg = 'http://www.artsalamandre.com/wp-content/uploads/2016/03/placeholder.png';
         const {count} = this.state;
         return (
             <div>
@@ -75,25 +76,40 @@ handleStartOver() {
                     <p className='flash-back-sub'>You just studied {this.props.cards.length} terms!</p>
                     <button className='create-set-button' onClick={() => this.handleStartOver()}>Start Over</button>
                 </div>
-                <div  id='flip-container' className='flip-container' onClick={() => this.handleFlip()}>
-                    <div className='flipper'>
-                        <div className='flash-card-term'>
-                            <p className='flash-term'>{(this.props.cards[count]) ? this.props.cards[count].term : 'Term'}</p>
+                <div className='flash-content-main'>
+                     <div className='flash-sidebar-menu'>
+                         <div className='flash-side-progress-container'>
+                            <div className='flash-progress-wrap'>
+                                <div  id='prog-bar' className='flash-progress-bar'></div>
+                            </div>
+                            <div className='flash-side-progress-label-container'>
+                                <h6 className='flash-progress-label'>PROGRESS</h6>
+                                <h6 className='flash-progress-label'>{count+1}/{this.props.cards.length}</h6>  
+                            </div>
+                         </div>
+                     </div>
+                    <div  id='flip-container' className='flip-container' onClick={() => this.handleFlip()}>
+                        <div className='flipper'>
+                            <div className='flash-card-term'>
+                                <p className='flash-term'>{(this.props.cards[count]) ? this.props.cards[count].term : 'Term'}</p>
+                            </div>
+                            <div className='flash-card-def'>
+                                <p className='flash-def'>{(this.props.cards[count]) ? this.props.cards[count].definition : 'Definition'}</p>
+                                <img src={(this.props.cards[count]) ? this.props.cards[count].imageurl : placeholderImg} alt=""/>
+                            </div>
                         </div>
-                        <div className='flash-card-def'>
-                            <p className='flash-def'>{(this.props.cards[count]) ? this.props.cards[count].definition : 'Definition'}</p>
+                    </div>
+                    <div className='flash-footer'>
+                        <div id='prev' className='flash-circle-icon' onClick={() => this.handlePrevious()}>
+                            <svg className='set-circle-svg' xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 100 100"><g transform="translate(0,-952.36218)"><path  d="M 72 8 L 28 50 L 72 92 L 72 8 z " transform="translate(0,952.36218)"/></g></svg>
+                        </div>
+                        <div id='next' className='flash-circle-icon' onClick={() => this.handleNext()}>
+                            <svg className='set-circle-svg' xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 100 100"><g transform="translate(0,-952.36218)"><path  d="M 28 8 L 28 92 L 72 50 L 28 8 z " transform="translate(0,952.36218)"/></g></svg>
                         </div>
                     </div>
                 </div>
+               
                 
-                <div className='flash-footer'>
-                    <div id='prev' className='flash-circle-icon' onClick={() => this.handlePrevious()}>
-                        <svg className='set-circle-svg' xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 100 100"><g transform="translate(0,-952.36218)"><path  d="M 72 8 L 28 50 L 72 92 L 72 8 z " transform="translate(0,952.36218)"/></g></svg>
-                    </div>
-                    <div id='next' className='flash-circle-icon' onClick={() => this.handleNext()}>
-                        <svg className='set-circle-svg' xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 100 100"><g transform="translate(0,-952.36218)"><path  d="M 28 8 L 28 92 L 72 50 L 28 8 z " transform="translate(0,952.36218)"/></g></svg>
-                    </div>
-                </div>
                 
             </div>
         );

@@ -21,6 +21,9 @@ componentWillMount() {
         axios.get(setUrl).then(response => this.props.getSetInfo(response.data)).catch(console.error, 'Error');
         axios.get(cardUrl).then(response => this.props.getCards(response.data)).catch(console.error, 'Error');
 }
+componentWillReceiveProps() {
+    this.forceUpdate();
+}
 
 handleMoreClick() {
     document.getElementById('more-popup').classList.toggle("show");
