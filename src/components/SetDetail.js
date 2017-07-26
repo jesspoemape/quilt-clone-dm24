@@ -4,11 +4,14 @@ import {getSetInfo, getCards, getSSInfo} from './../ducks/reducer';
 import Header from './Header';
 import Footer from './Footer';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 class SetDetail extends Component {
     constructor() {
         super();
+        this.state={
+            redirectToNewPage: false
+        }
 
         this.handleMoreClick = this.handleMoreClick.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
@@ -32,15 +35,16 @@ handleMoreClick() {
 handleDelete() {
     axios.get('/auth/me').then(res => {
         if (res.data.id + '' === this.props.setInfo.creatorid + '') {
-            axios.delete(`/api/delete-own-set/${this.props.setInfo.id}/${res.data.id}`).then(res => res ).catch(console.error, 'Error');
+            axios.delete(`/api/delete-own-set/${this.props.setInfo.id}/${res.data.id}`).then(res => this.setState({redirectToNewPage: true}) ).catch(console.error, 'Error');
         }
         else {
-            axios.post(`/api/remove-set/${this.props.setInfo.id}/${res.data.id}`).then(res => res).catch(console.error, 'Error')
+            axios.post(`/api/remove-set/${this.props.setInfo.id}/${res.data.id}`).then(res => this.setState({redirectToNewPage: true})).catch(console.error, 'Error')
         }
     }).catch(console.error, 'Error');
 }
 
     render() {
+        if (this.state.redirectToNewPage) {return <Redirect to='/activity' push/>}
         const {title, creatorname, numofterms, description} = this.props.setInfo;
         const cards = this.props.cards.map((card, i) => {
             return <div className='set-card' key={i}> 
