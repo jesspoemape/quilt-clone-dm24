@@ -44,8 +44,10 @@ handleDelete() {
 }
 
     render() {
-        if (this.state.redirectToNewPage) {return <Redirect to='/activity' push/>}
+    if (this.state.redirectToNewPage) {return <Redirect to='/activity' push/>}
+    
         const {title, creatorname, numofterms, description} = this.props.setInfo;
+
         const cards = this.props.cards.map((card, i) => {
             return <div className='set-card' key={i}> 
                     <div className='card-icon-header'>
@@ -76,10 +78,10 @@ handleDelete() {
                 <p className='set-user-p'>{ creatorname }</p>
             </div>
             <div className='set-title-header'>
-                <h1>{title}</h1>
+                <h1>{(title) ? title : 'Title'}</h1>
             </div>
             <div className='set-description-header'>
-                <h4>{(description === '') ? title : description}</h4>
+                <h4>{(description) ? ((description === '') ? title : description) : 'Description'}</h4>
             </div>
             {/*********************** CIRCLE ICONS ************************/}
             <div className='circle-icons-container'>
@@ -150,8 +152,8 @@ handleDelete() {
 
 function mapStateToProps(state) {
     return {
-        setInfo: state.setInfo,
-        cards: state.cards
+        setInfo: state.setInfo ,
+        cards: state.cards || []
     }
 }
 

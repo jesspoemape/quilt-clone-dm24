@@ -44,9 +44,7 @@ handleSearch(e) {
     document.getElementById('search-input').onkeydown = (ev) => {
         if (ev.keyCode === 13) {
             axios.get(`/api/full-search/${this.state.search}`).then(res => {
-                ev.preventDefault();
-                this.props.getSearchResults(res.data);
-                this.setState({redirectToNewPage: true});
+                this.props.getSearchResults(res.data).then(this.setState({redirectToNewPage: true}));
             }).catch(console.error, 'Error');
         }
     }

@@ -3,6 +3,8 @@ import Header from './Header';
 import Footer from './Footer';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import {getSSInfo} from './../ducks/reducer';
+import {connect} from 'react-redux';
 
 class CreateSet extends Component {
     constructor() {
@@ -53,7 +55,7 @@ handleCreateClick() {
     });
 
     // get user info, create a new set of cards to be sent to reducer 
-    axios.get('/auth/me').then(res => axios.post(`http://localhost:3001/api/add-set/${res.data.id}`, {
+    axios.get('/auth/me').then( res => axios.post(`http://localhost:3001/api/add-set/${res.data.id}`, {
         id: uniqSetId,
         title,
         creatorname: res.data.username,
@@ -61,7 +63,12 @@ handleCreateClick() {
         numofterms: cards.length,
         description: this.state.description,
         cards: tempCards
-    })).catch(console.error, 'Error');
+    }) ).then(axios.get('auth/me')
+        .then(res => axios.get(`/api/user-info/${res.data.id}`))
+        .then(res => res.data[0].studiedsets.map((setId) => {
+            return axios.get(`/api/get-set-info/${setId}`).then( res => this.props.getSSInfo(res.data) ) 
+        })))
+    .catch(console.error, 'Error');
 
     // reset initial state and clear form 
     this.setState({
@@ -260,4 +267,4 @@ const blankCards = this.state.cards.map( (card, i) => {
     }
 }
 
-export default CreateSet;
+export default connect(null, {getSSInfo})(CreateSet);
