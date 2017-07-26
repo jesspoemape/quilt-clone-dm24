@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Header from './Header';
-import {getUserSS, getSSInfo, cleanSSInfo} from './../ducks/reducer';
+import {getUserSS, getSSInfo} from './../ducks/reducer';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Footer from './Footer';
@@ -19,15 +19,12 @@ componentDidMount() {
     // get set info on each set and send that response to the store
     axios.get('/auth/me')
         .then(res => axios.get(`/api/user-info/${res.data.id}`)
-        .then(res => { 
-            res.data[0].studiedsets.map((setId) => {
+        .then(res => { res.data[0].studiedsets.map((setId) => {
                 return axios.get(`/api/get-set-info/${setId}`).then(res => this.props.getSSInfo(res.data))
             } )
         }))
         .catch(console.error, 'Error');
-
 }
-
 
 handleSearch(e) {
         console.log(e);
@@ -116,4 +113,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {getUserSS, getSSInfo, cleanSSInfo})(LatestActivity);
+export default connect(mapStateToProps, {getUserSS, getSSInfo})(LatestActivity);

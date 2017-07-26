@@ -30,7 +30,7 @@ class SearchResults extends Component {
 
 function mapStateToProps(state) {
     return {
-        sets: state.searchRes
+        sets: state.searchRes || []
     }
 }
 

@@ -35,12 +35,19 @@ handleMoreClick() {
 handleDelete() {
     axios.get('/auth/me').then(res => {
         if (res.data.id + '' === this.props.setInfo.creatorid + '') {
-            axios.delete(`/api/delete-own-set/${this.props.setInfo.id}/${res.data.id}`).then(res => this.setState({redirectToNewPage: true}) ).catch(console.error, 'Error');
+            axios.delete(`/api/delete-own-set/${this.props.setInfo.id}/${res.data.id}`)
+            .then(() => axios.get('/auth/me')
+            .then(res => axios.get(`/api/user-info/${res.data.id}`)
+            .then(res => {res.data[0].studiedsets.map((setId) => {
+                return axios.get(`/api/get-set-info/${setId}`).then( res => this.props.getSSInfo(res.data) ) }) })
+                .then(() => this.setState({redirectToNewPage: true}))
+                ))
         }
         else {
-            axios.post(`/api/remove-set/${this.props.setInfo.id}/${res.data.id}`).then(res => this.setState({redirectToNewPage: true})).catch(console.error, 'Error')
+            axios.post(`/api/remove-set/${this.props.setInfo.id}/${res.data.id}`).then(() => this.setState({redirectToNewPage: true})).catch(console.error, 'Error')
         }
-    }).catch(console.error, 'Error');
+    })
+    .catch(console.error, 'Error');
 }
 
     render() {
@@ -153,7 +160,7 @@ handleDelete() {
 function mapStateToProps(state) {
     return {
         setInfo: state.setInfo ,
-        cards: state.cards || []
+        cards: state.cards
     }
 }
 

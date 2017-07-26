@@ -58,10 +58,10 @@ module.exports = {
         numofterms,
         description
     })
-    .then( () => dbInstance.cards.insert(terms) )
-    .then( () => dbInstance.run( `update users set studiedsets = array_append(studiedsets, ${stringId}::varchar) where id = ${req.params.userid}::varchar` ))
-    .then( () => res.status(200).send('set and cards added') ).catch(console.error, 'Error');
-
+    .then( () => dbInstance.cards.insert(terms)
+    .then( () => dbInstance.run( `update users set studiedsets = array_append(studiedsets, ${stringId}::varchar) where id = ${req.params.userid}::varchar` )
+    .then( () => {res.status(200).send('set and cards added')} )
+    .catch(console.error, 'Error') ) )
     },
     getSetInfo: (req, res) => {
         const dbInstance = req.app.get('db');
@@ -77,8 +77,6 @@ module.exports = {
     },
     getUserInfo: (req, res) => {
         const dbInstance = req.app.get('db');
-        console.log(req.user)
- 
         // get user info 
         dbInstance.users.find({id: req.params.id}, {columns: ['studiedsets', 'profileimage']}).then(response => res.status(200).send(response)).catch(console.error, 'Error');
     },
@@ -87,10 +85,10 @@ module.exports = {
 
         //delete cards then delete set
         dbInstance.cards.destroy({ setid: req.params.setid })
-            .then(() => dbInstance.sets.destroy({ id: req.params.setid }))
-            .then(() => dbInstance.run(`update users set studiedsets = array_remove(studiedsets, ${req.params.setid}::varchar) where id = ${req.params.userid}::varchar`))
-            .then(() => res.status(200).send('set and cards deleted; setid removed from users array of sets'))
-            .catch(console.error, 'Error');
+        .then(() => dbInstance.sets.destroy({ id: req.params.setid })
+        .then(() => dbInstance.run(`update users set studiedsets = array_remove(studiedsets, ${req.params.setid}::varchar) where id = ${req.params.userid}::varchar`)))
+        .then(() => res.status(200).send('set and cards deleted; setid removed from users array of sets'))
+        .catch(console.error, 'Error');
     },
     removeSet: (req, res) => {
          const dbInstance = req.app.get('db');
@@ -103,8 +101,7 @@ module.exports = {
     fullSearch: (req, res) => {
         const dbInstance = req.app.get('db');
         //search for sets in database
-        dbInstance.run(`select * from sets where title ilike '${req.params.search}%'`).then(results => {
-            res.status(200).send(results);
-    }).catch(console.error, 'Error');
+        dbInstance.run(`select * from sets where title ilike '${req.params.search}%'`)
+        .then(results => res.status(200).send(results)).catch(console.error, 'Error');
     }
 }

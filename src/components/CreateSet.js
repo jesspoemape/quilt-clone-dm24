@@ -63,12 +63,12 @@ handleCreateClick() {
         numofterms: cards.length,
         description: this.state.description,
         cards: tempCards
-    }) ).then(axios.get('auth/me')
-        .then(res => axios.get(`/api/user-info/${res.data.id}`))
-        .then(res => res.data[0].studiedsets.map((setId) => {
+    }) ).then(() => axios.get('/auth/me')
+        .then(res => axios.get(`/api/user-info/${res.data.id}`)
+        .then(res => {res.data[0].studiedsets.map((setId) => {
             return axios.get(`/api/get-set-info/${setId}`).then( res => this.props.getSSInfo(res.data) ) 
-        })))
-    .catch(console.error, 'Error');
+        }) }))
+    .catch(console.error, 'Error') )
 
     // reset initial state and clear form 
     this.setState({

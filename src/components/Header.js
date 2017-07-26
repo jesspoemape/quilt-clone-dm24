@@ -43,15 +43,20 @@ handleSearch(e) {
     this.setState({search: e})
     document.getElementById('search-input').onkeydown = (ev) => {
         if (ev.keyCode === 13) {
+            this.closeSearch();
             axios.get(`/api/full-search/${this.state.search}`).then(res => {
-                this.props.getSearchResults(res.data).then(this.setState({redirectToNewPage: true}));
-            }).catch(console.error, 'Error');
+                this.props.getSearchResults(res.data)
+            }).then(this.setState({redirectToNewPage: true}))
+            .catch(console.error, 'Error');
         }
     }
+    
 }
 
     render() {
-        if (this.state.redirectToNewPage) {return <Redirect to={`/search-results/${this.state.search}`} push/>}
+        if (this.state.redirectToNewPage) {
+            this.setState({redirectToNewPage: false});    
+            return <Redirect to={`/search-results/${this.state.search}`} push/>}
         return (
             <div>
                 {/********************* MENU OVERLAY ************************/}

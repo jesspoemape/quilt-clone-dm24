@@ -33,8 +33,6 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, {studiedSetsInfo: cleaned}, {cards: state.cards}, {setInfo: state.setInfo} )
         case GET_SEARCH_RES:
             return Object.assign({}, {searchRes: action.payload});
-        case CLEAN_SS_INFO:
-            return Object.assign({}, {studiedSetsInfo: action.payload});
         case LOGOUT + '_FULFILLED':
             console.log('logged out');
             break;
@@ -56,7 +54,6 @@ const LOGOUT = 'LOGOUT';
 const GET_USER_SS = 'GET_USER_SS';
 const GET_SS_INFO = 'GET_SS_INFO';
 const GET_SEARCH_RES = 'GET_SEARCH_RES';
-const CLEAN_SS_INFO = 'CLEAN_SS_INFO';
 
 
 // action creators
@@ -108,11 +105,5 @@ export function getSearchResults(sets) {
     return {
         type: GET_SEARCH_RES,
         payload: sets
-    }
-}
-export function cleanSSInfo(ssinfo) {
-    return {
-        type: CLEAN_SS_INFO,
-        payload: ssinfo
     }
 }
