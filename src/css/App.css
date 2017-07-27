@@ -989,6 +989,7 @@ h5:hover {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	justify-content: space-around;
 }
 .match-card {
 	font-family: "Catamaran", sans-serif;
@@ -998,7 +999,8 @@ h5:hover {
 	background-color: white;
 	border: 2px solid #DADEE0;
 	display: flex;
-	width: 8rem;
+	width: 7.7rem;
+	margin-top: .4rem;
 	height: 25vh;
 	justify-content: center;
 	align-items: center;
