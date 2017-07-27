@@ -172,6 +172,8 @@ html {
 	display: flex;
 	justify-content: center;
 	align-items: center; 
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 }
 .options-container:hover {
 	background-color: #efcb47;
@@ -220,6 +222,8 @@ html {
 .blank-card-svg {
 	fill: #455358;
 	width: 15px;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 }
 .blank-card-svg:hover {
 	fill: #efcb47;
@@ -257,6 +261,8 @@ h5 {
 	letter-spacing: .1rem;
 	border-bottom: 5px solid #3ccfcf;
 	padding-bottom: .5rem;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 }
 h5:hover {
 	color: #efcb47;
@@ -273,6 +279,8 @@ h5:hover {
 	padding: 1.1rem;
 	width: 100%;
 	margin-top: 2rem;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 }
 .create-set-button:hover {
 	background-color: #efcb47;
@@ -321,6 +329,8 @@ h5:hover {
 	justify-content: left;
 	align-items: baseline;
 	padding: 1rem 1.3rem 1rem 1.3rem;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 }
 .menu-fixed-item svg, .menu-classes-container svg, .menu-folders-container svg {
 	fill: #3ccfcf;
@@ -357,6 +367,8 @@ h5:hover {
 	font-weight: 400;
 	font-size: .8rem;
 	color: #FF8B79;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 }
 .menu-logout:hover {
 	color: #efcb47;
@@ -372,6 +384,8 @@ h5:hover {
 	margin-top: 1rem;
 	width: 100%;
 	border-bottom: 5px solid white;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 }
 .activity-recent-set:hover {
 	border-bottom: 5px solid #efcb47;
@@ -411,6 +425,8 @@ h5:hover {
 	padding: .5rem 1rem .5rem 1rem;
 	margin: 1.3rem 1rem 1rem 1rem;
 	border-left: 2px solid #e8ebed;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 }
 .set-user-p:hover {
 	color: #efcb47;
@@ -446,6 +462,8 @@ h5:hover {
 	justify-content: center;
 	align-items: center;
 	position: relative;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 }
 .circle-icon:hover {
 	background-color:  #efcb47;
@@ -516,6 +534,8 @@ h5:hover {
 	font-size: .7rem;
 	color: #3ccfcf;
 	letter-spacing: .1rem;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 }
 .set-study-option:hover {
 	color: #efcb47;
@@ -551,6 +571,8 @@ h5:hover {
 	fill: #455358;
 	height: 1.2rem;
 	padding-left: 1rem;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 }
 .card-svg:hover {
 	fill: #efcb47;
@@ -614,6 +636,8 @@ h5:hover {
 	border: none;
 	padding: .7rem 1.2rem;
 	margin-left: 1.5rem;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 }
 .landing-sign-button:hover {
 	background-color: #efcb47;
@@ -634,6 +658,8 @@ h5:hover {
 }
 .login-link:hover {
 	color: #9da9db;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 }
 .footer-container {
 	background-color: #4257b2;
@@ -670,6 +696,8 @@ h5:hover {
 	font-weight: 200;
 	letter-spacing: .07rem;
 	margin-bottom: 1.8rem;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 }
 .footer-li:hover {
 	color: #9da9db;
@@ -696,6 +724,8 @@ h5:hover {
 }
 .footer-social-icons-container {
 	display: flex;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 
 }
 .flash-header-icon {
@@ -723,6 +753,8 @@ h5:hover {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 }
 .flash-circle-icon:hover {
 	background-color: #efcb47;
@@ -841,8 +873,7 @@ h5:hover {
 
 .more-menu-container {
 	background-color: white;
-	width: 10rem;
-	padding: .7rem;
+	width: 12rem;
 	position: absolute;
 	z-index: 5;
 	top: 3.5rem;
@@ -852,6 +883,39 @@ h5:hover {
 }
 .more-menu-container.show {
 	display: block;
+}
+.more-menu-item {
+	font-family: "Catamaran", sans-serif;
+	font-weight: 400;
+	letter-spacing: .05rem;
+	color: #455358;
+	padding: .8rem 1rem .5rem 1rem;
+	width: 100%;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.more-menu-item:hover {
+	background-color: #efcb47;
+}
+.more-menu-item svg {
+	width: 1.5rem;
+	fill: #455358;
+	padding-right: .5rem;
+}
+#garbage-wrap {
+	color: #FF725B;
+}
+#garbage {
+	fill: #FF725B;
+}
+#garbage-wrap:hover {
+	color: #455358;
+}
+#garbage-wrap:hover #garbage {
+	fill: #455358;
 }
 .header-icon-search {
 	fill: white;

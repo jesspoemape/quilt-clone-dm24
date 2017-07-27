@@ -24,10 +24,9 @@ componentWillMount() {
     const cardUrl = `/api/get-cards/${setId}`;
         axios.get(setUrl).then(response => this.props.getSetInfo(response.data)).catch(console.error, 'Error');
         axios.get(cardUrl).then(response => this.props.getCards(response.data)).catch(console.error, 'Error');
+        window.scrollTo(0,0);
 }
-componentWillReceiveProps() {
-    this.forceUpdate();
-}
+
 
 handleMoreClick() {
     document.getElementById('more-popup').classList.toggle("show");
@@ -35,32 +34,32 @@ handleMoreClick() {
 }
 handleDelete() {
     axios.get('/auth/me').then(res => {
-        if (res.data.id + '' === this.props.setInfo.creatorid + '') {
-            axios.delete(`/api/delete-own-set/${this.props.setInfo.id}/${res.data.id}`)
-            .then(() => axios.get('/auth/me')
-            .then(res => axios.get(`/api/user-info/${res.data.id}`)
-            .then(res => {res.data[0].studiedsets.map((setId) => {
-                return axios.get(`/api/get-set-info/${setId}`).then( res => this.props.getSSInfo(res.data) ) }) })
-                .then(() => this.setState({redirectToNewPage: true}))
-                ))
+        const userID = res.data.id
+        if (userID + '' === this.props.setInfo.creatorid + '') {
+            axios.post(`/api/delete-own-set/${this.props.setInfo.id}/${userID}`)
+            .then(() => axios.get(`/api/user-info/${userID}`)
+            .then(res => {res.data[0].studiedsets.map((setId) => {return axios.get(`/api/get-set-info/${setId}`).then( res => this.props.getSSInfo(res.data) ) }) })
+                .then(() => this.setState({redirectToNewPage: true})).catch(console.error, 'Error'))
         }
         else {
-            axios.post(`/api/remove-set/${this.props.setInfo.id}/${res.data.id}`).then(() => this.setState({redirectToNewPage: true})).catch(console.error, 'Error')
+            axios.post(`/api/remove-set/${this.props.setInfo.id}/${res.data.id}`)
+            .then(() => axios.get(`/api/user-info/${userID}`)
+            .then( res => {res.data[0].studiedsets.map((setId) => {return axios.get(`/api/get-set-info/${setId}`).then(res => this.props.getSSInfo(res.data))})})
+                .then(() => this.setState({redirectToNewPage: true})).catch(console.error, 'Error'))
         }
     })
-    .catch(console.error, 'Error');
 }
 handleCopyClick() {
     axios.get('/auth/me').then(res => {
         if (res.data.id + '' !== this.props.setInfo.creatorid + '') {
-            axios.post(`/api/add-to-users-sets/${this.props.setInfo.id}/${res.data.id}`, this.props.setInfo.id+'')
-            .then(() => alert('Set added!'))
-            .catch(console.error, 'Error');
+            axios.post(`/api/add-to-users-sets/${this.props.setInfo.id}/${res.data.id}`)
+            .then(() => this.setState({redirectToNewPage: true}))
+            .catch(console.error, 'Error')
         }
         else {
             alert('Oops! That set is already in your list of sets!');
         }
-    }).catch(console.error, 'Error');
+    });
 }
 
     render() {
@@ -126,12 +125,31 @@ handleCopyClick() {
                     <div id='more-popup' className='circle-icon-popup top'>More</div>
                     <div id='more-menu' className='more-menu-container'>
                         <div className='more-menu-item'>
+                            <svg id="trophy" viewBox="0 0 22 20"><path d="M.746 3.395v-1.23h4.746V.64h11.016v1.523h4.746v1.831c0 .205-.02.396-.059.571a4.74 4.74 0 0 1-.088.557 3.62 3.62 0 0 1-.146.498c-.078.293-.18.571-.308.835a4.485 4.485 0 0 1-.454.747c-.176.195-.366.396-.571.6a8.043 8.043 0 0 1-.718.63l-.615.25a5.16 5.16 0 0 1-.674.22 5.173 5.173 0 0 1-.79.175c-.274.04-.577.078-.91.117-.116.235-.224.454-.321.66a4.008 4.008 0 0 1-.381.63c-.117.175-.24.346-.366.512a1.88 1.88 0 0 1-.455.425 4.097 4.097 0 0 1-.439.38 2.983 2.983 0 0 1-.557.323 4.345 4.345 0 0 1-.57.205 5.98 5.98 0 0 1-.66.147v2.343c0 .117.01.235.03.352.019.117.028.234.028.351.02.079.054.171.103.279.049.107.093.21.132.307.058.078.117.162.176.25.058.087.117.16.175.22a1.554 1.554 0 0 0 .469.409c.078.059.152.117.22.176.068.059.151.117.249.176.078.02.161.054.249.102.088.05.18.093.278.132.117.02.22.044.308.073.088.03.18.064.278.103.078.02.161.044.25.073.087.03.18.044.278.044.078.02.15.034.22.044.068.01.15.034.248.073h.645v1.582H5.492v-1.582h.703c.059-.02.127-.034.205-.044.079-.01.166-.014.264-.014l.278-.073c.108-.03.21-.064.308-.103a3.85 3.85 0 0 0 .527-.176.951.951 0 0 0 .308-.102c.088-.05.18-.093.278-.132.078-.059.161-.112.25-.161.087-.05.16-.093.219-.132.078-.059.151-.127.22-.205a1.01 1.01 0 0 1 .249-.205 2.174 2.174 0 0 0 .293-.528.817.817 0 0 0 .132-.278 2.85 2.85 0 0 1 .102-.308 4.32 4.32 0 0 0 .059-.703v-2.343a5.404 5.404 0 0 1-1.275-.367 4.072 4.072 0 0 1-1.069-.688 4.252 4.252 0 0 1-.85-.952 5.313 5.313 0 0 1-.615-1.275c-.312-.02-.605-.049-.879-.088a3.12 3.12 0 0 1-.761-.205 6.022 6.022 0 0 1-.704-.205 8.945 8.945 0 0 1-.644-.263 2.633 2.633 0 0 0-.176-.162 2.06 2.06 0 0 0-.176-.131.689.689 0 0 0-.175-.132 1.638 1.638 0 0 1-.176-.103l-.103-.102-.132-.132a2.633 2.633 0 0 1-.16-.176 2.06 2.06 0 0 1-.133-.176.36.36 0 0 1-.16-.117 2.06 2.06 0 0 1-.133-.176.689.689 0 0 1-.131-.175 3.208 3.208 0 0 1-.103-.235 33.108 33.108 0 0 1-.234-.732 5.173 5.173 0 0 1-.176-.791 9.494 9.494 0 0 1-.132-.85 7.975 7.975 0 0 1-.044-.85zm1.582.351v.425c0 .146.02.278.059.395a1.43 1.43 0 0 0 .117.586 4.675 4.675 0 0 0 .469.996c.078.118.166.23.263.337.098.108.205.21.323.308.117.078.249.151.395.22.147.068.308.132.483.19.176.059.352.112.528.161.176.05.37.093.586.132l-.059-.293V3.746H2.328zm14.121 3.75c.137 0 .269-.02.396-.059.127-.039.268-.078.425-.117.117-.02.239-.058.366-.117.127-.058.239-.117.337-.176a1.84 1.84 0 0 0 .307-.19c.088-.068.18-.161.279-.278.078-.079.16-.166.249-.264.088-.098.16-.205.22-.322l.175-.352.176-.351a6.905 6.905 0 0 1 .176-.586c.02-.079.034-.162.044-.25a.488.488 0 0 1 .073-.22v-.467h-3.164v3.516a.24.24 0 0 1-.03.132.18.18 0 0 0-.029.102z" fillRule="evenodd"></path></svg>
+                            <h6>Scores</h6>
+                        </div>
+                        <div className='more-menu-item'>
+                            <svg id="print" viewBox="0 0 24 22"><path d="M20.203 6.219H3.797c-.957 0-1.782.342-2.476 1.025a3.366 3.366 0 0 0-1.04 2.49v7.032H4.97v4.687h14.06v-4.687h4.688V9.734c0-.957-.342-1.782-1.026-2.475a3.366 3.366 0 0 0-2.49-1.04zm-3.515 12.89H7.313V13.25h9.375v5.86zm3.515-8.203c-.312 0-.586-.112-.82-.337a1.11 1.11 0 0 1-.352-.835c0-.312.113-.586.337-.82a1.11 1.11 0 0 1 .835-.351c.313 0 .586.112.82.336.235.225.352.503.352.835 0 .313-.112.586-.337.82a1.11 1.11 0 0 1-.835.352zM19.031.36H4.97v4.688h14.06V.359z" fillRule="evenodd"></path></svg>
+                            <h6>Print</h6>
+                        </div>
+                        <div className='more-menu-item'>
+                            <svg id="combine" viewBox="0 0 18 25" ><path d="M15.973 24.281l1.933-1.933-4.746-4.746-1.933 1.933 4.746 4.746zM2.789 7.055h4.863v7.793l-7.5 7.5 1.934 1.933 8.32-8.32V7.055h4.864L9 .844l-6.21 6.21z" fillRule="evenodd"></path></svg>
+                            <h6>Combine</h6>
+                        </div>
+                        <div className='more-menu-item'>
+                            <svg id="export" viewBox="0 0 16 21"><path d="M11.428 20.621l4.54-4.54h-3.427v-8h-2.256v7.998H6.857l4.57 4.541zM3.459 4.654v7.998h2.256V4.654h3.428L4.573.114.03 4.653h3.43z" fillRule="evenodd"></path></svg>
+                            <h6>Export</h6>
+                        </div>
+                        <div className='more-menu-item'>
+                            <svg id="embed" viewBox="0 0 20 15"><path d="M7.313 14.969L.28 7.938 7.313.905l1.64 1.64-5.39 5.392 5.39 5.39-1.64 1.64zm7.734-1.64l5.39-5.392-5.39-5.39 1.64-1.64 7.032 7.03-7.032 7.032-1.64-1.64z" fillRule="evenodd"></path></svg>
                             <h6>Embed</h6>
                         </div>
                         <div className='more-menu-item'>
-                            <h6>Scores</h6>
+                            <svg id="alert" viewBox="0 0 24 24"><path d="M.281 20.922H23.72L12 .707.281 20.922zm12.774-3.223h-2.11v-2.11h2.11v2.11zm0-4.219h-2.11V9.203h2.11v4.277z" fillRule="evenodd"></path></svg>
+                            <h6>Report</h6>
                         </div>
-                        <div className='more-menu-item' onClick={() => this.handleDelete()}>
+                        <div id='garbage-wrap' className='more-menu-item' onClick={() => this.handleDelete()}>
+                            <svg id="garbage" viewBox="0 0 20 25"><path d="M2.207 21.703c0 .703.254 1.309.762 1.817a2.48 2.48 0 0 0 1.816.761h10.43a2.48 2.48 0 0 0 1.816-.761 2.48 2.48 0 0 0 .762-1.817V6.06H2.207v15.644zm16.934-19.57h-4.57L13.28.843H6.72l-1.29 1.29H.919V4.77h18.223V2.133z" fillRule="evenodd"></path></svg>
                             <h6>Delete</h6>
                         </div>
                     </div>

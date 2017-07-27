@@ -111,5 +111,12 @@ module.exports = {
         // if the user is the creator, then it won't even run here
         dbInstance.run(`update users set studiedsets = array_append(studiedsets, ${req.params.setid}::varchar) where id = ${req.params.userid}::varchar`)
         .then(() => res.status(200).send('set id added')).catch(console.log, 'Error');
+    },
+    getUserSetInfo: (req, res) => {
+        const dbInstance = req.app.get('db');
+
+        dbInstance.run(`select * from sets where id::varchar in (select unnest(studiedsets) from users where id = ${req.params.userid}::varchar)`)
+        .then(response => res.status(200).send(response))
+        .catch(console.error, 'Error')
     }
 }

@@ -32,7 +32,7 @@ export default function reducer(state = initialState, action) {
             const cleaned = removeDupes(thisTest.studiedSetsInfo);
             return Object.assign({}, {studiedSetsInfo: cleaned}, {cards: state.cards}, {setInfo: state.setInfo} )
         case GET_SEARCH_RES:
-            return Object.assign({}, {searchRes: action.payload});
+            return Object.assign({}, state, {searchRes: action.payload});
         case LOGOUT + '_FULFILLED':
             console.log('logged out');
             break;

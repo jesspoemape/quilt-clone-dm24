@@ -24,6 +24,7 @@ componentDidMount() {
             } )
         }))
         .catch(console.error, 'Error');
+        window.scrollTo(0,0);
 }
 
 handleSearch(e) {
@@ -109,7 +110,7 @@ function mapStateToProps(state) {
     return {
         setInfo: state.setInfo,
         studiedSets: state.studiedSets,
-        studiedSetsInfo: state.studiedSetsInfo
+        studiedSetsInfo: state.studiedSetsInfo || []
     }
 }
 
