@@ -10,6 +10,7 @@ class Match extends Component {
             time: 0
         }
 this.shuffle = this.shuffle.bind(this);
+// this.handleCardTouch = this.handleCardTouch.bind(this);
     }
 
 componentDidMount() {
@@ -28,14 +29,25 @@ shuffle(arr) {
     }
     return arr
 }
+testArr =[];
+handleCardTouch(i) {
+    document.getElementById(`card-${i}`).classList.add('selected');
+    // on click, add the text to an array
+    // then check if this.props.cards includes an object where the term and def match the term and def in this temp array
+    // if so, then flash green and hide the cards
+    // if not, flash red and then go back to unselected style card
+    let text = document.getElementById(`card-${i}`).getElementsByTagName('p')[0].innerHTML;
+    this.testArr = [...this.testArr, text]
+    console.log(this.testArr);
+}
 
     render() {
         const termsArr = this.props.cards.map(card => card.term);
         const defsArr = this.props.cards.map(card => card.definition);
         const cardsArr = termsArr.concat(defsArr);
         const shuffledArr = this.shuffle(cardsArr);
-      const matchTerms =  shuffledArr.map( (card, i) => {
-           return <div key={i} className='match-card'><p className='match-card-term'>{card}</p></div>
+      const matchCards =  shuffledArr.map( (card, i) => {
+           return <div id={`card-${i}`} onMouseUp={ this.handleCardTouch.bind(this, i)} key={i} className='match-card'><p className='match-card-term'>{card}</p></div>
        } ) 
 
         return (
@@ -45,8 +57,7 @@ shuffle(arr) {
                 <h2 className='match-timer-time'>{this.state.time}</h2>
             </div>
             <div className='match-cards-container'>
-                {matchTerms}
-                {/*{matchDefs}*/}
+                {matchCards}
             </div>
             </div>
         );

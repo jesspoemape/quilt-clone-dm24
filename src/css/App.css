@@ -970,6 +970,9 @@ h5:hover {
 	justify-content: center;
 	align-items: center;
 	padding: 1rem 0 1rem 0;
+	position: sticky;
+	z-index: 100;
+	top: 0;
 }
 .match-timer-title {
 	font-family: "Catamaran", sans-serif;
@@ -1004,6 +1007,10 @@ h5:hover {
 	height: 25vh;
 	justify-content: center;
 	align-items: center;
+}
+.match-card.selected {
+	background-color : #FFF2C7;
+	border: 2px solid #FFCD1F;
 }
 
 .tablet-option-container {
