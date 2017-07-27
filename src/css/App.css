@@ -1012,6 +1012,14 @@ h5:hover {
 	background-color : #FFF2C7;
 	border: 2px solid #FFCD1F;
 }
+.match-card.correct {
+	background-color : #aaf7c2;
+	border: 2px solid #64d687;
+}
+.match-card.incorrect {
+	background-color : #f29f9f;
+	border: 2px solid #d66464;
+}
 
 .tablet-option-container {
 	background-color: #3ccfcf;

@@ -30,6 +30,7 @@ shuffle(arr) {
     return arr
 }
 testArr =[];
+idArr = [];
 handleCardTouch(i) {
     document.getElementById(`card-${i}`).classList.add('selected');
     // on click, add the text to an array
@@ -38,23 +39,47 @@ handleCardTouch(i) {
     // if not, flash red and then go back to unselected style card
     let text = document.getElementById(`card-${i}`).getElementsByTagName('p')[0].innerHTML;
     if (!this.testArr.includes(text)) {
-         this.testArr = [...this.testArr, text]
-        console.log(this.testArr);
+         this.testArr = [...this.testArr, text];
+         this.idArr = [...this.idArr, `card-${i}`];
     }
    
 
     if (this.testArr.length === 2) {
+        let found = false;
         for (var x = 0; x < this.props.cards.length; x++) {
             var element = this.props.cards[x];
-            if ((element.term === this.testArr[0] && element.definition === this.testArr[1]) || (element.definition === this.testArr[0] && element.term === this.testArr[1])) {
-                console.log('match')
+            if ((element.term === this.testArr[0] && element.definition === this.testArr[1]) 
+            || (element.definition === this.testArr[0] && element.term === this.testArr[1])) {
+                found = true;
                 break;
             }
-            else {
-                console.log('no match');
-            }
+        }
+        let temp1 = this.idArr[0];
+        let temp2 = this.idArr[1];
+        if (found) {
+            document.getElementById(this.idArr[0]).classList.add('correct');
+            document.getElementById(this.idArr[1]).classList.add('correct');
+            setTimeout(function() {
+                document.getElementById(temp1).style.visibility = 'hidden';
+                document.getElementById(temp2).style.visibility = 'hidden';
+            }, 300);
+            this.testArr = [];
+            this.idArr = [];
+        }
+        else {
+            document.getElementById(this.idArr[0]).classList.add('incorrect');
+            document.getElementById(this.idArr[1]).classList.add('incorrect');
+            setTimeout(function() {
+                document.getElementById(temp1).classList.remove('incorrect');
+                document.getElementById(temp2).classList.remove('incorrect');
+                document.getElementById(temp1).classList.remove('selected');
+                document.getElementById(temp2).classList.remove('selected');
+            }, 300);
+            this.testArr = [];
+            this.idArr = [];
         }
     }
+    
 }
 
     render() {
