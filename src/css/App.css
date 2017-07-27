@@ -972,6 +972,17 @@ h5:hover {
 	width: 90%;
 
 }
+#game-over {
+	display: none;
+}
+.match-end-wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: "Catamaran", sans-serif;
+	color: #455358;
+	padding: 2rem 1rem;
+}
 .match-timer-container {
 	background-color: white;
 	width: 100%;
