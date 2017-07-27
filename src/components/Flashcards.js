@@ -113,7 +113,7 @@ handleStartOver() {
     }
 }
 
-export function mapStateToProps(state) {
+function mapStateToProps(state) {
     return {
         cards: state.cards
     }

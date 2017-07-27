@@ -962,7 +962,47 @@ h5:hover {
 .search-sets-container {
 	padding: 1rem;
 }
-
+.match-timer-container {
+	background-color: white;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem 0 1rem 0;
+}
+.match-timer-title {
+	font-family: "Catamaran", sans-serif;
+	font-weight: 700;
+	font-size: .7rem;
+	color: #455358;
+	letter-spacing: .09rem;
+}
+.match-timer-time {
+	font-family: "Catamaran", sans-serif;
+	font-weight: 700;
+	font-size: 2rem;
+	color: #4257b2;
+}
+.match-cards-container {
+	padding: .5rem;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.match-card {
+	font-family: "Catamaran", sans-serif;
+	color: #828C8F;
+	font-weight: 200;
+	letter-spacing: .03rem;
+	background-color: white;
+	border: 2px solid #DADEE0;
+	display: flex;
+	width: 8rem;
+	height: 25vh;
+	justify-content: center;
+	align-items: center;
+}
 
 .tablet-option-container {
 	background-color: #3ccfcf;
