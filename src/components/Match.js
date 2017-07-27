@@ -37,8 +37,24 @@ handleCardTouch(i) {
     // if so, then flash green and hide the cards
     // if not, flash red and then go back to unselected style card
     let text = document.getElementById(`card-${i}`).getElementsByTagName('p')[0].innerHTML;
-    this.testArr = [...this.testArr, text]
-    console.log(this.testArr);
+    if (!this.testArr.includes(text)) {
+         this.testArr = [...this.testArr, text]
+        console.log(this.testArr);
+    }
+   
+
+    if (this.testArr.length === 2) {
+        for (var x = 0; x < this.props.cards.length; x++) {
+            var element = this.props.cards[x];
+            if ((element.term === this.testArr[0] && element.definition === this.testArr[1]) || (element.definition === this.testArr[0] && element.term === this.testArr[1])) {
+                console.log('match')
+                break;
+            }
+            else {
+                console.log('no match');
+            }
+        }
+    }
 }
 
     render() {
