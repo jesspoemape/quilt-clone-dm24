@@ -12,6 +12,7 @@ class Match extends Component {
         }
 this.shuffle = this.shuffle.bind(this);
 this.handleStart = this.handleStart.bind(this);
+this.handleStartOver = this.handleStartOver.bind(this);
     }
 
 componentDidMount() {
@@ -50,7 +51,6 @@ handleCardTouch(i) {
     if (!this.testArr.includes(text)) {
          this.testArr = [...this.testArr, text];
          this.idArr = [...this.idArr, `card-${i}`];
-         this.finishArr = [...this.finishArr, i];
     }
 
     if (this.testArr.length === 2) {
@@ -66,6 +66,7 @@ handleCardTouch(i) {
         let temp1 = this.idArr[0];
         let temp2 = this.idArr[1];
         if (found) {
+            this.finishArr = [...this.finishArr, i];
             document.getElementById(this.idArr[0]).classList.add('correct');
             document.getElementById(this.idArr[1]).classList.add('correct');
             setTimeout(function() {
@@ -91,10 +92,16 @@ handleCardTouch(i) {
     
     //check if all the cards have visibility of hidden
     // if so, stop the timer and congratulate the player
-    if (this.finishArr.length === this.props.cards.length * 2) {
+    if (this.finishArr.length === this.props.cards.length) {
         document.getElementById('game-over').style.display = 'flex';
         document.getElementById('match-cards-container').style.display = 'none';
     }
+}
+handleStartOver() {
+    document.getElementById('game-over').style.display = 'none';
+    document.getElementById('match-cards-container').style.display = 'none';
+    document.getElementById('match-start-btn').style.display = 'block';
+    
 }
 
     render() {
@@ -125,7 +132,7 @@ handleCardTouch(i) {
                 <div id='game-over' className='match-end-wrap'>
                     <h2 className='flash-back-main'>Nice work!</h2>
                     <p className='flash-back-sub'>You just studied {this.props.cards.length} terms!</p>
-                    <button className='create-set-button' >Start Over</button>
+                    <button className='create-set-button' onClick={() => this.handleStartOver()}>Start Over</button>
                 </div>
             </div>
         );
