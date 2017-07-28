@@ -666,6 +666,9 @@ h5:hover {
 .footer-container {
 	background-color: #4257b2;
 	padding: 2rem 1rem;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 }
 .footer-header, .footer-content-header, .footer-li {
 	font-family: "Catamaran", sans-serif;
@@ -706,6 +709,7 @@ h5:hover {
 }
 .footer-content-section {
 	margin-bottom: 2.5rem;
+	width: 50%;
 }
 .footer-social-container {
 	border: 3px solid #3B4C9B;
@@ -1242,10 +1246,7 @@ MEDIA QUERIES
 		height: 1.5rem;
 	}
 	.footer-content-section {
-		width: 25%;
-	}
-	.footer-content-section {
-	margin-bottom: 2rem;
+		margin-bottom: 2rem;
 	}
 	.footer-container {
 		padding: 3rem 2.7rem 1rem 2.7rem;
@@ -1392,6 +1393,13 @@ MEDIA QUERIES
 	}
 	.match-end-wrap {
 		padding-left: 275px;
+	}
+	.footer-content {
+		flex-direction: row;
+		justify-content: flex-start;
+	}
+	.footer-content-section {
+		width: 10rem;
 	}
 }
 /* once we reach larger than 1025px, apply these new styles*/

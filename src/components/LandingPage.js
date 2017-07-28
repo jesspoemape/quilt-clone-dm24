@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Footer from './Footer';
 
 class LandingPage extends Component {
 
@@ -16,6 +17,7 @@ class LandingPage extends Component {
                         </div>
                     </div>
                 </div>
+                <Footer/>
             </div>
         );
     }
