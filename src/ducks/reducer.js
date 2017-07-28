@@ -5,7 +5,10 @@ const initialState = {
     cards: [],
     studiedSets: [],
     studiedSetsInfo: [],
-    searchRes: []
+    searchRes: [],
+    startTimer: false,
+    startTime: 0,
+    finalTime: 0
 }
 
 
@@ -33,6 +36,10 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, {studiedSetsInfo: cleaned}, {cards: state.cards}, {setInfo: state.setInfo} )
         case GET_SEARCH_RES:
             return Object.assign({}, state, {searchRes: action.payload});
+        case START_TIMER:
+            return Object.assign({}, state, {startTimer: action.payload.val, startTime: action.payload.time});
+        case GET_FINAL_TIME:
+            return Object.assign({}, state, {finalTime: action.payload});
         case LOGOUT + '_FULFILLED':
             console.log('logged out');
             break;
@@ -54,6 +61,8 @@ const LOGOUT = 'LOGOUT';
 const GET_USER_SS = 'GET_USER_SS';
 const GET_SS_INFO = 'GET_SS_INFO';
 const GET_SEARCH_RES = 'GET_SEARCH_RES';
+const START_TIMER = 'START_TIMER';
+const GET_FINAL_TIME = 'GET_FINAL_TIME';
 
 
 // action creators
@@ -105,5 +114,17 @@ export function getSearchResults(sets) {
     return {
         type: GET_SEARCH_RES,
         payload: sets
+    }
+}
+export function startTimer(val, time) {
+    return {
+        type: START_TIMER,
+        payload: {val, time}
+    }
+}
+export function getFinalTime(val) {
+    return {
+        type: GET_FINAL_TIME,
+        payload: val
     }
 }
