@@ -41,6 +41,7 @@ handleStart() {
 testArr =[];
 idArr = [];
 finishArr = [];
+restartArr = [];
 handleCardTouch(i) {
     document.getElementById(`card-${i}`).classList.add('selected');
     // on click, add the text to an array
@@ -51,6 +52,7 @@ handleCardTouch(i) {
     if (!this.testArr.includes(text)) {
          this.testArr = [...this.testArr, text];
          this.idArr = [...this.idArr, `card-${i}`];
+         this.restartArr = [...this.restartArr, i];
     }
 
     if (this.testArr.length === 2) {
@@ -95,15 +97,24 @@ handleCardTouch(i) {
     if (this.finishArr.length === this.props.cards.length) {
         document.getElementById('game-over').style.display = 'flex';
         document.getElementById('match-cards-container').style.display = 'none';
+        this.finishArr = [];
     }
 }
 handleStartOver() {
     document.getElementById('game-over').style.display = 'none';
-    document.getElementById('match-cards-container').style.display = 'none';
     document.getElementById('match-start-btn').style.display = 'block';
-    
-}
 
+    this.restartArr.forEach((card, i) => { 
+         document.getElementById(`card-${i}`).style.visibility = 'visible';
+         document.getElementById(`card-${i}`).classList.remove('correct');
+         document.getElementById(`card-${i}`).classList.remove('selected');
+    
+    })
+    this.restartArr = [];
+}
+// i need to move all of this into a function because i need to redo this when the game restarts.
+// all this could go in a .then in the component did mount after the api call.
+// this would allow me to store the shuffled cards array in state, maybe???????
     render() {
         const termsArr = this.props.cards.map(card => card.term);
         const defsArr = this.props.cards.map(card => card.definition);
@@ -141,7 +152,7 @@ handleStartOver() {
 
 function mapStateToProps(state) {
     return {
-        cards: state.cards
+        cards: state.cards || []
     }
 }
 
