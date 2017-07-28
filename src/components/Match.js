@@ -36,6 +36,7 @@ shuffle(arr) {
 handleStart() {
     document.getElementById('match-cards-container').style.display = 'flex';
     document.getElementById('match-start-btn').style.display = 'none';
+    document.getElementById('match-start-btn-small').style.display = 'none';
 }
 
 testArr =[];
@@ -108,13 +109,10 @@ handleStartOver() {
          document.getElementById(`card-${i}`).style.visibility = 'visible';
          document.getElementById(`card-${i}`).classList.remove('correct');
          document.getElementById(`card-${i}`).classList.remove('selected');
-    
     })
     this.restartArr = [];
 }
-// i need to move all of this into a function because i need to redo this when the game restarts.
-// all this could go in a .then in the component did mount after the api call.
-// this would allow me to store the shuffled cards array in state, maybe???????
+
     render() {
         const termsArr = this.props.cards.map(card => card.term);
         const defsArr = this.props.cards.map(card => card.definition);
@@ -140,6 +138,11 @@ handleStartOver() {
                         {matchCards}
                     </div>
                 </div>
+                <div id='match-sidebar' className='flash-sidebar-menu'>
+                    <h6 className='match-timer-title'>TIME</h6>
+                    <h2 className='match-timer-time'>{this.state.time}</h2>
+                    <button id='match-start-btn-small' className='create-button-small' onClick={() => this.handleStart()}>Start</button>
+                     </div>
                 <div id='game-over' className='match-end-wrap'>
                     <h2 className='flash-back-main'>Nice work!</h2>
                     <p className='flash-back-sub'>You just studied {this.props.cards.length} terms!</p>

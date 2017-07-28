@@ -1014,20 +1014,23 @@ h5:hover {
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-around;
+	width: 100%;
 }
 .match-card {
 	font-family: "Catamaran", sans-serif;
 	color: #828C8F;
 	font-weight: 200;
+	font-size: 1.3rem;
 	letter-spacing: .03rem;
 	background-color: white;
 	border: 2px solid #DADEE0;
 	display: flex;
-	width: 7.7rem;
+	width: 31%;
 	margin-top: .4rem;
-	height: 25vh;
+	height: 12.5rem;
 	justify-content: center;
 	align-items: center;
+	margin: .25rem .25rem;
 }
 .match-card.selected {
 	background-color : #FFF2C7;
@@ -1061,6 +1064,9 @@ h5:hover {
 	display: none;
 }
 .tablet-header-user-image {
+	display: none;
+}
+#match-sidebar {
 	display: none;
 }
 
@@ -1237,7 +1243,7 @@ MEDIA QUERIES
 	}
 }
 
-/* once we reach larger than 720px, apply these new styles*/
+/* once we reach larger than 770px, apply these new styles*/
 @media(min-width: 770px) {
 	#menuOverlayLA {
 		width: 300px;
@@ -1318,6 +1324,30 @@ MEDIA QUERIES
 	.flash-sidebar-menu {
 		display: flex;
 	}
+	#match-start-btn {
+		display: none;
+	}
+	.match-timer-container {
+		display: none;
+	}
+	#match-sidebar {
+		padding-top: 2rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		z-index: 100;
+		position: absolute;
+		top: 80px;
+	}
+	.match-cards-container {
+		padding-left: 285px;
+	}
+	.match-card {
+		height: 14rem;
+	}
+	.match-end-wrap {
+		padding-left: 275px;
+	}
 }
 /* once we reach larger than 1025px, apply these new styles*/
 @media(min-width: 1025px) {
@@ -1338,9 +1368,6 @@ MEDIA QUERIES
 		width: 100%;
 		padding: 1rem 4rem 2.7rem 4rem;
 	}
-	/*.search-sets-container .activity-recent-set {
-		width: 100%;
-	}*/
 	.search-title {
 		font-size: 2rem;
 		padding-left: 4rem;
