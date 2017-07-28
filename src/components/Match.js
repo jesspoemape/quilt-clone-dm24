@@ -156,8 +156,7 @@ handleStartOver() {
                     </div>
                 </div>
                 <div id='match-sidebar' className='flash-sidebar-menu'>
-                    <h6 className='match-timer-title'>TIME</h6>
-                    <h2 className='match-timer-time'>{ timer }</h2>
+                    { timer }
                     <button id='match-start-btn-small' className='create-button-small' onClick={() => this.handleStart()}>Start</button>
                      </div>
                 <div id='game-over' className='match-end-wrap'>

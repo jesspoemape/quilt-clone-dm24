@@ -17,6 +17,7 @@ class LandingPage extends Component {
                         </div>
                     </div>
                 </div>
+                <div className='landing-body'></div>
                 <Footer/>
             </div>
         );

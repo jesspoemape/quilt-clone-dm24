@@ -89,7 +89,7 @@ handleCopyClick() {
         });
 
         return (
-            <div>
+            <div className='set-detail-main'>
             <Header/>
             {/*********************** SET INFO ************************/}
             <div className='set-user-header'>

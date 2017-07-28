@@ -32,10 +32,17 @@ componentWillUnmount() {
         // console.log(seconds);
 
         return (
-            <div className='match-timer-container'>
-                <h6 className='match-timer-title'>TIME</h6>
-                <h2 className='match-timer-time'>{seconds || 0.0}</h2>
+            <div>
+                <div className='match-timer-container'>
+                    <h6 className='match-timer-title'>TIME</h6>
+                    <h2 className='match-timer-time'>{seconds || 0.0}</h2>
+                </div>
+                <div className='match-timer-container-side'>
+                    <h6 className='match-timer-title'>TIME</h6>
+                    <h2 className='match-timer-time'>{seconds || 0.0}</h2>
+                </div>
             </div>
+            
         );
     }
 }
