@@ -11,7 +11,8 @@ class Header extends Component {
         super();
         this.state={
             redirectToNewPage: false,
-            search: ''
+            search: '',
+            username: ''
         }
 
         this.showMenu = this.showMenu.bind(this);
@@ -20,6 +21,10 @@ class Header extends Component {
         this.closeSearch = this.closeSearch.bind(this);
         this.showSearch = this.showSearch.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
+        this.handleArrowMenuClick = this.handleArrowMenuClick.bind(this);
+    }
+    componentDidMount() {
+        axios.get('/auth/me').then(res => this.setState({username: res.data.username}));
     }
 
 showMenu() {
@@ -50,7 +55,9 @@ handleSearch(e) {
             .catch(console.error, 'Error');
         }
     }
-    
+}
+handleArrowMenuClick() {
+    document.getElementById('arrow-menu-main').classList.toggle("show");
 }
 
     render() {
@@ -125,7 +132,25 @@ handleSearch(e) {
                 </div>
                 <div className='tablet-header-user-image'>
                     <img className='user-image-medium' src="https://api.adorable.io/avatars/285/abott@adorable.png" alt="profile"/>
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 841.9 744.125"><path d="M528.9,297.2"/><path d="M215.5,189.5c-2,0-3.8,1.2-4.6,3.1c-0.8,1.9-0.3,4,1.1,5.4l205.6,205.6c1,1,2.3,1.5,3.5,1.5s2.6-0.5,3.5-1.5l205.5-205.5  c1.4-1.3,1.9-3.5,1.1-5.5c-0.8-1.9-2.6-3.1-4.6-3.1L215.5,189.5z"/></svg>
+                    <h6 className='header-username'>{this.state.username || 'user'}</h6>
+                    <svg onClick={() => this.handleArrowMenuClick()} xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 841.9 744.125"><path d="M528.9,297.2"/><path d="M215.5,189.5c-2,0-3.8,1.2-4.6,3.1c-0.8,1.9-0.3,4,1.1,5.4l205.6,205.6c1,1,2.3,1.5,3.5,1.5s2.6-0.5,3.5-1.5l205.5-205.5  c1.4-1.3,1.9-3.5,1.1-5.5c-0.8-1.9-2.6-3.1-4.6-3.1L215.5,189.5z"/></svg>
+                    <div className='arrow-menu-main top' id='arrow-menu-main'>
+                        <Link className='link' to='/activity'><div className='more-menu-item'>
+                            <h6>Your Study Sets</h6>
+                        </div></Link>
+                        <Link className='link' to='/settings'><div className='more-menu-item'>
+                            <h6>Settings</h6>
+                        </div></Link>
+                        <div onClick={() => this.handleLogout()} className='more-menu-item'>
+                            <h6>Log Out</h6>
+                        </div>
+                        <div className='more-menu-item'>
+                            <h6>Help Center</h6>
+                        </div>
+                        <div className='more-menu-item'>
+                            <h6>Upgrade</h6>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

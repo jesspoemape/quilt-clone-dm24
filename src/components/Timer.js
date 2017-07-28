@@ -23,7 +23,7 @@ componentWillUnmount() {
 }
 
     render() {
-        let seconds;
+        let seconds = 0;
         if (this.props.startTimer) {
             let elapsed = Math.round(this.state.elapsed / 100);
             seconds = (elapsed / 10).toFixed(1);

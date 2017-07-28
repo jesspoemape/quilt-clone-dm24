@@ -127,12 +127,15 @@ handleStartOver() {
 }
 
     render() {
+        // if there is an image and no definition, make an array of images and render those in the final map of cards
+        // if there is an image and a definition, figure that out later
         const termsArr = this.props.cards.map(card => card.term);
         const defsArr = this.props.cards.map(card => card.definition);
         const cardsArr = termsArr.concat(defsArr);
         const shuffledArr = this.shuffle(cardsArr);
-      const matchCards =  shuffledArr.map( (card, i) => {
-           return <div id={`card-${i}`} onMouseUp={ this.handleCardTouch.bind(this, i)} key={i} className='match-card'><p className='match-card-term'>{card}</p></div>
+        const matchCards =  shuffledArr.map( (card, i) => {
+           return <div id={`card-${i}`} onMouseUp={ this.handleCardTouch.bind(this, i)} key={i} className='match-card'>
+               <p className='match-card-term'>{card}</p></div>
        } ) 
 
        let timer = null;
@@ -154,7 +157,7 @@ handleStartOver() {
                 </div>
                 <div id='match-sidebar' className='flash-sidebar-menu'>
                     <h6 className='match-timer-title'>TIME</h6>
-                    <h2 className='match-timer-time'>{this.state.time}</h2>
+                    <h2 className='match-timer-time'>{ timer }</h2>
                     <button id='match-start-btn-small' className='create-button-small' onClick={() => this.handleStart()}>Start</button>
                      </div>
                 <div id='game-over' className='match-end-wrap'>

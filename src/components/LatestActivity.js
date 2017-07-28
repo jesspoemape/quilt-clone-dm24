@@ -4,7 +4,6 @@ import Header from './Header';
 import {getUserSS, getSSInfo} from './../ducks/reducer';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import Footer from './Footer';
 
 class LatestActivity extends Component {
     constructor() {
@@ -45,7 +44,7 @@ handleSearch(e) {
         })
 
         return (
-            <div>
+            <div className='latest-activity-main'>
                 <Header/>
                 {/*****************MENU SIDEBAR******************/}
                 <div id='menuOverlayLA' className='overlay'>
@@ -100,7 +99,6 @@ handleSearch(e) {
                     <h4 className='dark-label'>LAST WEEK</h4>
                     {sets}
                 </div>
-                <Footer/>
             </div>
         );
     }
