@@ -9,7 +9,7 @@ const express = require('express'),
      cors = require('cors');
 
 const app = module.exports = express();
-app.use(cors({origin: 'http://localhost:3000'}));
+app.use(cors({origin: '*'}));
 
 
 app.use(bodyParser.json());
@@ -71,7 +71,7 @@ passport.deserializeUser((user, done) => {
 
 // for auth
 app.get('/auth', passport.authenticate('auth0')); // authenticate the user
-app.get('/auth/callback', passport.authenticate('auth0', {successRedirect: 'http://localhost:3000/activity'})); //callback and redirect user
+app.get('/auth/callback', passport.authenticate('auth0', {successRedirect: '/activity'})); //callback and redirect user
 app.get('/auth/me', (req, res) => { // check if someone is logged in 
     if (!req.user) return res.status(200).send('no user');
     res.status(200).send(req.user);
@@ -79,7 +79,7 @@ app.get('/auth/me', (req, res) => { // check if someone is logged in
 app.get('/auth/logout', (req, res) => { // log the user out and destroy the session
     console.log('in server');
     req.logout();
-    res.redirect('http://localhost:3000/');
+    res.redirect('/');
 });
 
 // for UI

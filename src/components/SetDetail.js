@@ -9,7 +9,7 @@ import {Link, Redirect} from 'react-router-dom';
 class SetDetail extends Component {
     constructor() {
         super();
-        this.state={
+        this.state = {
             redirectToNewPage: false
         }
 
@@ -44,8 +44,8 @@ handleDelete() {
         else {
             axios.post(`/api/remove-set/${this.props.setInfo.id}/${res.data.id}`)
             .then(() => axios.get(`/api/user-info/${userID}`)
-            .then( res => {res.data[0].studiedsets.map((setId) => {return axios.get(`/api/get-set-info/${setId}`).then(res => this.props.getSSInfo(res.data))})})
-                .then(() => this.setState({redirectToNewPage: true})).catch(console.error, 'Error'))
+            .then( res => {res.data[0].studiedsets.map((setId) => {return axios.get(`/api/get-set-info/${setId}`).then(res => this.props.getSSInfo(res.data))})}))
+            .then(() => this.setState({redirectToNewPage: true})).catch(console.error, 'Error')
         }
     })
 }

@@ -1120,6 +1120,9 @@ h5:hover {
 	width: 100%;
 	height: 500px;
 }
+#more-tablet {
+	display: none;
+}
 /*******************************************
 
 MEDIA QUERIES
@@ -1156,6 +1159,7 @@ MEDIA QUERIES
 		justify-content: space-between;
 	}
 	#more-tablet {
+		display: block;
 		width: 0;
 	}
 	.create-term-and-label {

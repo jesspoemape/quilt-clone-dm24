@@ -5,6 +5,6 @@ module.exports = {
         "domain" : "jesspoemape.auth0.com",
         "clientID": "Uk3iqCJdAfg4LGLX3USC71vSzvsXCu8Y",
         "clientSecret": "NYbxysplhX_3xc6N9oHAOCalnoND4juixMZ7hlVzWG613xEJUXWvn26VeuauTyRv",
-        "callbackUrl": "http://localhost:3001/auth/callback"
+        "callbackUrl": (process.env.AUTH0_CALLBACK_URL) ? process.env.AUTH0_CALLBACK_URL : "http://localhost:3001/auth/callback"
     }
 }

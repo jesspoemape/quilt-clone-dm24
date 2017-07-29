@@ -55,7 +55,7 @@ handleCreateClick() {
     });
 
     // get user info, create a new set of cards to be sent to reducer 
-    axios.get('/auth/me').then( res => axios.post(`http://localhost:3001/api/add-set/${res.data.id}`, {
+    axios.get('/auth/me').then( res => axios.post(`/api/add-set/${res.data.id}`, {
         id: uniqSetId,
         title,
         creatorname: res.data.username,
