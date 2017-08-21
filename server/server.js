@@ -43,16 +43,6 @@ massive(config.connectionString).then(dbInstance => {
             };
         });
 
-
-        // const user = dbInstance.users.findOne({id: profile.identities[0].user_id}, {columns: ['username', 'id', 'profileimage']}).then(userInfo => {
-        //     if (userInfo) {
-        //         console.log(`welcome, ${userInfo.username}`);
-        //     }
-        //     else {
-        //         dbInstance.users.insert({id: profile.identities[0].user_id, username: profile._json.screen_name || `${profile._json.given_name} ${profile._json.family_name}`, profileimage: profile._json.picture}).then(res => res).catch(console.error, 'Error');
-        // }}).catch(console.error, 'Error');
-
-        // done(null, user);
     }
     ));
 });

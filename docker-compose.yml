@@ -2,8 +2,7 @@ version: "3"
 services: 
   api:
     environment: 
-      # AUTH0_CALLBACK_URL: https://jesspoemape.us/auth/callback
-      AUTH0_CALLBACK_URL: http://localhost/auth/callback
+      AUTH0_CALLBACK_URL: http://quizlet.jesspoemape.us/auth/callback
     build: .
     restart: always
     volumes: 
@@ -12,8 +11,8 @@ services:
     ports: 
       - "80:80"
     environment: 
-      VIRTUAL_HOST: jesspoemape.us
-      LETSENCRYPT_HOST: jesspoemape.us
+      VIRTUAL_HOST: quizlet.jesspoemape.us
+      LETSENCRYPT_HOST: quizlet.jesspoemape.us
       LETSENCRYPT_EMAIL: jesspoemape@gmail.com
     image: nginx:alpine
     restart: always
