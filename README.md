@@ -30,11 +30,13 @@ This SPA is a clone of the Quizlet website: a place to create and study flashcar
 ### 3. Screenshots
   * [Latest Activity - Desktop]
   * [Latest Activity - Mobile]
-  * [Create a set - Desktop ]
-  * [Create a set - Mobile]
-  * [Study a set by flipping - Desktop]
-  * [Study a set by flipping - Mobile ]
+  * [Create a set - Desktop ] (http://imgur.com/SdO68Wj)
+  * [Create a set - Mobile] (http://imgur.com/qFdkRnV)
+  * [Set detail - Mobile] (http://imgur.com/mdEKMoE)
+  * [Set detail - Desktop] (http://imgur.com/YJ01tjy)
+  * [Study a set by flipping - Desktop] (http://imgur.com/lrvxjPt)
+  * [Study a set by flipping - Mobile ] (http://imgur.com/8QOKKVg)
   * [Study a set by matching - Desktop ]
-  * [Study a set by matching - Mobile ]
-  * [Search for sets - Desktop]
-  * [Search for sets - Mobile]
+  * [Study a set by matching - Mobile ] (http://imgur.com/f3hTpRB)
+  * [Search for sets - Desktop] (http://imgur.com/vF7J5Le)
+  * [Search for sets - Mobile] (http://imgur.com/lk2kp02)
