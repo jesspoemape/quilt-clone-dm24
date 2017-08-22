@@ -30,13 +30,13 @@ This SPA is a clone of the Quizlet website: a place to create and study flashcar
 ### 3. Screenshots
   * [Latest Activity - Desktop]
   * [Latest Activity - Mobile]
-  * [Create a set - Desktop ] (http://i.imgur.com/SdO68Wj)
-  * [Create a set - Mobile] (http://i.imgur.com/qFdkRnV)
-  * [Set detail - Mobile] (http://i.imgur.com/mdEKMoE)
-  * [Set detail - Desktop] (http://i.imgur.com/YJ01tjy)
-  * [Study a set by flipping - Desktop] (http://i.imgur.com/lrvxjPt)
-  * [Study a set by flipping - Mobile ] (http://i.imgur.com/8QOKKVg)
+  * [Create a set - Desktop ] (http://i.imgur.com/SdO68Wj.png)
+  * [Create a set - Mobile] (http://i.imgur.com/qFdkRnV.png)
+  * [Set detail - Mobile] (http://i.imgur.com/mdEKMoE.png)
+  * [Set detail - Desktop] (http://i.imgur.com/YJ01tjy.png)
+  * [Study a set by flipping - Desktop] (http://i.imgur.com/lrvxjPt.png)
+  * [Study a set by flipping - Mobile ] (http://i.imgur.com/8QOKKVg.png)
   * [Study a set by matching - Desktop ]
-  * [Study a set by matching - Mobile ] (http://i.imgur.com/f3hTpRB)
-  * [Search for sets - Desktop] (http://i.imgur.com/vF7J5Le)
-  * [Search for sets - Mobile] (http://i.imgur.com/lk2kp02)
+  * [Study a set by matching - Mobile ] (http://i.imgur.com/f3hTpRB.png)
+  * [Search for sets - Desktop] (http://i.imgur.com/vF7J5Le.png)
+  * [Search for sets - Mobile] (http://i.imgur.com/lk2kp02.png)
