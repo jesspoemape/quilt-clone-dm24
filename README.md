@@ -28,8 +28,8 @@ This SPA is a clone of the Quizlet website: a place to create and study flashcar
     * Auth0
 
 ### 3. Screenshots
-  * [Latest Activity - Desktop]
-  * [Latest Activity - Mobile]
+  * [Latest Activity - Desktop] (http://i.imgur.com/1zPFeVw.png)
+  * [Latest Activity - Mobile] (http://i.imgur.com/BPBidF4.png)
   * [Create a set - Desktop ] (http://i.imgur.com/SdO68Wj.png)
   * [Create a set - Mobile] (http://i.imgur.com/qFdkRnV.png)
   * [Set detail - Mobile] (http://i.imgur.com/mdEKMoE.png)
