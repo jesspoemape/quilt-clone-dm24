@@ -37,7 +37,7 @@ massive(config.connectionString).then(dbInstance => {
             if (user) {
                 done(null, user);
             } else {
-                dbInstance.create_user([profile.identities[0].user_id, (profile._json.screen_name || profile._json.given_name), profile._json.picture]).then( user => {
+                dbInstance.create_user([profile.identities[0].user_id, (profile._json.screen_name || `user${profile.identities[0].user_id}`), profile._json.picture]).then( user => {
                     done(null, user).catch(console.error, 'Error');
                 });
             };
