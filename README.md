@@ -1,6 +1,8 @@
 ## Introduction
 ### About the project
 This SPA is a clone of the Quizlet website: a place to create and study flashcards. 
+Live site - https://quizlet.jesspoemape.us
+Video Walkthrough - https://youtu.be/5aOr1SHBpT4
 
 ### 1. Front-End
 ####1.1 User Features
