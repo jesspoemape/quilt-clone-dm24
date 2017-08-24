@@ -5,6 +5,7 @@ This SPA is a clone of the Quizlet website: a place to create and study flashcar
 * [Video Walkthrough](https://youtu.be/5aOr1SHBpT4)
 
 ###1. Front-End
+
 ####1.1 User Features
   * Users can create a set of flashcards 
   * Users can search for flashcards made by other users
